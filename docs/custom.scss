@@ -1,0 +1,242 @@
+/*-- scss:defaults --*/
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Color palette */
+$body-bg: #9F84BD;
+$body-color: #FDFBFF;
+$link-color: #C3D350;
+$primary: #C3D350;
+$secondary: #84A07C;
+$navbar-bg: #9F84BD;
+$navbar-fg: #FDFBFF;
+$footer-bg: #4B3B47;
+$footer-fg: #FDFBFF;
+
+/* Typography */
+$font-family-sans-serif: 'Inter', sans-serif;
+$headings-font-family: 'Playfair Display', serif;
+$headings-color: #FDFBFF;
+
+$border-radius: 0.75rem;
+$btn-border-radius: 0.75rem;
+
+/*-- scss:rules --*/
+
+body {
+  background-color: $body-bg;
+  color: $body-color;
+  font-family: $font-family-sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* Main content area */
+main.content {
+  background: transparent;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headings-font-family;
+  color: #FDFBFF;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #9F84BD;
+  border-bottom: 3px solid #C3D350;
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FDFBFF;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #C3D350;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #FDFBFF;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #84A07C;
+}
+
+h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #C3D350;
+}
+
+/* Body text */
+p, li {
+  color: #4B3B47;
+  font-size: 1rem;
+}
+
+/* Links */
+a {
+  color: #C3D350;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #FDFBFF;
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #9F84BD !important;
+  border-bottom: 2px solid #C3D350;
+  font-weight: 500;
+}
+
+.navbar a,
+.navbar-brand,
+.nav-link {
+  color: #FDFBFF !important;
+}
+
+.navbar a:hover,
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #C3D350 !important;
+}
+
+/* Buttons */
+.btn, .quarto-btn {
+  background-color: #C3D350;
+  border: none;
+  color: #4B3B47;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn:hover, .quarto-btn:hover {
+  background-color: #84A07C;
+  color: #FDFBFF;
+}
+
+/* Cards / project containers */
+.card, .quarto-grid-item, .listing-item {
+  background-color: rgba(75, 59, 71, 0.35);
+  border: 1px solid rgba(253, 251, 255, 0.15);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(75, 59, 71, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 1rem;
+}
+
+.card:hover, .quarto-grid-item:hover, .listing-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(75, 59, 71, 0.25);
+}
+
+/* Code */
+pre, code {
+  border-radius: 0.5rem;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #C3D350;
+  padding-left: 1rem;
+  color: #FDFBFF;
+  font-style: italic;
+  background-color: rgba(75, 59, 71, 0.25);
+  border-radius: 0.5rem;
+}
+
+/* Quotes Cards */
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.quote-card {
+  background-color: rgba(253, 251, 255, 0.82);
+  color: #4B3B47;
+  border-left: 5px solid #C3D350;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(75, 59, 71, 0.10);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  min-height: 220px;
+  width: 100%;
+}
+
+.quote-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(75, 59, 71, 0.28);
+}
+
+.quote-author {
+  margin-top: 1.2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4B3B47;
+}
+
+@media (max-width: 900px) {
+  .quotes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .quotes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Footer */
+.footer {
+  background-color: #4B3B47;
+  border-top: 2px solid #C3D350;
+  color: #FDFBFF;
+  font-size: 0.95rem;
+  padding: 1rem 0;
+}
+
+/* Optional accent utility classes */
+.accent-green {
+  color: #84A07C;
+}
+
+.accent-lime {
+  color: #C3D350;
+}
+
+.accent-light {
+  color: #FDFBFF;
+}

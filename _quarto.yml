@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+
+
+website:
+  title: "Sophia Salas"
+  navbar:
+    left:
+      - href: index.qmd
+        text: About
+      - href: resume.qmd
+        text: Resume
+      - href: projects.qmd
+        text: Projects
+      - href: quotes.qmd
+        text: Quotes
+format:
+  html:
+    theme:
+      - cosmo
+    css: custom.scss
+    toc: true

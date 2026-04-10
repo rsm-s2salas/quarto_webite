@@ -1,0 +1,51 @@
+---
+title: "Words I Keep Coming Back To"
+format: html
+---
+
+Some quotes and words that inspire how I think about creativity, work, and growth.
+
+::: {.quotes-grid}
+
+::: {.quote-card}
+“The worst enemy to creativity is self-doubt.”
+
+::: {.quote-author}
+— Sylvia Plath
+:::
+:::
+
+::: {.quote-card}
+“Going through things you never thought you'd go through will only take you places you never thought you'd get to.”
+
+::: {.quote-author}
+— Morgan Harper Nichols
+:::
+:::
+
+::: {.quote-card}
+“What you think, you become. What you feel, you attract. What you imagine, you create.”
+
+::: {.quote-author}
+— Buddha
+:::
+:::
+
+::: {.quote-card}
+“Two roads diverged in a wood, and I — I took the one less traveled by. And that has made all the difference.”
+
+::: {.quote-author}
+— Robert Frost
+:::
+:::
+
+::: {.quote-card}
+“Anyone who has never made a mistake has never tried anything new.”
+
+::: {.quote-author}
+— Albert Einstein
+:::
+:::
+
+
+:::
