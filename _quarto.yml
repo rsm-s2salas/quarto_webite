@@ -17,7 +17,5 @@ website:
         text: Quotes
 format:
   html:
-    theme:
-      - cosmo
-    css: custom.scss
+    theme: custom.scss
     toc: true

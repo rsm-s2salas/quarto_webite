@@ -4,19 +4,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 /* Color palette */
-$body-bg: #9F84BD;
-$body-color: #FDFBFF;
+$body-bg: #f4f3f5;
+$body-color: #a08bb5;
 $link-color: #C3D350;
 $primary: #C3D350;
 $secondary: #84A07C;
-$navbar-bg: #9F84BD;
+$navbar-bg: #e5dfed;
 $navbar-fg: #9F84BD;
 $footer-bg: #4B3B47;
 $footer-fg: #FDFBFF;
 
 /* Typography */
 $font-family-sans-serif: 'Inter', sans-serif;
-$headings-font-family: 'Playfair Display', serif;
+$headings-font-family: 'Inter', sans-serif;
 $headings-color: #FDFBFF;
 
 $border-radius: 0.75rem;
@@ -108,7 +108,7 @@ a:hover {
 
 /* Navbar */
 .navbar {
-  background-color: #9F84BD !important;
+  background-color: #b49fcd !important;
   border-bottom: 2px solid #C3D350;
   font-weight: 500;
 }
@@ -116,7 +116,7 @@ a:hover {
 .navbar a,
 .navbar-brand,
 .nav-link {
-  color: #C3D350 !important;
+  color: #e6efa5 !important;
 }
 
 .navbar a:hover,
@@ -143,7 +143,7 @@ a:hover {
 
 /* Cards / project containers */
 .card, .quarto-grid-item, .listing-item {
-  background-color: rgba(75, 59, 71, 0.35);
+  background-color: rgba(180, 166, 177, 0.35);
   border: 1px solid rgba(253, 251, 255, 0.15);
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(75, 59, 71, 0.18);
