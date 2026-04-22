@@ -4,7 +4,7 @@
     "docker-compose-k8s.yml"
   ],
   "service": "rsm-msba",
-  "workspaceFolder": "/home/jovyan",
+  "workspaceFolder": "/home/jovyan/MSBA/spring/mgta_495",
   "remoteUser": "jovyan",
   "overrideCommand": false,
   "shutdownAction": "none",

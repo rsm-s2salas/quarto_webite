@@ -1,7 +1,7 @@
 /*-- scss:defaults --*/
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Color palette */
 $body-bg: #f4f3f5;
@@ -106,7 +106,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Navbar */
+/* Top Navbar */
 .navbar {
   background-color: #b49fcd !important;
   border-bottom: 2px solid #C3D350;
@@ -115,14 +115,37 @@ a:hover {
 
 .navbar a,
 .navbar-brand,
-.nav-link {
-  color: #e6efa5 !important;
+.navbar .nav-link {
+  color: #f2fca7 !important;
 }
 
 .navbar a:hover,
 .navbar-brand:hover,
-.nav-link:hover {
+.navbar .nav-link:hover {
   color: #C3D350 !important;
+}
+
+/* Side Navbar */
+#quarto-sidebar,
+.quarto-sidebar {
+  background-color: #C3D350 !important;
+}
+
+#quarto-sidebar .sidebar-item a,
+#quarto-sidebar .sidebar-section a,
+#quarto-sidebar .chapter-number,
+.quarto-sidebar .sidebar-item a {
+  color: #4B3B47 !important;
+  font-weight: 500;
+}
+
+#quarto-sidebar .sidebar-item a:hover,
+#quarto-sidebar .sidebar-section a:hover,
+.quarto-sidebar .sidebar-item a:hover {
+  background-color: #a6b344 !important;
+  color: #FDFBFF !important;
+  text-decoration: none;
+  border-radius: 0.4rem;
 }
 
 /* Buttons */
@@ -230,12 +253,12 @@ blockquote {
 
 /* Callout notes */
 .callout-note {
-  border-left-color: #84A07C !important;
+  border-left-color: #C3D350 !important;
   background-color: rgba(132, 160, 124, 0.12);
 }
 
 .callout-note > .callout-header {
-  background-color: rgba(132, 160, 124, 0.25) !important;
+  background-color: rgba(157, 186, 150, 0.749) !important;
   color: #FDFBFF !important;
 }
 

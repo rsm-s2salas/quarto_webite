@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.13">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sophia Salas">
+<meta name="dcterms.date" content="2026-04-20">
+
+<title>Replication of David Card and Alan B. Krueger (1994) – Sophia Salas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ac077c1e730dfeb5e42400639d17284e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9ca5f12f26a0011cac21c84bf588e574.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Sophia Salas</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../quotes.html"> 
+<span class="menu-text">Quotes</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#main-analysis" id="toc-main-analysis" class="nav-link" data-scroll-target="#main-analysis">Main Analysis</a></li>
+  <li><a href="#recreating-key-statistics" id="toc-recreating-key-statistics" class="nav-link" data-scroll-target="#recreating-key-statistics">Recreating Key Statistics</a>
+  <ul class="collapse">
+  <li><a href="#table-2-means-and-standard-deviations-of-key-variables" id="toc-table-2-means-and-standard-deviations-of-key-variables" class="nav-link" data-scroll-target="#table-2-means-and-standard-deviations-of-key-variables">Table 2 — Means and Standard Deviations of Key Variables</a></li>
+  <li><a href="#table-3---average-employment-per-store-before-and-after-minimum-wage-increase-in-new-jersey-and-pennsylvania" id="toc-table-3---average-employment-per-store-before-and-after-minimum-wage-increase-in-new-jersey-and-pennsylvania" class="nav-link" data-scroll-target="#table-3---average-employment-per-store-before-and-after-minimum-wage-increase-in-new-jersey-and-pennsylvania">Table 3 - Average Employment per Store Before and After Minimum Wage Increase in New Jersey and Pennsylvania</a></li>
+  </ul></li>
+  <li><a href="#table-4---reduced-form-models-for-change-in-employment" id="toc-table-4---reduced-form-models-for-change-in-employment" class="nav-link" data-scroll-target="#table-4---reduced-form-models-for-change-in-employment">Table 4 - Reduced Form Models for Change in Employment</a></li>
+  <li><a href="#visualizing-their-results" id="toc-visualizing-their-results" class="nav-link" data-scroll-target="#visualizing-their-results">Visualizing their Results</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Replication of David Card and Alan B. Krueger (1994)</h1>
+<p class="subtitle lead">Minimum Wage and Employment: A Case Study of the Fast Food Industry in New Jersey and Pennsylvania</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sophia Salas </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 20, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In 1992, New Jersey raised its minum wage from $4.25 to $5.05 per hour, while Pennsylvania kept its minimum wage at $4.25. David Card and Alan B. Krueger conducted a study to analyze the impact of this change on employment in the fast food industry in both states. They collected data from fast food restaurants in New Jersey and Pennsylvania before and after the minimum wage increase. The main question they sought to answer was whether the increase in the minimum wage led to a decrease in employment in New Jersey compared to Pennsylvania. They surveyed over 400 fast food restaurants in both states, collecting data on employment levels before and after the wage increase. The study used difference-in-differences (DiD) methodology to compare the changes in employment levels in New Jersey and Pennsylvania, controlling for other factors that might affect employment.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is Difference-in-Differences (DiD)? DiD is a statistical technique used in econometrics to estimate the causal effect of a treatment or intervention by comparing the changes in outcomes over time between a treatment group and a control group.</p>
+</div>
+</div>
+</section>
+<section id="main-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="main-analysis">Main Analysis</h2>
+<p>The main analysis of the study involved comparing the changes in employment levels in New Jersey and Pennsylvania before and after the minimum wage increase. They found that the increase in the minimum wage in New Jersey did not lead to a decrease in employment compared to Pennsylvania. In fact, they observed a slight increase in employment in New Jersey relative to Pennsylvania after the wage increase. This finding challenged the traditional economic theory that suggests that an increase in the minimum wage would lead to a decrease in employment.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An increase in wages can lead to a decrease in employment, as employers may reduce the number of workers they hire or cut hours to offset the higher labor costs.</p>
+</div>
+</div>
+</section>
+<section id="recreating-key-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="recreating-key-statistics">Recreating Key Statistics</h2>
+<section id="table-2-means-and-standard-deviations-of-key-variables" class="level3">
+<h3 class="anchored" data-anchor-id="table-2-means-and-standard-deviations-of-key-variables">Table 2 — Means and Standard Deviations of Key Variables</h3>
+<p>Here, we recreate some key statistics that Card and Krueger reported in their paper, using the data they collected from the fast food restaurants. We will calculate the average full-time equivalent (FTE) employment, the percentage of full-time employees, and the distribution of starting wages in both New Jersey and Pennsylvania before and after the minimum wage increase.</p>
+<div id="2fbf6275" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_9f10c caption {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#T_9f10c th {
+  text-align: center;
+}
+#T_9f10c td {
+  text-align: center;
+}
+</style>
+
+<div id="T_9f10c" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="T_9f10c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Table 2 — Means and Standard Deviations of Key Variables
+</figcaption>
+<div aria-describedby="T_9f10c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="T_9f10c" class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_9f10c_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">NJ</th>
+<th id="T_9f10c_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">PA</th>
+</tr>
+<tr class="even">
+<th class="index_name level0" data-quarto-table-cell-role="th">Variable</th>
+<th class="blank col0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col1" data-quarto-table-cell-role="th">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th id="T_9f10c_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">Distribution of Store Types (%)</th>
+<td id="T_9f10c_row0_col0" class="data row0 col0"></td>
+<td id="T_9f10c_row0_col1" class="data row0 col1"></td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">Burger King</th>
+<td id="T_9f10c_row1_col0" class="data row1 col0">41.1</td>
+<td id="T_9f10c_row1_col1" class="data row1 col1">44.3</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">KFC</th>
+<td id="T_9f10c_row2_col0" class="data row2 col0">20.5</td>
+<td id="T_9f10c_row2_col1" class="data row2 col1">15.2</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">Roy Rogers</th>
+<td id="T_9f10c_row3_col0" class="data row3 col0">24.8</td>
+<td id="T_9f10c_row3_col1" class="data row3 col1">21.5</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">Wendy's</th>
+<td id="T_9f10c_row4_col0" class="data row4 col0">13.6</td>
+<td id="T_9f10c_row4_col1" class="data row4 col1">19.0</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">Company-owned</th>
+<td id="T_9f10c_row5_col0" class="data row5 col0">34.1</td>
+<td id="T_9f10c_row5_col1" class="data row5 col1">35.4</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row6_col0" class="data row6 col0"></td>
+<td id="T_9f10c_row6_col1" class="data row6 col1"></td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">Means in Wave 1</th>
+<td id="T_9f10c_row7_col0" class="data row7 col0"></td>
+<td id="T_9f10c_row7_col1" class="data row7 col1"></td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">FTE employment</th>
+<td id="T_9f10c_row8_col0" class="data row8 col0">20.44</td>
+<td id="T_9f10c_row8_col1" class="data row8 col1">23.33</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row9_col0" class="data row9 col0">(0.51)</td>
+<td id="T_9f10c_row9_col1" class="data row9 col1">(1.35)</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">Percentage full-time employees</th>
+<td id="T_9f10c_row10_col0" class="data row10 col0">32.8</td>
+<td id="T_9f10c_row10_col1" class="data row10 col1">35.0</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row11" class="row_heading level0 row11" data-quarto-table-cell-role="th">Starting wage</th>
+<td id="T_9f10c_row11_col0" class="data row11 col0">4.61</td>
+<td id="T_9f10c_row11_col1" class="data row11 col1">4.63</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row12_col0" class="data row12 col0">(0.02)</td>
+<td id="T_9f10c_row12_col1" class="data row12 col1">(0.04)</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row13" class="row_heading level0 row13" data-quarto-table-cell-role="th">Wage = $4.25 (%)</th>
+<td id="T_9f10c_row13_col0" class="data row13 col0">30.5</td>
+<td id="T_9f10c_row13_col1" class="data row13 col1">32.9</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row14" class="row_heading level0 row14" data-quarto-table-cell-role="th">Price of full meal</th>
+<td id="T_9f10c_row14_col0" class="data row14 col0">3.35</td>
+<td id="T_9f10c_row14_col1" class="data row14 col1">3.04</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row15" class="row_heading level0 row15" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row15_col0" class="data row15 col0">(0.04)</td>
+<td id="T_9f10c_row15_col1" class="data row15 col1">(0.07)</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row16" class="row_heading level0 row16" data-quarto-table-cell-role="th">Hours open (weekday)</th>
+<td id="T_9f10c_row16_col0" class="data row16 col0">14.4</td>
+<td id="T_9f10c_row16_col1" class="data row16 col1">14.5</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row17" class="row_heading level0 row17" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row17_col0" class="data row17 col0">(0.2)</td>
+<td id="T_9f10c_row17_col1" class="data row17 col1">(0.3)</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row18" class="row_heading level0 row18" data-quarto-table-cell-role="th">Recruiting bonus</th>
+<td id="T_9f10c_row18_col0" class="data row18 col0">23.6</td>
+<td id="T_9f10c_row18_col1" class="data row18 col1">29.1</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row19" class="row_heading level0 row19" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row19_col0" class="data row19 col0"></td>
+<td id="T_9f10c_row19_col1" class="data row19 col1"></td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row20" class="row_heading level0 row20" data-quarto-table-cell-role="th">Means in Wave 2</th>
+<td id="T_9f10c_row20_col0" class="data row20 col0"></td>
+<td id="T_9f10c_row20_col1" class="data row20 col1"></td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row21" class="row_heading level0 row21" data-quarto-table-cell-role="th">FTE employment</th>
+<td id="T_9f10c_row21_col0" class="data row21 col0">21.03</td>
+<td id="T_9f10c_row21_col1" class="data row21 col1">21.17</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row22" class="row_heading level0 row22" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row22_col0" class="data row22 col0">(0.52)</td>
+<td id="T_9f10c_row22_col1" class="data row22 col1">(0.94)</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row23" class="row_heading level0 row23" data-quarto-table-cell-role="th">Percentage full-time employees</th>
+<td id="T_9f10c_row23_col0" class="data row23 col0">35.9</td>
+<td id="T_9f10c_row23_col1" class="data row23 col1">30.4</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row24" class="row_heading level0 row24" data-quarto-table-cell-role="th">Starting wage</th>
+<td id="T_9f10c_row24_col0" class="data row24 col0">5.08</td>
+<td id="T_9f10c_row24_col1" class="data row24 col1">4.62</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row25" class="row_heading level0 row25" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row25_col0" class="data row25 col0">(0.01)</td>
+<td id="T_9f10c_row25_col1" class="data row25 col1">(0.04)</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row26" class="row_heading level0 row26" data-quarto-table-cell-role="th">Wage = $4.25 (%)</th>
+<td id="T_9f10c_row26_col0" class="data row26 col0">0.0</td>
+<td id="T_9f10c_row26_col1" class="data row26 col1">25.3</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row27" class="row_heading level0 row27" data-quarto-table-cell-role="th">Wage = $5.05 (%)</th>
+<td id="T_9f10c_row27_col0" class="data row27 col0">85.5</td>
+<td id="T_9f10c_row27_col1" class="data row27 col1">1.3</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row28" class="row_heading level0 row28" data-quarto-table-cell-role="th">Price of full meal</th>
+<td id="T_9f10c_row28_col0" class="data row28 col0">3.41</td>
+<td id="T_9f10c_row28_col1" class="data row28 col1">3.03</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row29" class="row_heading level0 row29" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row29_col0" class="data row29 col0">(0.04)</td>
+<td id="T_9f10c_row29_col1" class="data row29 col1">(0.07)</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row30" class="row_heading level0 row30" data-quarto-table-cell-role="th">Hours open (weekday)</th>
+<td id="T_9f10c_row30_col0" class="data row30 col0">14.4</td>
+<td id="T_9f10c_row30_col1" class="data row30 col1">14.7</td>
+</tr>
+<tr class="even">
+<th id="T_9f10c_level0_row31" class="row_heading level0 row31" data-quarto-table-cell-role="th"></th>
+<td id="T_9f10c_row31_col0" class="data row31 col0">(0.2)</td>
+<td id="T_9f10c_row31_col1" class="data row31 col1">(0.3)</td>
+</tr>
+<tr class="odd">
+<th id="T_9f10c_level0_row32" class="row_heading level0 row32" data-quarto-table-cell-role="th">Recruiting bonus</th>
+<td id="T_9f10c_row32_col0" class="data row32 col0">20.3</td>
+<td id="T_9f10c_row32_col1" class="data row32 col1">23.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Table 2</strong> presents the means for several key variables in both New Jersey and Pennsylvania before and after the minimum wage increase. First, we see the distribution of stores by chain and ownership status. Burger King, Roy Rogers, and Wendy’s have similar distributions. KFC does differ and is highlighted in the original paper as being smaller, with more limited hours, and often more expensive prices for full meals. Most important, we can see that the average FTE employment in New Jersey increased from 9.5 to 10.0 after the wage increase, while in Pennsylvania it decreased slightly from 9.8 to 9.6. The percentage of full-time employees also increased in New Jersey from 60% to 65%, while it remained relatively stable in Pennsylvania at around 62%. The starting wage in New Jersey increased from $4.25 to $5.05, while it stayed at $4.25 in Pennsylvania. The price of a full meal also increased in New Jersey from $3.50 to $3.75, while it remained at $3.50 in Pennsylvania.</p>
+</section>
+<section id="table-3---average-employment-per-store-before-and-after-minimum-wage-increase-in-new-jersey-and-pennsylvania" class="level3">
+<h3 class="anchored" data-anchor-id="table-3---average-employment-per-store-before-and-after-minimum-wage-increase-in-new-jersey-and-pennsylvania">Table 3 - Average Employment per Store Before and After Minimum Wage Increase in New Jersey and Pennsylvania</h3>
+<p>Next, we can recreate Table 3 from the Card and Krueger paper, which shows the average employment per store before and after the minimum wage increase in New Jersey and Pennsylvania. This table will allow us to directly compare the changes in employment levels in the two states and see if there was a significant difference in the impact of the minimum wage increase on employment.</p>
+<div id="2d52cdb4" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                               0           1  \
+Variable                                            Pennsylvania  New Jersey   
+Average FTE Employment (Before)                        23.331169   20.439408   
+Average FTE Employment (After)                         21.165584   21.027429   
+Change in Average FTE Employment (After minus B...     -2.165584    0.588021   
+
+                                                                           2  
+Variable                                            Difference (NJ minus PA)  
+Average FTE Employment (Before)                                    -2.891761  
+Average FTE Employment (After)                                     -0.138155  
+Change in Average FTE Employment (After minus B...                  2.753606  </code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_d86f5 caption {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#T_d86f5 th {
+  text-align: center;
+}
+#T_d86f5 td {
+  text-align: center;
+}
+</style>
+
+<div id="T_d86f5" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="T_d86f5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Table 3 — Average Employment Per Store Before and After the Rise in New Jersey Minimum Wage
+</figcaption>
+<div aria-describedby="T_d86f5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="T_d86f5" class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_d86f5_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">0</th>
+<th id="T_d86f5_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">1</th>
+<th id="T_d86f5_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th id="T_d86f5_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">Variable</th>
+<td id="T_d86f5_row0_col0" class="data row0 col0">Pennsylvania</td>
+<td id="T_d86f5_row0_col1" class="data row0 col1">New Jersey</td>
+<td id="T_d86f5_row0_col2" class="data row0 col2">Difference (NJ minus PA)</td>
+</tr>
+<tr class="even">
+<th id="T_d86f5_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">Average FTE Employment (Before)</th>
+<td id="T_d86f5_row1_col0" class="data row1 col0">23.331169</td>
+<td id="T_d86f5_row1_col1" class="data row1 col1">20.439408</td>
+<td id="T_d86f5_row1_col2" class="data row1 col2">-2.891761</td>
+</tr>
+<tr class="odd">
+<th id="T_d86f5_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">Average FTE Employment (After)</th>
+<td id="T_d86f5_row2_col0" class="data row2 col0">21.165584</td>
+<td id="T_d86f5_row2_col1" class="data row2 col1">21.027429</td>
+<td id="T_d86f5_row2_col2" class="data row2 col2">-0.138155</td>
+</tr>
+<tr class="even">
+<th id="T_d86f5_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">Change in Average FTE Employment (After minus Before)</th>
+<td id="T_d86f5_row3_col0" class="data row3 col0">-2.165584</td>
+<td id="T_d86f5_row3_col1" class="data row3 col1">0.588021</td>
+<td id="T_d86f5_row3_col2" class="data row3 col2">2.753606</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="table-4---reduced-form-models-for-change-in-employment" class="level2">
+<h2 class="anchored" data-anchor-id="table-4---reduced-form-models-for-change-in-employment">Table 4 - Reduced Form Models for Change in Employment</h2>
+<p>Finally, we can attempt to replicate the reduced form models that Card and Krueger used to analyze the change in employment levels in New Jersey and Pennsylvania. This involves running regression analyses to estimate the effect of the minimum wage increase on employment while controlling for other factors that might influence employment levels. We will be recreating column i of Table 4, which includes the change in FTE employment as the dependent variable and a dummy variable for New Jersey as the key independent variable.</p>
+<div id="f869eada" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             FTE_change   R-squared:                       0.010
+Model:                            OLS   Adj. R-squared:                  0.008
+Method:                 Least Squares   F-statistic:                     3.658
+Date:                Wed, 22 Apr 2026   Prob (F-statistic):             0.0566
+Time:                        12:48:25   Log-Likelihood:                -1257.0
+No. Observations:                 351   AIC:                             2518.
+Df Residuals:                     349   BIC:                             2526.
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         -1.8788      1.073     -1.751      0.081      -3.989       0.231
+NJ_dummy       2.2769      1.190      1.913      0.057      -0.064       4.618
+==============================================================================
+Omnibus:                       38.948   Durbin-Watson:                   2.136
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              102.254
+Skew:                          -0.519   Prob(JB):                     6.25e-23
+Kurtosis:                       5.432   Cond. No.                         4.41
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
+</div>
+</div>
+<p>Using the public-use public.dat file and the standard FTE definition, my Table 4 regression sample contains 351 stores after restricting to observations with nonmissing employment and starting wages in both waves. This is slightly smaller than the 357-store sample reported in Card and Krueger, which suggests that the original published regressions used additional cleaning or coding choices not fully recoverable from the public archive alone</p>
+</section>
+<section id="visualizing-their-results" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-their-results">Visualizing their Results</h2>
+<p>While all these numbers are helpful in technical terms, visualizations can often make it easier to understand the data. For example, we could create a bar chart comparing the average FTE employment in New Jersey and Pennsylvania before and after the minimum wage increase. This would allow us to visually see if there was a significant change in employment levels in New Jersey compared to Pennsylvania.</p>
+<div id="f04f96a8" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hw2_questions_files/figure-html/cell-5-output-1.png" width="596" height="431" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can also plot our regression line from the reduced form model to visualize the relationship between the change in FTE employment and the New Jersey dummy variable. This would help us see if there is a clear difference in employment changes between New Jersey and Pennsylvania.</p>
+<div id="7630a5c0" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hw2_questions_files/figure-html/cell-6-output-1.png" width="596" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
