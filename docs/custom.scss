@@ -1,22 +1,22 @@
 /*-- scss:defaults --*/
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Color palette */
-$body-bg: #9F84BD;
-$body-color: #FDFBFF;
+$body-bg: #f4f3f5;
+$body-color: #a08bb5;
 $link-color: #C3D350;
 $primary: #C3D350;
 $secondary: #84A07C;
-$navbar-bg: #9F84BD;
+$navbar-bg: #e5dfed;
 $navbar-fg: #9F84BD;
 $footer-bg: #4B3B47;
 $footer-fg: #FDFBFF;
 
 /* Typography */
-$font-family-sans-serif: 'Inter', sans-serif;
-$headings-font-family: 'Playfair Display', serif;
+$font-family-sans-serif: 'Jost', sans-serif;
+$headings-font-family: 'Jost', sans-serif;
 $headings-color: #FDFBFF;
 
 $border-radius: 0.75rem;
@@ -106,23 +106,46 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Navbar */
+/* Top Navbar */
 .navbar {
-  background-color: #9F84BD !important;
+  background-color: #b49fcd !important;
   border-bottom: 2px solid #C3D350;
   font-weight: 500;
 }
 
 .navbar a,
 .navbar-brand,
-.nav-link {
-  color: #C3D350 !important;
+.navbar .nav-link {
+  color: #f2fca7 !important;
 }
 
 .navbar a:hover,
 .navbar-brand:hover,
-.nav-link:hover {
+.navbar .nav-link:hover {
   color: #C3D350 !important;
+}
+
+/* Side Navbar */
+#quarto-sidebar,
+.quarto-sidebar {
+  background-color: #C3D350 !important;
+}
+
+#quarto-sidebar .sidebar-item a,
+#quarto-sidebar .sidebar-section a,
+#quarto-sidebar .chapter-number,
+.quarto-sidebar .sidebar-item a {
+  color: #4B3B47 !important;
+  font-weight: 500;
+}
+
+#quarto-sidebar .sidebar-item a:hover,
+#quarto-sidebar .sidebar-section a:hover,
+.quarto-sidebar .sidebar-item a:hover {
+  background-color: #a6b344 !important;
+  color: #FDFBFF !important;
+  text-decoration: none;
+  border-radius: 0.4rem;
 }
 
 /* Buttons */
@@ -143,7 +166,7 @@ a:hover {
 
 /* Cards / project containers */
 .card, .quarto-grid-item, .listing-item {
-  background-color: rgba(75, 59, 71, 0.35);
+  background-color: rgba(180, 166, 177, 0.35);
   border: 1px solid rgba(253, 251, 255, 0.15);
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(75, 59, 71, 0.18);
@@ -230,12 +253,12 @@ blockquote {
 
 /* Callout notes */
 .callout-note {
-  border-left-color: #84A07C !important;
+  border-left-color: #C3D350 !important;
   background-color: rgba(132, 160, 124, 0.12);
 }
 
 .callout-note > .callout-header {
-  background-color: rgba(132, 160, 124, 0.25) !important;
+  background-color: rgba(157, 186, 150, 0.749) !important;
   color: #FDFBFF !important;
 }
 

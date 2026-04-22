@@ -254,52 +254,52 @@ Note
 <p>Here, we recreate some key statistics that Card and Krueger reported in their paper, using the data they collected from the fast food restaurants. We will calculate the average full-time equivalent (FTE) employment, the percentage of full-time employees, and the distribution of starting wages in both New Jersey and Pennsylvania before and after the minimum wage increase.</p>
 <p>Some key definitions that we will need to calculate the statistics for are defined below:</p>
 <p>FTE (full-time equivalent) employment is calculated as the number of full-time employees plus half the number of part-time employees plus the number of managers. This gives us a standardized measure of employment that accounts for both full-time and part-time workers.</p>
-<div id="891ab924" class="cell" data-execution_count="2">
+<div id="fd6068f4" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FTE definitions</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'FTE'</span>] <span class="op">=</span> df[<span class="st">'EMPFT'</span>] <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> df[<span class="st">'EMPPT'</span>] <span class="op">+</span> df[<span class="st">'NMGRS'</span>]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'FTE2'</span>] <span class="op">=</span> df[<span class="st">'EMPFT2'</span>] <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> df[<span class="st">'EMPPT2'</span>] <span class="op">+</span> df[<span class="st">'NMGRS2'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Next, we have full time share, which is calculated as the percentage of full-time employees out of the total FTE employment. This gives us an idea of the composition of the workforce in terms of full-time versus part-time employees.</p>
-<div id="a27cbb2e" class="cell" data-execution_count="4">
+<div id="2cfd74fb" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># full-time share</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'PCT_FT'</span>]  <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> df[<span class="st">'EMPFT'</span>]  <span class="op">/</span> df[<span class="st">'FTE'</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'PCT_FT2'</span>] <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> df[<span class="st">'EMPFT2'</span>] <span class="op">/</span> df[<span class="st">'FTE2'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Lastly, we have the price of a full meal, which is calculated as the sum of the prices of a soda, fries, and an entree. This gives us an idea of the cost of a typical meal at these fast food restaurants.</p>
-<div id="1c1faea3" class="cell" data-execution_count="6">
+<div id="aef97bc4" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># full meal price</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'FULLMEAL'</span>]  <span class="op">=</span> df[<span class="st">'PSODA'</span>]  <span class="op">+</span> df[<span class="st">'PFRY'</span>]  <span class="op">+</span> df[<span class="st">'PENTREE'</span>]</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'FULLMEAL2'</span>] <span class="op">=</span> df[<span class="st">'PSODA2'</span>] <span class="op">+</span> df[<span class="st">'PFRY2'</span>] <span class="op">+</span> df[<span class="st">'PENTREE2'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="dfa68aa0" class="cell" data-execution_count="8">
+<div id="6791d0e5" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_b1aff caption {
+#T_5226e caption {
   font-weight: bold;
   font-size: 1.1em;
 }
-#T_b1aff th {
+#T_5226e th {
   text-align: center;
 }
-#T_b1aff td {
+#T_5226e td {
   text-align: center;
 }
 </style>
 
-<div id="T_b1aff" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<div id="T_5226e" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="T_b1aff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="T_5226e-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Table 2 — Means and Standard Deviations of Key Variables
 </figcaption>
-<div aria-describedby="T_b1aff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="T_b1aff" class="caption-top table table-sm table-striped small">
+<div aria-describedby="T_5226e-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="T_5226e" class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th id="T_b1aff_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">NJ</th>
-<th id="T_b1aff_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">PA</th>
+<th id="T_5226e_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">NJ</th>
+<th id="T_5226e_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">PA</th>
 </tr>
 <tr class="even">
 <th class="index_name level0" data-quarto-table-cell-role="th">Variable</th>
@@ -309,169 +309,169 @@ Table&nbsp;1: Table 2 — Means and Standard Deviations of Key Variables
 </thead>
 <tbody>
 <tr class="odd">
-<th id="T_b1aff_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">Distribution of Store Types (%)</th>
-<td id="T_b1aff_row0_col0" class="data row0 col0"></td>
-<td id="T_b1aff_row0_col1" class="data row0 col1"></td>
+<th id="T_5226e_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">Distribution of Store Types (%)</th>
+<td id="T_5226e_row0_col0" class="data row0 col0"></td>
+<td id="T_5226e_row0_col1" class="data row0 col1"></td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">Burger King</th>
-<td id="T_b1aff_row1_col0" class="data row1 col0">41.1</td>
-<td id="T_b1aff_row1_col1" class="data row1 col1">44.3</td>
+<th id="T_5226e_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">Burger King</th>
+<td id="T_5226e_row1_col0" class="data row1 col0">41.1</td>
+<td id="T_5226e_row1_col1" class="data row1 col1">44.3</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">KFC</th>
-<td id="T_b1aff_row2_col0" class="data row2 col0">20.5</td>
-<td id="T_b1aff_row2_col1" class="data row2 col1">15.2</td>
+<th id="T_5226e_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">KFC</th>
+<td id="T_5226e_row2_col0" class="data row2 col0">20.5</td>
+<td id="T_5226e_row2_col1" class="data row2 col1">15.2</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">Roy Rogers</th>
-<td id="T_b1aff_row3_col0" class="data row3 col0">24.8</td>
-<td id="T_b1aff_row3_col1" class="data row3 col1">21.5</td>
+<th id="T_5226e_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">Roy Rogers</th>
+<td id="T_5226e_row3_col0" class="data row3 col0">24.8</td>
+<td id="T_5226e_row3_col1" class="data row3 col1">21.5</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">Wendy's</th>
-<td id="T_b1aff_row4_col0" class="data row4 col0">13.6</td>
-<td id="T_b1aff_row4_col1" class="data row4 col1">19.0</td>
+<th id="T_5226e_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">Wendy's</th>
+<td id="T_5226e_row4_col0" class="data row4 col0">13.6</td>
+<td id="T_5226e_row4_col1" class="data row4 col1">19.0</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">Company-owned</th>
-<td id="T_b1aff_row5_col0" class="data row5 col0">34.1</td>
-<td id="T_b1aff_row5_col1" class="data row5 col1">35.4</td>
+<th id="T_5226e_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">Company-owned</th>
+<td id="T_5226e_row5_col0" class="data row5 col0">34.1</td>
+<td id="T_5226e_row5_col1" class="data row5 col1">35.4</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row6_col0" class="data row6 col0"></td>
-<td id="T_b1aff_row6_col1" class="data row6 col1"></td>
+<th id="T_5226e_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row6_col0" class="data row6 col0"></td>
+<td id="T_5226e_row6_col1" class="data row6 col1"></td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">Means in Wave 1</th>
-<td id="T_b1aff_row7_col0" class="data row7 col0"></td>
-<td id="T_b1aff_row7_col1" class="data row7 col1"></td>
+<th id="T_5226e_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">Means in Wave 1</th>
+<td id="T_5226e_row7_col0" class="data row7 col0"></td>
+<td id="T_5226e_row7_col1" class="data row7 col1"></td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">FTE employment</th>
-<td id="T_b1aff_row8_col0" class="data row8 col0">20.44</td>
-<td id="T_b1aff_row8_col1" class="data row8 col1">23.33</td>
+<th id="T_5226e_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">FTE employment</th>
+<td id="T_5226e_row8_col0" class="data row8 col0">20.44</td>
+<td id="T_5226e_row8_col1" class="data row8 col1">23.33</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row9_col0" class="data row9 col0">(0.51)</td>
-<td id="T_b1aff_row9_col1" class="data row9 col1">(1.35)</td>
+<th id="T_5226e_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row9_col0" class="data row9 col0">(0.51)</td>
+<td id="T_5226e_row9_col1" class="data row9 col1">(1.35)</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">Percentage full-time employees</th>
-<td id="T_b1aff_row10_col0" class="data row10 col0">32.8</td>
-<td id="T_b1aff_row10_col1" class="data row10 col1">35.0</td>
+<th id="T_5226e_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">Percentage full-time employees</th>
+<td id="T_5226e_row10_col0" class="data row10 col0">32.8</td>
+<td id="T_5226e_row10_col1" class="data row10 col1">35.0</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row11" class="row_heading level0 row11" data-quarto-table-cell-role="th">Starting wage</th>
-<td id="T_b1aff_row11_col0" class="data row11 col0">4.61</td>
-<td id="T_b1aff_row11_col1" class="data row11 col1">4.63</td>
+<th id="T_5226e_level0_row11" class="row_heading level0 row11" data-quarto-table-cell-role="th">Starting wage</th>
+<td id="T_5226e_row11_col0" class="data row11 col0">4.61</td>
+<td id="T_5226e_row11_col1" class="data row11 col1">4.63</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row12_col0" class="data row12 col0">(0.02)</td>
-<td id="T_b1aff_row12_col1" class="data row12 col1">(0.04)</td>
+<th id="T_5226e_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row12_col0" class="data row12 col0">(0.02)</td>
+<td id="T_5226e_row12_col1" class="data row12 col1">(0.04)</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row13" class="row_heading level0 row13" data-quarto-table-cell-role="th">Wage = $4.25 (%)</th>
-<td id="T_b1aff_row13_col0" class="data row13 col0">30.5</td>
-<td id="T_b1aff_row13_col1" class="data row13 col1">32.9</td>
+<th id="T_5226e_level0_row13" class="row_heading level0 row13" data-quarto-table-cell-role="th">Wage = $4.25 (%)</th>
+<td id="T_5226e_row13_col0" class="data row13 col0">30.5</td>
+<td id="T_5226e_row13_col1" class="data row13 col1">32.9</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row14" class="row_heading level0 row14" data-quarto-table-cell-role="th">Price of full meal</th>
-<td id="T_b1aff_row14_col0" class="data row14 col0">3.35</td>
-<td id="T_b1aff_row14_col1" class="data row14 col1">3.04</td>
+<th id="T_5226e_level0_row14" class="row_heading level0 row14" data-quarto-table-cell-role="th">Price of full meal</th>
+<td id="T_5226e_row14_col0" class="data row14 col0">3.35</td>
+<td id="T_5226e_row14_col1" class="data row14 col1">3.04</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row15" class="row_heading level0 row15" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row15_col0" class="data row15 col0">(0.04)</td>
-<td id="T_b1aff_row15_col1" class="data row15 col1">(0.07)</td>
+<th id="T_5226e_level0_row15" class="row_heading level0 row15" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row15_col0" class="data row15 col0">(0.04)</td>
+<td id="T_5226e_row15_col1" class="data row15 col1">(0.07)</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row16" class="row_heading level0 row16" data-quarto-table-cell-role="th">Hours open (weekday)</th>
-<td id="T_b1aff_row16_col0" class="data row16 col0">14.4</td>
-<td id="T_b1aff_row16_col1" class="data row16 col1">14.5</td>
+<th id="T_5226e_level0_row16" class="row_heading level0 row16" data-quarto-table-cell-role="th">Hours open (weekday)</th>
+<td id="T_5226e_row16_col0" class="data row16 col0">14.4</td>
+<td id="T_5226e_row16_col1" class="data row16 col1">14.5</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row17" class="row_heading level0 row17" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row17_col0" class="data row17 col0">(0.2)</td>
-<td id="T_b1aff_row17_col1" class="data row17 col1">(0.3)</td>
+<th id="T_5226e_level0_row17" class="row_heading level0 row17" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row17_col0" class="data row17 col0">(0.2)</td>
+<td id="T_5226e_row17_col1" class="data row17 col1">(0.3)</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row18" class="row_heading level0 row18" data-quarto-table-cell-role="th">Recruiting bonus</th>
-<td id="T_b1aff_row18_col0" class="data row18 col0">23.6</td>
-<td id="T_b1aff_row18_col1" class="data row18 col1">29.1</td>
+<th id="T_5226e_level0_row18" class="row_heading level0 row18" data-quarto-table-cell-role="th">Recruiting bonus</th>
+<td id="T_5226e_row18_col0" class="data row18 col0">23.6</td>
+<td id="T_5226e_row18_col1" class="data row18 col1">29.1</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row19" class="row_heading level0 row19" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row19_col0" class="data row19 col0"></td>
-<td id="T_b1aff_row19_col1" class="data row19 col1"></td>
+<th id="T_5226e_level0_row19" class="row_heading level0 row19" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row19_col0" class="data row19 col0"></td>
+<td id="T_5226e_row19_col1" class="data row19 col1"></td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row20" class="row_heading level0 row20" data-quarto-table-cell-role="th">Means in Wave 2</th>
-<td id="T_b1aff_row20_col0" class="data row20 col0"></td>
-<td id="T_b1aff_row20_col1" class="data row20 col1"></td>
+<th id="T_5226e_level0_row20" class="row_heading level0 row20" data-quarto-table-cell-role="th">Means in Wave 2</th>
+<td id="T_5226e_row20_col0" class="data row20 col0"></td>
+<td id="T_5226e_row20_col1" class="data row20 col1"></td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row21" class="row_heading level0 row21" data-quarto-table-cell-role="th">FTE employment</th>
-<td id="T_b1aff_row21_col0" class="data row21 col0">21.03</td>
-<td id="T_b1aff_row21_col1" class="data row21 col1">21.17</td>
+<th id="T_5226e_level0_row21" class="row_heading level0 row21" data-quarto-table-cell-role="th">FTE employment</th>
+<td id="T_5226e_row21_col0" class="data row21 col0">21.03</td>
+<td id="T_5226e_row21_col1" class="data row21 col1">21.17</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row22" class="row_heading level0 row22" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row22_col0" class="data row22 col0">(0.52)</td>
-<td id="T_b1aff_row22_col1" class="data row22 col1">(0.94)</td>
+<th id="T_5226e_level0_row22" class="row_heading level0 row22" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row22_col0" class="data row22 col0">(0.52)</td>
+<td id="T_5226e_row22_col1" class="data row22 col1">(0.94)</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row23" class="row_heading level0 row23" data-quarto-table-cell-role="th">Percentage full-time employees</th>
-<td id="T_b1aff_row23_col0" class="data row23 col0">35.9</td>
-<td id="T_b1aff_row23_col1" class="data row23 col1">30.4</td>
+<th id="T_5226e_level0_row23" class="row_heading level0 row23" data-quarto-table-cell-role="th">Percentage full-time employees</th>
+<td id="T_5226e_row23_col0" class="data row23 col0">35.9</td>
+<td id="T_5226e_row23_col1" class="data row23 col1">30.4</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row24" class="row_heading level0 row24" data-quarto-table-cell-role="th">Starting wage</th>
-<td id="T_b1aff_row24_col0" class="data row24 col0">5.08</td>
-<td id="T_b1aff_row24_col1" class="data row24 col1">4.62</td>
+<th id="T_5226e_level0_row24" class="row_heading level0 row24" data-quarto-table-cell-role="th">Starting wage</th>
+<td id="T_5226e_row24_col0" class="data row24 col0">5.08</td>
+<td id="T_5226e_row24_col1" class="data row24 col1">4.62</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row25" class="row_heading level0 row25" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row25_col0" class="data row25 col0">(0.01)</td>
-<td id="T_b1aff_row25_col1" class="data row25 col1">(0.04)</td>
+<th id="T_5226e_level0_row25" class="row_heading level0 row25" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row25_col0" class="data row25 col0">(0.01)</td>
+<td id="T_5226e_row25_col1" class="data row25 col1">(0.04)</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row26" class="row_heading level0 row26" data-quarto-table-cell-role="th">Wage = $4.25 (%)</th>
-<td id="T_b1aff_row26_col0" class="data row26 col0">0.0</td>
-<td id="T_b1aff_row26_col1" class="data row26 col1">25.3</td>
+<th id="T_5226e_level0_row26" class="row_heading level0 row26" data-quarto-table-cell-role="th">Wage = $4.25 (%)</th>
+<td id="T_5226e_row26_col0" class="data row26 col0">0.0</td>
+<td id="T_5226e_row26_col1" class="data row26 col1">25.3</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row27" class="row_heading level0 row27" data-quarto-table-cell-role="th">Wage = $5.05 (%)</th>
-<td id="T_b1aff_row27_col0" class="data row27 col0">85.5</td>
-<td id="T_b1aff_row27_col1" class="data row27 col1">1.3</td>
+<th id="T_5226e_level0_row27" class="row_heading level0 row27" data-quarto-table-cell-role="th">Wage = $5.05 (%)</th>
+<td id="T_5226e_row27_col0" class="data row27 col0">85.5</td>
+<td id="T_5226e_row27_col1" class="data row27 col1">1.3</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row28" class="row_heading level0 row28" data-quarto-table-cell-role="th">Price of full meal</th>
-<td id="T_b1aff_row28_col0" class="data row28 col0">3.41</td>
-<td id="T_b1aff_row28_col1" class="data row28 col1">3.03</td>
+<th id="T_5226e_level0_row28" class="row_heading level0 row28" data-quarto-table-cell-role="th">Price of full meal</th>
+<td id="T_5226e_row28_col0" class="data row28 col0">3.41</td>
+<td id="T_5226e_row28_col1" class="data row28 col1">3.03</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row29" class="row_heading level0 row29" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row29_col0" class="data row29 col0">(0.04)</td>
-<td id="T_b1aff_row29_col1" class="data row29 col1">(0.07)</td>
+<th id="T_5226e_level0_row29" class="row_heading level0 row29" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row29_col0" class="data row29 col0">(0.04)</td>
+<td id="T_5226e_row29_col1" class="data row29 col1">(0.07)</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row30" class="row_heading level0 row30" data-quarto-table-cell-role="th">Hours open (weekday)</th>
-<td id="T_b1aff_row30_col0" class="data row30 col0">14.4</td>
-<td id="T_b1aff_row30_col1" class="data row30 col1">14.7</td>
+<th id="T_5226e_level0_row30" class="row_heading level0 row30" data-quarto-table-cell-role="th">Hours open (weekday)</th>
+<td id="T_5226e_row30_col0" class="data row30 col0">14.4</td>
+<td id="T_5226e_row30_col1" class="data row30 col1">14.7</td>
 </tr>
 <tr class="even">
-<th id="T_b1aff_level0_row31" class="row_heading level0 row31" data-quarto-table-cell-role="th"></th>
-<td id="T_b1aff_row31_col0" class="data row31 col0">(0.2)</td>
-<td id="T_b1aff_row31_col1" class="data row31 col1">(0.3)</td>
+<th id="T_5226e_level0_row31" class="row_heading level0 row31" data-quarto-table-cell-role="th"></th>
+<td id="T_5226e_row31_col0" class="data row31 col0">(0.2)</td>
+<td id="T_5226e_row31_col1" class="data row31 col1">(0.3)</td>
 </tr>
 <tr class="odd">
-<th id="T_b1aff_level0_row32" class="row_heading level0 row32" data-quarto-table-cell-role="th">Recruiting bonus</th>
-<td id="T_b1aff_row32_col0" class="data row32 col0">20.3</td>
-<td id="T_b1aff_row32_col1" class="data row32 col1">23.4</td>
+<th id="T_5226e_level0_row32" class="row_heading level0 row32" data-quarto-table-cell-role="th">Recruiting bonus</th>
+<td id="T_5226e_row32_col0" class="data row32 col0">20.3</td>
+<td id="T_5226e_row32_col1" class="data row32 col1">23.4</td>
 </tr>
 </tbody>
 </table>
@@ -487,60 +487,60 @@ Table&nbsp;1: Table 2 — Means and Standard Deviations of Key Variables
 <section id="table-3---average-employment-per-store-before-and-after-minimum-wage-increase-in-new-jersey-and-pennsylvania" class="level3">
 <h3 class="anchored" data-anchor-id="table-3---average-employment-per-store-before-and-after-minimum-wage-increase-in-new-jersey-and-pennsylvania">Table 3 - Average Employment per Store Before and After Minimum Wage Increase in New Jersey and Pennsylvania</h3>
 <p>Next, we can recreate Table 3 from the Card and Krueger paper, which shows the average employment per store before and after the minimum wage increase in New Jersey and Pennsylvania. This table will allow us to directly compare the changes in employment levels in the two states and see if there was a significant difference in the impact of the minimum wage increase on employment.</p>
-<div id="4eeaca9a" class="cell" data-execution_count="9">
+<div id="e6657c35" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_d57ca caption {
+#T_c0747 caption {
   font-weight: bold;
   font-size: 1.1em;
 }
-#T_d57ca th {
+#T_c0747 th {
   text-align: center;
 }
-#T_d57ca td {
+#T_c0747 td {
   text-align: center;
 }
 </style>
 
-<div id="T_d57ca" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<div id="T_c0747" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="T_d57ca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="T_c0747-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2: Table 3 — Average Employment Per Store Before and After the Rise in New Jersey Minimum Wage
 </figcaption>
-<div aria-describedby="T_d57ca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="T_d57ca" class="caption-top table table-sm table-striped small">
+<div aria-describedby="T_c0747-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="T_c0747" class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th id="T_d57ca_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">0</th>
-<th id="T_d57ca_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">1</th>
-<th id="T_d57ca_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">2</th>
+<th id="T_c0747_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">0</th>
+<th id="T_c0747_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">1</th>
+<th id="T_c0747_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th id="T_d57ca_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">Variable</th>
-<td id="T_d57ca_row0_col0" class="data row0 col0">Pennsylvania</td>
-<td id="T_d57ca_row0_col1" class="data row0 col1">New Jersey</td>
-<td id="T_d57ca_row0_col2" class="data row0 col2">Difference (NJ - PA)</td>
+<th id="T_c0747_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">Variable</th>
+<td id="T_c0747_row0_col0" class="data row0 col0">Pennsylvania</td>
+<td id="T_c0747_row0_col1" class="data row0 col1">New Jersey</td>
+<td id="T_c0747_row0_col2" class="data row0 col2">Difference (NJ - PA)</td>
 </tr>
 <tr class="even">
-<th id="T_d57ca_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">Average FTE Employment (Before)</th>
-<td id="T_d57ca_row1_col0" class="data row1 col0">23.331169</td>
-<td id="T_d57ca_row1_col1" class="data row1 col1">20.439408</td>
-<td id="T_d57ca_row1_col2" class="data row1 col2">-2.891761</td>
+<th id="T_c0747_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">Average FTE Employment (Before)</th>
+<td id="T_c0747_row1_col0" class="data row1 col0">23.331169</td>
+<td id="T_c0747_row1_col1" class="data row1 col1">20.439408</td>
+<td id="T_c0747_row1_col2" class="data row1 col2">-2.891761</td>
 </tr>
 <tr class="odd">
-<th id="T_d57ca_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">Average FTE Employment (After)</th>
-<td id="T_d57ca_row2_col0" class="data row2 col0">21.165584</td>
-<td id="T_d57ca_row2_col1" class="data row2 col1">21.027429</td>
-<td id="T_d57ca_row2_col2" class="data row2 col2">-0.138155</td>
+<th id="T_c0747_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">Average FTE Employment (After)</th>
+<td id="T_c0747_row2_col0" class="data row2 col0">21.165584</td>
+<td id="T_c0747_row2_col1" class="data row2 col1">21.027429</td>
+<td id="T_c0747_row2_col2" class="data row2 col2">-0.138155</td>
 </tr>
 <tr class="even">
-<th id="T_d57ca_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">Change in Average FTE Employment (After minus Before)</th>
-<td id="T_d57ca_row3_col0" class="data row3 col0">-2.165584</td>
-<td id="T_d57ca_row3_col1" class="data row3 col1">0.588021</td>
-<td id="T_d57ca_row3_col2" class="data row3 col2">2.753606</td>
+<th id="T_c0747_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">Change in Average FTE Employment (After minus Before)</th>
+<td id="T_c0747_row3_col0" class="data row3 col0">-2.165584</td>
+<td id="T_c0747_row3_col1" class="data row3 col1">0.588021</td>
+<td id="T_c0747_row3_col2" class="data row3 col2">2.753606</td>
 </tr>
 </tbody>
 </table>
@@ -554,7 +554,7 @@ Table&nbsp;2: Table 3 — Average Employment Per Store Before and After the Rise
 <section id="table-4---reduced-form-models-for-change-in-employment" class="level3">
 <h3 class="anchored" data-anchor-id="table-4---reduced-form-models-for-change-in-employment">Table 4 - Reduced Form Models for Change in Employment</h3>
 <p>Finally, we can attempt to replicate the reduced form models that Card and Krueger used to analyze the change in employment levels in New Jersey and Pennsylvania. This involves running regression analyses to estimate the effect of the minimum wage increase on employment while controlling for other factors that might influence employment levels. We will be recreating column i of Table 4, which includes the change in FTE employment as the dependent variable and a dummy variable for New Jersey as the key independent variable.</p>
-<div id="51df0371" class="cell" data-execution_count="10">
+<div id="40fada2f" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
 ==============================================================================
@@ -562,7 +562,7 @@ Dep. Variable:             FTE_change   R-squared:                       0.010
 Model:                            OLS   Adj. R-squared:                  0.008
 Method:                 Least Squares   F-statistic:                     3.658
 Date:                Wed, 22 Apr 2026   Prob (F-statistic):             0.0566
-Time:                        13:51:28   Log-Likelihood:                -1257.0
+Time:                        13:54:00   Log-Likelihood:                -1257.0
 No. Observations:                 351   AIC:                             2518.
 Df Residuals:                     349   BIC:                             2526.
 Df Model:                           1                                         
@@ -594,7 +594,7 @@ Notes:
 <section id="comparing-average-fte-employment-before-and-after-minimum-wage-increase-in-new-jersey-and-pennsylvania" class="level4">
 <h4 class="anchored" data-anchor-id="comparing-average-fte-employment-before-and-after-minimum-wage-increase-in-new-jersey-and-pennsylvania">Comparing Average FTE Employment Before and After Minimum Wage Increase in New Jersey and Pennsylvania</h4>
 <p>Here, we create a bar chart comparing the average FTE employment in New Jersey and Pennsylvania before and after the minimum wage increase. This would allow us to visually see the change in employment levels in New Jersey compared to Pennsylvania.</p>
-<div id="1d60b857" class="cell" data-execution_count="11">
+<div id="f53036c2" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -607,7 +607,7 @@ Notes:
 <section id="plotting-the-regression-line-from-the-reduced-form-model" class="level4">
 <h4 class="anchored" data-anchor-id="plotting-the-regression-line-from-the-reduced-form-model">Plotting the Regression Line from the Reduced Form Model</h4>
 <p>We can also plot our regression line from the reduced form model to visualize the relationship between the change in FTE employment and the New Jersey dummy variable. This would help us see if there is a clear difference in employment changes between New Jersey and Pennsylvania.</p>
-<div id="cb72af60" class="cell" data-execution_count="12">
+<div id="44c2649d" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
