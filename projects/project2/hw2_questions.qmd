@@ -5,15 +5,13 @@ author: "Sophia Salas"
 date: 4/20/2026
 ---
 
-
 ## Introduction
 
-In 1992, New Jersey raised its minum wage from $4.25 to $5.05 per hour, while Pennsylvania kept its minimum wage at $4.25. David Card and Alan B. Krueger conducted a study to analyze the impact of this change on employment in the fast food industry in both states. They collected data from fast food restaurants in New Jersey and Pennsylvania before and after the minimum wage increase.
+In 1992, New Jersey raised its minum wage from \$4.25 to \$5.05 per hour, while Pennsylvania kept its minimum wage at \$4.25. David Card and Alan B. Krueger conducted a study to analyze the impact of this change on employment in the fast food industry in both states. They collected data from fast food restaurants in New Jersey and Pennsylvania before and after the minimum wage increase.
 
 The main question they sought to answer was whether the increase in the minimum wage led to a decrease in employment in New Jersey compared to Pennsylvania. They surveyed over 400 fast food restaurants in both states, collecting data on employment levels before and after the wage increase. The study used difference-in-differences (DiD) methodology to compare the changes in employment levels in New Jersey and Pennsylvania, controlling for other factors that might affect employment.
 
-::: {.callout-note}
-
+::: callout-note
 **What is Difference-in-Differences (DiD)?**
 
 **DiD** is a statistical technique used in econometrics to estimate the causal effect of a treatment or intervention by comparing the changes in outcomes over time between a treatment group and a control group.
@@ -25,17 +23,17 @@ The main analysis of the study involved comparing the changes in employment leve
 
 *In fact, they observed a slight increase in employment in New Jersey relative to Pennsylvania after the wage increase.* This finding challenged the traditional economic theory that suggests that an increase in the minimum wage would lead to a decrease in employment.
 
-::: {.callout-note}
+::: callout-note
 An increase in wages can lead to a decrease in employment, as employers may reduce the number of workers they hire or cut hours to offset the higher labor costs. As labor becomes more expensive, companies may hire fewer workers to maintain budget constraints. Employers might also cut hours instead of laying off workers, leading to reduced income for employees.
 
 This is a highly debated topic, and quite an interesting one. The Congressional Budget Office has some interesting research on this that you an also find [here!](https://www.cbo.gov/publication/55681#:~:text=According%20to%20the%20Congressional%20Budget%20Office%20(CBO)%2C,some%20of%20the%20higher%20costs%20of%20labor.)
-
 :::
 
 ## Recreating Key Statistics
-### Table 2 — Means and Standard Deviations of Key Variables
-Here, we recreate some key statistics that Card and Krueger reported in their paper, using the data they collected from the fast food restaurants. We will calculate the average full-time equivalent (FTE) employment, the percentage of full-time employees, and the distribution of starting wages in both New Jersey and Pennsylvania before and after the minimum wage increase.
 
+### Table 2 — Means and Standard Deviations of Key Variables
+
+Here, we recreate some key statistics that Card and Krueger reported in their paper, using the data they collected from the fast food restaurants. We will calculate the average full-time equivalent (FTE) employment, the percentage of full-time employees, and the distribution of starting wages in both New Jersey and Pennsylvania before and after the minimum wage increase.
 
 ```{python}
 #| echo: false
@@ -76,6 +74,7 @@ FTE (full-time equivalent) employment is calculated as the number of full-time e
 df['FTE'] = df['EMPFT'] + 0.5 * df['EMPPT'] + df['NMGRS']
 df['FTE2'] = df['EMPFT2'] + 0.5 * df['EMPPT2'] + df['NMGRS2']
 ```
+
 ```{python}
 #| echo: false
 
@@ -104,6 +103,7 @@ df['WAGE2_505'] = (df['WAGE_ST2'] == 5.05).astype(float)
 ```
 
 Lastly, we have the price of a full meal, which is calculated as the sum of the prices of a soda, fries, and an entree. This gives us an idea of the cost of a typical meal at these fast food restaurants.
+
 ```{python}
 # full meal price
 
@@ -128,6 +128,7 @@ def pct_mean(series, d=1):
 
 rows = []
 ```
+
 ```{python}
 #| echo: false
 # 1. Distribution of store types
@@ -240,9 +241,8 @@ First, we see the distribution of stores by chain and ownership status. Burger K
 
 In Wave 1, average employment was 23.3 FTE workers per store in Pennsylvania, and 20.44 in New Jersey. We observe very similar starting wages across the two states. We observe an increase in the average starting wage in New Jersey after the minimum wage increase.
 
-
-
 ### Table 3 - Average Employment per Store Before and After Minimum Wage Increase in New Jersey and Pennsylvania
+
 Next, we can recreate Table 3 from the Card and Krueger paper, which shows the average employment per store before and after the minimum wage increase in New Jersey and Pennsylvania. This table will allow us to directly compare the changes in employment levels in the two states and see if there was a significant difference in the impact of the minimum wage increase on employment.
 
 ```{python}
@@ -283,6 +283,7 @@ display(
 As we can see, from Table 3, the average FTE employment per store in Pennsylvania decreased slightly from 23.3 to 21.7 after the minimum wage increase, while in New Jersey, it increased from 20.44 to 21.03. The difference in the change in average FTE employment between New Jersey and Pennsylvania is positive, suggesting that the minimum wage increase in New Jersey may have had a **positive effect** on employment levels compared to Pennsylvania.
 
 ### Table 4 - Reduced Form Models for Change in Employment
+
 Finally, we can attempt to replicate the reduced form models that Card and Krueger used to analyze the change in employment levels in New Jersey and Pennsylvania. This involves running regression analyses to estimate the effect of the minimum wage increase on employment while controlling for other factors that might influence employment levels. We will be recreating column i of Table 4, which includes the change in FTE employment as the dependent variable and a dummy variable for New Jersey as the key independent variable.
 
 ```{python}
@@ -343,7 +344,6 @@ ax.legend()
 plt.show()
 ```
 
-
 #### Plotting the Regression Line from the Reduced Form Model
 
 We can also plot our regression line from the reduced form model to visualize the relationship between the change in FTE employment and the New Jersey dummy variable. This would help us see if there is a clear difference in employment changes between New Jersey and Pennsylvania.
@@ -360,8 +360,8 @@ plt.show()
 
 As we can see, there is a **slight increase** in FTE employment in New Jersey compared to Pennsylvania after the minimum wage increase, which is consistent with the findings of Card and Krueger. The regression line also shows a positive relationship between being in New Jersey and the change in FTE employment, suggesting that the minimum wage increase may have had a positive effect on employment levels in New Jersey.
 
-
 ## Key Takeaways from the Replication
-1. The replication of Card and Krueger's study confirms their main finding that the increase in the minimum wage in New Jersey did not lead to a decrease in employment compared to Pennsylvania. In fact, there was a slight increase in employment in New Jersey relative to Pennsylvania after the wage increase.
-2. The average FTE employment per store in New Jersey increased from 20.44 to 21.03 after the minimum wage increase, while in Pennsylvania, it decreased from 23.3 to 21.7. This suggests that the minimum wage increase may have had a positive effect on employment levels in New Jersey compared to Pennsylvania.
-3. The regression analysis also supports the conclusion that there was a positive change in FTE employment in New Jersey compared to Pennsylvania after the minimum wage increase, with a positive coefficient on the New Jersey dummy variable.
+
+1.  The replication of Card and Krueger's study confirms their main finding that the increase in the minimum wage in New Jersey did not lead to a decrease in employment compared to Pennsylvania. In fact, there was a slight increase in employment in New Jersey relative to Pennsylvania after the wage increase.
+2.  The average FTE employment per store in New Jersey increased from 20.44 to 21.03 after the minimum wage increase, while in Pennsylvania, it decreased from 23.3 to 21.7. This suggests that the minimum wage increase may have had a positive effect on employment levels in New Jersey compared to Pennsylvania.
+3.  The regression analysis also supports the conclusion that there was a positive change in FTE employment in New Jersey compared to Pennsylvania after the minimum wage increase, with a positive coefficient on the New Jersey dummy variable.

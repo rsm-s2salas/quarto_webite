@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ac077c1e730dfeb5e42400639d17284e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-b9729af4fc7702d2683b6aca8683021a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-21bd173546eefbf2507b6727f2ea2fdb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -299,7 +299,7 @@ Note
 <p>Our CTA is the variable that we are testing, so the parameter, probability of signing up, <span class="math inline">\(\pi\)</span> may shift as a result of the wording of our CTA’s. CTA A has sign-up probability <span class="math inline">\(\pi_A\)</span>, and visitors who see CTA B have sign-up probability <span class="math inline">\(\pi_B\)</span>. Each visitor can either sign up (1) or not (0).</p>
 <p>In order to determine the difference in the CTAs impact, we can take the difference between the two sign-up rates: <span class="math inline">\(\theta = \pi_A - \pi_B\)</span></p>
 <p>Because we cannot know the “true” probability of every possible visitor, we use an estimator, <span class="math inline">\(\theta\)</span> based on our test data. This estimator, is the difference between the sample means of the two groups. <span class="math inline">\(\hat\theta = \bar{X}_A - \bar{X}_B\)</span>. In this context, the sample mean is simply the proportion of successful sign-ups observed in each group. <span class="math inline">\(\bar{X}_A = \hat\pi_A\)</span> and <span class="math inline">\(\bar{X}_B = \hat\pi_B\)</span>.</p>
-<p><!-- In this section, connect the A/B test to a formal statistical framework. Address each of the following ideas:
+<!-- In this section, connect the A/B test to a formal statistical framework. Address each of the following ideas:
 
 - Each visitor either signs up or does not, so we can model each visitor's outcome as a draw from a Bernoulli distribution with parameter $\pi$, the probability of signing up.
 
@@ -307,13 +307,13 @@ Note
 
 - The quantity we care about is $\theta = \pi_A - \pi_B$, the difference in sign-up rates between the two CTAs.
 
-- Our estimator of $\theta$ is the difference in sample means, $\hat\theta = \bar{X}_A - \bar{X}_B$. (Since each observation is either 0 or 1, the sample mean is simply the proportion of visitors who signed up — so $\bar{X}_A = \hat\pi_A$ and $\bar{X}_B = \hat\pi_B$.) --></p>
+- Our estimator of $\theta$ is the difference in sample means, $\hat\theta = \bar{X}_A - \bar{X}_B$. (Since each observation is either 0 or 1, the sample mean is simply the proportion of visitors who signed up — so $\bar{X}_A = \hat\pi_A$ and $\bar{X}_B = \hat\pi_B$.) -->
 </section>
 <section id="simulating-data" class="level2">
 <h2 class="anchored" data-anchor-id="simulating-data">Simulating Data</h2>
 <p>Realistically, we don’t know the true values of <span class="math inline">\(\pi_A\)</span> and <span class="math inline">\(\pi_B\)</span>, but for the purpose of this exercise we will set them ourselves so that we can study the behavior of our estimator when we know the truth.</p>
 <p>Suppose <span class="math inline">\(\pi_A = 0.22\)</span> and <span class="math inline">\(\pi_B = 0.18\)</span>, so the true difference is <span class="math inline">\(\theta = 0.04\)</span>.</p>
-<div id="8a5d53fb" class="cell" data-execution_count="1">
+<div id="e40c98da" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#set seed to ensure reproducibility</span></span>
@@ -327,7 +327,7 @@ Note
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>draws_a <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, prob_a, <span class="dv">1000</span>)</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>draws_b <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, prob_b, <span class="dv">1000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="20b36cea" class="cell" data-execution_count="2">
+<div id="31bfff3e" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>First 10 draws from A: [0 1 0 0 0 0 0 1 0 0]
 First 10 draws from B: [0 0 1 0 0 0 0 1 0 0]</code></pre>
@@ -355,7 +355,7 @@ Note
 </div>
 </div>
 <p>For our estimator, we can utilize the LLN to determine our sample sizes. As we saw, we simulated 1,000 trials of each CTA to give us confidence that <span class="math inline">\(\hat\theta = \bar{X}_A - \bar{X}_B\)</span> will be close to the true <span class="math inline">\(\theta\)</span>.</p>
-<div id="8b3fb040" class="cell" data-execution_count="3">
+<div id="36d91e3a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -370,11 +370,11 @@ Note
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate cumulative avg</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>cum_avg <span class="op">=</span> cum_sum<span class="op">/</span>obs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_37215/927848047.py:13: RuntimeWarning: invalid value encountered in divide
+<pre><code>/tmp/ipykernel_42108/927848047.py:13: RuntimeWarning: invalid value encountered in divide
   cum_avg = cum_sum/obs</code></pre>
 </div>
 </div>
-<div id="8daee30c" class="cell" data-execution_count="4">
+<div id="33f70e64" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -407,7 +407,7 @@ Note
 <p>We will compare this bootstrapped standard error to our analytical standard error whose formula is as follows: <span class="math display">\[
 SE(\hat\theta) = \sqrt{\frac{\hat\pi_A(1 - \hat\pi_A)}{n_A} + \frac{\hat\pi_B(1 - \hat\pi_B)}{n_B}}
 \]</span> where <span class="math inline">\(\hat\pi_A\)</span> and <span class="math inline">\(\hat\pi_B\)</span> are the sample proportions and <span class="math inline">\(n_A\)</span> and <span class="math inline">\(n_B\)</span> are the sample sizes.</p>
-<div id="11a59c76" class="cell" data-execution_count="5">
+<div id="fa1469f3" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -462,19 +462,19 @@ SE(\hat\theta) = \sqrt{\frac{\hat\pi_A(1 - \hat\pi_A)}{n_A} + \frac{\hat\pi_B(1 
 <span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Analytical Standard Error</span></span>
 <span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>se <span class="op">=</span> np.sqrt((prob_a<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>prob_a)<span class="op">/</span><span class="dv">1000</span>) <span class="op">+</span> (prob_b<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>prob_b)<span class="op">/</span><span class="dv">1000</span>))</span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Analytical Standard Error </span><span class="sc">{</span>se<span class="sc">.</span><span class="bu">round</span>(<span class="dv">10</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Analytical Standard Error: </span><span class="sc">{</span>se<span class="sc">.</span><span class="bu">round</span>(<span class="dv">10</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>95% CI for CTA A: [0.191, 0.24002499999999996]
 95% CI for CTA B: [0.155, 0.201]
 95% CI for Differences: [0.0030000000000000027, 0.07002499999999999]
 Standard Deviation, Bootstrapped Standard Error: 0.0176592306
-Analytical Standard Error 0.0178661691</code></pre>
+Analytical Standard Error: 0.0178661691</code></pre>
 </div>
 </div>
 <section id="what-is-this-telling-us" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-this-telling-us">What is this telling us?</h4>
-<p>Here, we compare the bootstrapped standard error and the analytical standard error. We see that the two values are very similar. This is because both methods are using the ame underlying data to estimate the population parameter. Utilizing the notion of the LLN, we see that they both converge toward similar values because of the large sample size.</p>
-<p>We also construct a 95% confidence interval for <span class="math inline">\(\hat\theta\)</span>, our difference between the two sign-up probabilities from our bootstrapped sample. We can interpret this 95% confidence interval as such: If we repeat our experiment 100 times, we expect about 95 of our calculate interval to contain the true parameter, <span class="math inline">\(\theta\)</span>. <!--
+<p>Here, we compare the bootstrapped standard error and the analytical standard error. We see that the two values are very similar. This is because both methods are using the same underlying data to estimate the population parameter. Utilizing the notion of the LLN, we see that they both converge toward similar values because of the large sample size.</p>
+<p>We also construct a 95% confidence interval for <span class="math inline">\(\hat\theta\)</span>, our difference between the two sign-up probabilities from our bootstrapped sample. We can interpret this 95% confidence interval as such: If we repeat our experiment 100 times, we can expect about 95 of our calculate intervals to contain the true parameter, <span class="math inline">\(\theta\)</span>. Another interpretation can be that we are 95% confident that our interval contains the true parameter, <span class="math inline">\(\theta\)</span>. <!--
 - Write a short introduction explaining the idea of bootstrapping to the reader. The bootstrap is a resampling method that lets us estimate the variability of a statistic without relying on a closed-form formula. We resample (with replacement) from our observed data many times, compute the statistic of interest on each resample, and use the standard deviation of those resampled statistics as our estimate of the standard error.
 
 - Then carry out the following steps:
@@ -509,7 +509,7 @@ Note
 <p>The <strong>Central Limit Theorem</strong> states that the sampling distribution of the sample mean approaches a Normal distribution as the same size <span class="math inline">\(n\)</span> increases, regardless of the population’s original distribution. Large samples create a more precise normal curve around the true population mean. The CLT allows us to infer characteristics about entire populations with sufficiently large samples, even if their distributions are skewed.</p>
 </div>
 </div>
-<div id="2fca538e" class="cell" data-execution_count="6">
+<div id="cfd69790" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#define sample sizes</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sample_sizes <span class="op">=</span> [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">500</span>]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -532,7 +532,7 @@ Note
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    results[n] <span class="op">=</span> theta_hats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="e7c2cd81" class="cell" data-execution_count="7">
+<div id="47acbd19" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -603,7 +603,7 @@ Note
 </ul>
 <p>This procedure is often called a <strong>t-test</strong>, but this is tied to a different setting in which we have Normally distributed data with an <em>unknown</em> variance. In this case, the ratio of the sample mean to its estimate standard error follows a <strong>t-distribution</strong>. Here, our data is Bernoulli, not Normal, so it does not exactly follow a t-distribution. Instead, the CLT allows us to approximate Normality, and because we estimate a standard error, the resulting test is a <strong>z-test</strong>. For large samples, the t-distribution and the standard Normal are nearly identical, which is why the terminology blurs into each other, but their distinction is important to note.</p>
 <p>Now that we have the fun theoretical terminology out of the way, we can use our simulated data to compute a test statistic and it’s p-value.</p>
-<div id="5aef8801" class="cell" data-execution_count="8">
+<div id="4cde4592" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#set seed to ensure reproducibility</span></span>
@@ -658,7 +658,7 @@ p-value: 0.009190912412808894</code></pre>
 <p>Our estimated difference between CTA’s is 0.046. Our bootstrap standard error is relatively small compared to our estimate, suggesting that our result is stable.</p>
 <p>Our z-statistic of 2.60 tells us that your estimate is 2.6 standard deviations away from zero.</p>
 <p>Because our p-value of 0.009 is less than the standard threshold of 0.05 for statistical significance, we can reject the null hypothesis. There is less than 1% change that we would see a result this strong if the true effect were actually zero.</p>
-<p>This means that the 4.6% difference in sign up rates <span class="math inline">\(\hat\theta\)</span> = 0.046, is highly unlikely to have occured by change. Therefore, we can confidently conclude that the two CTA’s perform differently, and the observed difference is a real effect rather than natural sampling variability.</p>
+<p>This means that the 4.6% difference in sign up rates <span class="math inline">\(\hat\theta\)</span> = 0.046, is highly unlikely to have occurred by change. Therefore, we can confidently conclude that the two CTA’s perform differently, and the observed difference is a real effect rather than natural sampling variability.</p>
 <!-- - Now that we have seen the CLT in action — that the sampling distribution of $\hat\theta$ is approximately Normal for large samples — we can use this result to perform a formal hypothesis test.
 
 - Write a paragraph explaining what a hypothesis test is to the reader. We set up a null hypothesis $H_0: \theta = 0$ (i.e., the two CTAs produce the same sign-up rate) and an alternative hypothesis $H_1: \theta \neq 0$. The goal is to assess whether the data provide enough evidence to reject $H_0$.
@@ -681,9 +681,9 @@ $$
 </section>
 <section id="the-t-test-as-a-regression" class="level2">
 <h2 class="anchored" data-anchor-id="the-t-test-as-a-regression">The T-Test as a Regression</h2>
-<p><strong>Fun fact</strong>: our two-sample test that we just ran is mathematically equivalent to a simple linear regression. When we run a standard linear regression, the p-value and z-statistic generated for <span class="math inline">\(\beta_1\)</span> will be the exact same values found in our two-sample test. Both methods evaluate whether the mean difference betwen two groups is zero, sharing the same null hypothesis.</p>
+<p><strong>Fun fact</strong>: our two-sample test that we just ran is mathematically equivalent to a simple linear regression. When we run a standard linear regression, the p-value and z-statistic generated for <span class="math inline">\(\beta_1\)</span> will be the exact same values found in our two-sample test. Both methods evaluate whether the mean difference between two groups is zero, sharing the same null hypothesis.</p>
 <p>The t-test checks if <span class="math inline">\(\mu_1 - \mu_2 = 0\)</span>. The linear regression tests if the slope coefficient <span class="math inline">\(\beta_1 = 0\)</span>, which evaluates if CTA B’s mean sign up rate is statistically different from CTA A’s mean sign up rate.</p>
-<div id="54f9d0ef" class="cell" data-execution_count="9">
+<div id="54f5db40" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
@@ -710,8 +710,8 @@ $$
 Dep. Variable:                      Y   R-squared:                       0.002
 Model:                            OLS   Adj. R-squared:                  0.002
 Method:                 Least Squares   F-statistic:                     4.570
-Date:                Wed, 22 Apr 2026   Prob (F-statistic):             0.0327
-Time:                        14:13:13   Log-Likelihood:                -991.64
+Date:                Wed, 29 Apr 2026   Prob (F-statistic):             0.0327
+Time:                        19:30:56   Log-Likelihood:                -991.64
 No. Observations:                2000   AIC:                             1987.
 Df Residuals:                    1998   BIC:                             1998.
 Df Model:                           1                                         
@@ -774,12 +774,12 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Peeking</strong> is a dangerous practice in A/B testing in which we check the results of A/B tests before teh predetermine sample size is reached, with the intention of stopping the test early if significant results appear. This completely invalidates statistical significant and increase the probability of false positives, otherwise known as <strong>Type I errors</strong>. Acting on this can be detrimental to business decisions.</p>
+<p><strong>Peeking</strong> is a dangerous practice in A/B testing in which we check the results of A/B tests before the predetermined sample size is reached, with the intention of stopping the test early if significant results appear. This completely invalidates statistical significant and increase the probability of false positives, otherwise known as <strong>Type I errors</strong>. Acting on this can be detrimental to business decisions.</p>
 </div>
 </div>
 <p>In a single test where <span class="math inline">\(\alpha = 0.05\)</span>, if <span class="math inline">\(H_0\)</span> is true, we have a 5% chance of a false positive. When we test at at <span class="math inline">\(n\)</span> = 100, … up to 1,000 visitors, each peek is risking crossing that 0.05 threshold. Repeating this at multiple levels, we increase or probability of false positives.</p>
 <p>To demonstrate the danger of peeking, we can simulate this.</p>
-<div id="7aedc931" class="cell" data-execution_count="10">
+<div id="ba07083a" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
