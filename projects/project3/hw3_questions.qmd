@@ -6,14 +6,13 @@ date: 5/14/26
 ---
 
 
-## Introduction
+# Introduction
 
 **Blueprinty** is a small firm that makes software for developing blueprints specifically for submitting patent applications to the US patent office. Their marketing team would like to make the claim that patent applicants using Blueprinty's software are more successful in getting their patent applications approved. The ideal dataset for studying such an effect would include each firm's success rate before using Blueprinty's software and after using it, but no such data is available. Instead, Blueprinty has collected data on 1,500 mature (non-startup) engineering firms. The data include each firm's number of patents awarded over the last 5 years, regional location, age since incorporation, and whether or not the firm uses Blueprinty's software. The marketing team wants to use this data to argue that firms using Blueprinty's software are more successful in getting their patent applications approved.
 
 However, this is a non-trivial claim to evaluate: Blueprinty's customers are not selected at random, so any raw difference in patent counts could reflect characteristics of the firms (e.g., age, region) rather than the software itself. Why is this non-trivial? Because if customers tend to be older firms or firms located in regions with more patent activity, then they may have higher patent counts regardless of the software. To make a convincing argument, we need to account for these confounding factors and isolate the effect of using Blueprinty's software on patent success.
 
 
-::: {.callout-note}
 <!-- Write a short introduction for the reader that sets the scene. Cover the following points in your own words:
 
 - Blueprinty is a small firm that makes software for developing blueprints specifically for submitting patent applications to the US patent office.
@@ -25,7 +24,7 @@ However, this is a non-trivial claim to evaluate: Blueprinty's customers are not
 - Instead, Blueprinty has collected data on 1,500 mature (non-startup) engineering firms. The data include each firm's number of patents awarded over the last 5 years, regional location, age since incorporation, and whether or not the firm uses Blueprinty's software.
 
 - The marketing team wants to use this data to argue that firms using Blueprinty's software are more successful in getting their patent applications approved. Explain to the reader why this is a non-trivial claim to evaluate: Blueprinty's customers are not selected at random, so any raw difference in patent counts could reflect characteristics of the firms (e.g., age, region) rather than the software itself. -->
-:::
+
 
 
 ## Exploring the Data
@@ -64,6 +63,7 @@ plt.show()
 
 ```{python}
 #| echo: false
+#| output: false
 means = blueprinty.group_by("iscustomer").agg(pl.col("patents").mean())
 print(means)
 ```
@@ -83,24 +83,128 @@ where $Y$ is the number of events (e.g., patents awarded) and $Y!$ is the factor
 
 Now, let's start the likelihood and log-likelihood derivation for a simple Poisson model where every firm has the same patent rate $\lambda$.
 
-We will show the derivation step by step to demonstrate
-how the joint likelihood is built from the iid assumption and how the log-likelihood simplifies.
+We will show the derivation step by step to demonstrate how the joint likelihood is built from the iid assumption and how the log-likelihood simplifies.
 
+Log Likelihood Derivation:
+
+We start with the PMF (probability mass function) of the Poisson distribution for a single observation $Y_i$:
+$$
+f(Y|\lambda) = \frac{e^{-\lambda}\lambda^{Y}}{Y!}
+$$
+
+Because the observations are independents, the joint likelihood $L(\lambda)$ is the proudct of the inidiviudal probability mass functions for all $n$ observations:
+$$
+L(\lambda) = \prod_{i=1}^{n} f(Y_i|\lambda) = \prod_{i=1}^{n} \frac{e^{-\lambda}\lambda^{Y_i}}{Y_i!} = e^{-n\lambda} \lambda^{\sum_{i=1}^{n} Y_i} \prod_{i=1}^{n} \frac{1}{Y_i!}
+$$
+
+#### A little note on the iid assumption:
 ::: {.callout-note}
 **IID** is a common assumption in statistical modeling that stands for "independent and identically distributed." It means that the observations (in this case, the number of patents awarded to each firm) are independent of each other and come from the same probability distribution (in this case, a Poisson distribution with parameter $\lambda$). This assumption allows us to write the joint likelihood as a product of individual likelihoods for each observation.
 :::
 
 
+If we expand the product across n terms, we get:
+$$
+L(\lambda) =
+\frac{e^{-\lambda}\lambda^{Y_i}}{Y_i!} * \frac{e^{-\lambda}\lambda^{Y_2}}{Y_2!} * \cdots * \frac{e^{-\lambda}\lambda^{Y_n}}{Y_n!}
+$$
 
+Multiplying $e^{-\lambda}$ across n terms gives us $e^{-n\lambda}$, and multiplying $\lambda^{Y_i}$ across n terms gives us $\lambda^{\sum_{i=1}^{n} Y_i}$. The product of the factorial terms is $\prod_{i=1}^{n} \frac{1}{Y_i!}$.
 
+This gives us the joint likelihood function for the Poisson model.
+$$
+L(\lambda) = \frac{e^{-n\lambda} \lambda\prod_{i=1}^{n} Y_i}{\prod_{i=1}^{n} Y_i!}
+$$
 
+To get us from the join likelihood to the log-likelihood, we take the natural logarithm of the likelihood function:
+$$
+\ell(\lambda) = \ln(\frac{e^{-n\lambda} \lambda\prod_{i=1}^{n} Y_i}{\prod_{i=1}^{n} Y_i!})
+$$
 
+Using properties of logarithms, we can simplify this expression:
+$$
+\ell(\lambda) = \ln(e^{-n\lambda}) + \ln(\lambda^{\sum_{i=1}^{n} Y_i}) - \ln(\prod_{i=1}^{n} Y_i!)
+$$
+By using the power rule of logarithms, we can further simplify the second term to retrive the final log-likelihood function.
+### Final Log-Likelihood Function:
+$$
+\ell(\lambda) = -n\lambda + \ln(\lambda) \sum_{i=1}^{n} Y_i - \sum_{i=1}^{n} \ln(Y_i!)
+$$
 
+## Coding the Log-Likelihood Function
+Now that we know how to get derive the log-likelihood function, we can code it in Python. Below is an example of how to implement the Poisson log-likelihood function in Python:
+```{python}
+import numpy as np
+import scipy.special as special
 
+def poisson_loglikelihood(lambda_, Y):
+  # n is the number of observations we get by taking the length of the Y vector
+    n = len(Y)
+  # The log-likelihood function is derived from the likelihood function we derived above, and we use the properties of logarithms to simplify it. We also use scipy's special.factorial function to compute the factorial of Y.
+    log_likelihood = -n * lambda_ + np.sum(Y) * np.log(lambda_) - np.sum(special.gammaln(Y + 1))
 
+    return log_likelihood
+```
+This function takes in a scalar $\lambda$ and a vector of observed counts $Y$, and it computes the log-likelihood of the Poisson model given those inputs. The function first calculates the number of observations $n$ from the length of the $Y$ vector, and then it uses the formula for the log-likelihood that we derived earlier to compute the log-likelihood value. The `scipy.special.gammaln` function is used to compute the logarithm of the factorial of each element in $Y$ efficiently.
 
+### Plotting the Log-Likelihood Function
+Now that we have our log-likelihood function coded, we can plot it to visualize how the log-likelihood changes with different values of $\lambda$. We will use the observed number of patents as the input for $Y$ and plot $\lambda$ on the horizontal axis and the log-likelihood on the vertical axis.
+```{python}
+import matplotlib.pyplot as plt
+# Assuming Y is the observed number of patents for each firm
+Y = blueprinty["patents"].to_numpy()
+# Create a range of lambda values to evaluate the log-likelihood function
+lambda_values = np.linspace(0.1, 10, 100)  # Avoid lambda = 0 to prevent log(0)
+log_likelihood_values = [poisson_loglikelihood(lambda_, Y) for lambda_ in lambda_values]
+plt.figure(figsize=(10, 6))
+plt.plot(lambda_values, log_likelihood_values, label='Log-Likelihood', color='#C3D350')
+plt.xlabel('Lambda (λ)')
+plt.ylabel('Log-Likelihood')
+plt.title('Log-Likelihood Function for Poisson Model')
+plt.axvline(x=np.mean(Y), color='#5e2f78', linestyle='--', label='Sample Mean (MLE)')
+plt.legend()
+plt.grid()
+plt.show()
+```
 
+## A Little Mathematical Fun - Finding the MLE Analytically
+If we take the first derivative of the log-likelihood function with respect to $\lambda$, set it equal to zero, and solve for $\lambda$, we can find the maximum likelihood estimator (MLE) for $\lambda$. The MLE turns out to be $\hat\lambda_{\text{MLE}} = \bar{Y}$, which is the sample mean of the observed counts. This result makes intuitive sense because the mean of a Poisson distribution is equal to its parameter $\lambda$, so it is reasonable that the MLE for $\lambda$ would be the sample mean of the observed counts.
 
+$$
+\frac{d}{d\lambda}\ell(\lambda) = -n + \frac{1}{\lambda} \sum_{i=1}^{n} Y_i - \sum_{i=1}^{n} \frac{1}{Y_i!} \frac{d}{d\lambda}(Y_i!)
+$$
+
+Intermediate steps:
+1. The derivative of the first term $-n\lambda$ with respect to $\lambda$ is simply $-n$.
+2. The derivative of the second term $\ln(\lambda) \sum_{i=1}^{n} Y_i$ with respect to $\lambda$ is $\frac{1}{\lambda} \sum_{i=1}^{n} Y_i$, using the chain rule of differentiation.
+3. The derivative of the third term $-\sum_{i=1}^{n} \ln(Y_i!)$ with respect to $\lambda$ is zero because it does not depend on $\lambda$.
+
+Solving this equation for $\lambda$ gives us the MLE:
+$$
+\hat\lambda_{\text{MLE}} = \frac{1}{n} \sum_{i=1}^{n} Y_i = \bar{Y}
+$$
+
+This means that the MLE for $\lambda$ is simply the average number of patents awarded across all firms in the dataset.
+
+## Finding the MLE Numerically
+Now we can find the MLE numerically by maximizing our log-likelihood function using Python's `scipy.optimize` module. We will use the `minimize` function to find the value of $\lambda$ that maximizes the log-likelihood. Since `minimize` minimizes a function, we will minimize the negative log-likelihood instead.
+```{python}
+from scipy.optimize import minimize
+# Function to minimize the negative log-likelihood
+def negative_loglikelihood(lambda_):
+    return -poisson_loglikelihood(lambda_, Y)
+
+# Minimize to find lambda that minimizes the negative log-likelihood
+result = minimize(negative_loglikelihood, x0 = np.mean(Y), bounds=[(0.1, None)])
+# Start at the sample mean and ensure lambda is positive
+mle_lambda = result.x[0]
+print(f"MLE for lambda: {mle_lambda}")
+print(f"Sample mean (MLE): {np.mean(Y)}")
+```
+
+We see that the numerical MLE for $\lambda$ is very close to the sample mean of $Y$, which confirms our analytical result that the MLE for $\lambda$ in a Poisson model is the sample mean of the observed counts. This is because the log-likelihood function is maximized at the point where $\lambda$ equals the average number of patents awarded, which is consistent with the properties of the Poisson distribution.
+
+<!--
 ::: {.callout-note}
 - The outcome variable is a count — the number of patents awarded to each firm over the last 5 years — so we can model it as a draw from a Poisson distribution. Write a short introduction explaining this modeling choice to the reader: counts cannot be negative and must be integer-valued, so the Normal distribution is a poor fit, and the Poisson distribution is the natural starting point for non-negative integer outcomes.
 :::
@@ -111,27 +215,179 @@ $$
 f(Y|\lambda) = \frac{e^{-\lambda}\lambda^{Y}}{Y!}
 $$
 
-  Show the derivation step by step so the reader can follow how the joint likelihood is built from the iid assumption and how the log-likelihood simplifies.
+  Show the derivation step by step so the reader can follow how the joint likelihood is built from the iid assumption and how the log-likelihood simplifies. -->
 
-- Code the log-likelihood function in the language of your choice. It should be a function of $\lambda$ and $Y$. For example, in R:
+<!-- - Code the log-likelihood function in the language of your choice. It should be a function of $\lambda$ and $Y$. For example, in R:
 
     ```r
     poisson_loglikelihood <- function(lambda, Y){
        ...
     }
-    ```
+    ``` -->
 
-- Use your function to plot $\lambda$ on the horizontal axis and the log-likelihood on the vertical axis for a range of values of $\lambda$, using the observed number of patents as the input for $Y$. After the plot, write a sentence or two explaining what the curve shows and how to "read" the MLE off it visually.
+<!-- - Use your function to plot $\lambda$ on the horizontal axis and the log-likelihood on the vertical axis for a range of values of $\lambda$, using the observed number of patents as the input for $Y$. After the plot, write a sentence or two explaining what the curve shows and how to "read" the MLE off it visually. -->
 
-- If you're feeling mathematical, take the first derivative of the log-likelihood, set it equal to zero, and solve for $\lambda$. You will find $\hat\lambda_{\text{MLE}} = \bar{Y}$, which "feels right" because the mean of a Poisson distribution is $\lambda$.
+<!-- - If you're feeling mathematical, take the first derivative of the log-likelihood, set it equal to zero, and solve for $\lambda$. You will find $\hat\lambda_{\text{MLE}} = \bar{Y}$, which "feels right" because the mean of a Poisson distribution is $\lambda$. -->
 
-- Find the MLE numerically by maximizing your log-likelihood function with R's `optim()` or Python's `sp.optimize()`. Compare your numerical answer to the sample mean — they should be (nearly) identical, and you should explain to the reader why.
-:::
+<!-- - Find the MLE numerically by maximizing your log-likelihood function with R's `optim()` or Python's `sp.optimize()`. Compare your numerical answer to the sample mean — they should be (nearly) identical, and you should explain to the reader why. -->
 
 
 ## Poisson Regression
 
-::: {.callout-note}
+Now we have a simple Poisson model where every firm has the same patent rate $\lambda$. However, we know that firms differ in their characteristics (e.g., age, region, customer status), and these characteristics likely influence their patent counts. To account for this heterogeneity, we can extend our model to a Poisson regression model where each firm's rate parameter $\lambda_i$ depends on its own characteristics.
+$$
+Y_i \sim \text{Poisson}(\lambda_i) \qquad \text{where} \qquad \lambda_i = \exp(X_i'\beta)
+$$
+
+#### Why Do We Do This?
+Instead of assuming every firm has the same patent rate $\lambda$, we now let $\lambda$ vary across firms as a function of age, region, and customer status. This allows us to capture the influence of these characteristics on patent counts and to isolate the effect of being a Blueprinty customer while controlling for other factors. We use $\exp(\cdot)$ as the inverse link function because $\lambda_i$ must be positive (since it represents a rate), but $X_i'\beta$ can be any real number. The exponential function ensures that $\lambda_i$ stays on the positive real line, which is necessary for the Poisson model to be valid. This is a key feature of Poisson regression: it models the log of the expected count as a linear function of the predictors, which allows for a multiplicative effect of the predictors on the expected count.
+
+## Updating the Log-Likelihood Function for Poisson Regression
+Now we can update our log-likelihood function to take in a covariate matrix $X$ and a parameter vector $\beta$ in place of the scalar $\lambda$. The log-likelihood for the Poisson regression model can be written as:
+$$
+\ell(\beta) = \sum_{i=1}^{n} \left( -\exp(X_i'\beta) + Y_i X_i'\beta - \ln(Y_i!) \right)
+$$
+
+This function takes into account the fact that each firm's rate parameter $\lambda_i$ is now a function of its characteristics through the linear predictor $X_i'\beta$. The first term $-\exp(X_i'\beta)$ represents the contribution of the expected count, the second term $Y_i X_i'\beta$ represents the contribution of the observed count, and the third term $-\ln(Y_i!)$ is the same as before, representing the contribution of the factorial term in the Poisson PMF. We can implement this log-likelihood function in Python as follows:
+```{python}
+def poisson_regression_loglikelihood(beta, Y, X):
+    # Linear predictor X * beta
+    lin_pred = np.dot(X, beta)
+    # Expected mean: lambda = exp(X * beta)
+    expected_count = np.exp(lin_pred)
+    # Log-likelihood
+    log_likelihood = np.sum(-expected_count + Y * lin_pred - special.gammaln(Y + 1))
+    return log_likelihood
+```
+
+We will construct $X$ so that the first column is all 1's (for the intercept), followed by columns for age, age squared, binary indicators for all but one of the regions, and the binary customer variable. We include age squared because the relationship between age and patenting is unlikely to be perfectly linear — it may be that very young firms and very old firms have lower patent counts than middle-aged firms. We must drop one region to avoid perfect collinearity with the intercept; if we included all regions, we would have a situation where the sum of the region indicators equals 1 for every observation, which would make it impossible to estimate the coefficients uniquely.
+
+```{python}
+#| echo: false
+#| output: true
+# Construct X
+import numpy as np
+import pandas as pd
+
+# Intercept
+intercept = np.ones(len(blueprinty))
+# Age and age squared
+age = blueprinty["age"].to_numpy()
+age_squared = age ** 2
+# Binary indicators for regions
+regions = pd.get_dummies(blueprinty["region"], drop_first=True).to_numpy()
+# Binary customer variable
+customer = blueprinty["iscustomer"].to_numpy()
+# Combine all into the design matrix X
+X = np.column_stack((intercept, age, age_squared, regions, customer))
+# print(X[:5])
+```
+
+## Finding MLE for Poisson Regression
+Now we can use `scipy.optimize.minimize` to find the MLE $\hat\beta$ for the Poisson regression model. We will minimize the negative log-likelihood function, and we will also ask the optimizer to return the Hessian so that we can compute standard errors for the coefficients. The standard errors are the square roots of the diagonal of the negative inverse Hessian.
+```{python}
+#| echo: false
+#| output: true
+import numpy as np
+import pandas as pd
+from scipy.optimize import minimize
+from scipy import special
+
+def poisson_regression_loglikelihood(beta, Y, X):
+    lin_pred = np.dot(X, beta)
+    expected_count = np.exp(lin_pred)
+    return np.sum(-expected_count + Y * lin_pred - special.gammaln(Y + 1))
+
+# Initial guess for beta (zeros matching the number of features)
+initial_beta = np.zeros(X.shape[1])
+
+# Function to minimize the negative log-likelihood
+def negative_loglikelihood(beta, Y, X):
+    return -poisson_regression_loglikelihood(beta, Y, X)
+
+def negative_gradient(beta, Y, X):
+    lin_pred = np.dot(X, beta)
+    expected_count = np.exp(lin_pred)
+    return np.dot(X.T, expected_count - Y)
+
+def negative_hessian(beta, Y, X):
+    lin_pred = np.dot(X, beta)
+    expected_count = np.exp(lin_pred)
+    return np.dot(X.T, expected_count[:, np.newaxis] * X)
+
+result = minimize(
+    fun=negative_loglikelihood,
+    x0=initial_beta,
+    args=(Y, X),
+    jac=negative_gradient,
+    hess=negative_hessian,
+    method='trust-ncg',
+    options={'disp': True}
+)
+
+mle_beta = result.x
+
+mu = np.exp(np.dot(X, mle_beta))
+analytical_hessian = np.dot(X.T, mu[:, np.newaxis] * X)
+covariance_matrix = np.linalg.inv(analytical_hessian)
+
+# Extract standard errors from the diagonal
+standard_errors = np.sqrt(np.diag(covariance_matrix))
+
+# Present a clean table of coefficients and standard errors
+feature_names = ['Intercept', 'Age', 'Age^2'] + list(pd.get_dummies(blueprinty['region'], drop_first=True).columns) + ['Customer']
+coef_table = pd.DataFrame({
+    'Feature': feature_names,
+    'Coefficient': mle_beta,
+    'Standard Error': standard_errors
+})
+
+print(coef_table.to_string(index=False))
+```
+
+Let's check our results by fitting the same model Python's `statsmodels.api.GLM()`. The coefficient estimates should match closely; the standard errors may differ slightly due to the numerical approximation of the Hessian, which is a common issue when using optimization routines to estimate standard errors. The exact values of the standard errors can be sensitive to the convergence criteria and the numerical precision of the optimization algorithm, so it's not uncommon to see some discrepancies between different methods of estimation. However, as long as the coefficient estimates are consistent across methods, we can be confident in our findings.
+
+```{python}
+#| echo: false
+#| output: true
+import statsmodels.api as sm
+# Fit the Poisson regression model using statsmodels
+model = sm.GLM(Y, X, family=sm.families.Poisson())
+results = model.fit()
+print(results.summary())
+```
+
+```{python}
+# Creating a Table that Compares Coefficients and Standard Errors from Both Methods
+statsmodels_coefs = results.params
+statsmodels_se = results.bse
+comparison_table = pd.DataFrame({
+    'Feature': feature_names,
+    'Manual Coefficient': mle_beta,
+    'Manual SE': standard_errors,
+    'Statsmodels Coefficient': statsmodels_coefs,
+    'Statsmodels SE': statsmodels_se
+})
+print(comparison_table.to_string(index=False))
+```
+
+### Interpreting the Results
+Now that we have our coefficient estimates and standard errors, we can interpret the results. Each coefficient represents the log change in the expected count of patents for a one-unit increase in the corresponding predictor, holding all other predictors constant.
+
+**Intercept Coefficient**: -0.509; This can be interpreted as the expected log count of patents for a firm with age 0, located in the baseline region (the one we dropped), and not being a customer.
+
+**Age Coefficient**: 0.149 ; This suggests that, holding other factors constant, each additional year of age is associated with an increase in the log count of patents.
+**Age^2 Coefficient**: -0.003 ; This indicates that the relationship between age and patenting is not perfectly linear.
+**Northeast Region Coefficient**: 0.029; This suggests that firms located in the Northeast region have a higher expected log count of patents compared to the baseline region, holding other factors constant.
+**Northwest Region Coefficient**: -0.017; This suggests that firms located in the Northwest region have a lower expected log count of patents compared to the baseline region, holding other factors constant.
+**South Region Coefficient**: 0.05;  This suggests that firms located in the South region have a higher expected log count of patents compared to the baseline region, holding other factors constant.
+**Southwest Region Coefficient**: 0.051; This suggests that firms located in the Southwest region have a higher expected log count of patents compared to the baseline region, holding other factors constant.
+**Customer Coefficient**: 0.208; This suggests that firms that are customers have a higher expected log count of patents compared to non-customers, holding other factors constant.
+
+**A quick check** - are the signs and magnitudes sensible? The positive coefficient for age makes sense, as older firms may have more resources and experience to file patents. The negative coefficient for age squared also makes sense, as the relationship between age and patenting is likely to be non-linear. The regional coefficients suggest that location does matter for patenting activity, which is consistent with what we know about regional differences in innovation. Finally, the positive coefficient for being a customer of Blueprinty's software suggests that there may be an association between using the software and having more patents, but we will need to be careful in interpreting this result due to potential confounding factors.
+
+
+<!-- ::: {.callout-note}
 - Now extend the simple Poisson model to a Poisson regression model so that each firm's rate parameter depends on its own characteristics:
 
 $$
@@ -146,29 +402,53 @@ $$
     poisson_regression_loglikelihood <- function(beta, Y, X){
        ...
     }
-    ```
+    ``` -->
 
-- Construct $X$ so that the first column is all 1's (for the intercept), followed by columns for age, age squared, binary indicators for all but one of the regions, and the binary customer variable. Explain to the reader why you include age squared (the relationship between age and patenting is unlikely to be perfectly linear) and why you must drop one region (to avoid perfect collinearity with the intercept).
+<!-- - Construct $X$ so that the first column is all 1's (for the intercept), followed by columns for age, age squared, binary indicators for all but one of the regions, and the binary customer variable. Explain to the reader why you include age squared (the relationship between age and patenting is unlikely to be perfectly linear) and why you must drop one region (to avoid perfect collinearity with the intercept). -->
 
-- Use `optim()` (or `sp.optimize()`) to find the MLE $\hat\beta$, asking the optimizer to also return the Hessian. Use the Hessian to compute standard errors for the coefficients — the standard errors are the square roots of the diagonal of the negative inverse Hessian. Present a table of coefficients and standard errors.
+<!-- - Use `optim()` (or `sp.optimize()`) to find the MLE $\hat\beta$, asking the optimizer to also return the Hessian. Use the Hessian to compute standard errors for the coefficients — the standard errors are the square roots of the diagonal of the negative inverse Hessian. Present a table of coefficients and standard errors. -->
 
-- Check your results by fitting the same model with R's `glm(..., family = poisson)` or Python's `sm.GLM()`. The coefficient estimates should match closely; the standard errors may differ slightly due to the numerical approximation of the Hessian — explain this to the reader.
+<!-- - Check your results by fitting the same model with R's `glm(..., family = poisson)` or Python's `sm.GLM()`. The coefficient estimates should match closely; the standard errors may differ slightly due to the numerical approximation of the Hessian — explain this to the reader. -->
 
-- Interpret the results. Walk the reader through what each coefficient tells you, paying particular attention to the sign and magnitude of the customer coefficient. Are the signs and magnitudes sensible?
-:::
+<!-- - Interpret the results. Walk the reader through what each coefficient tells you, paying particular attention to the sign and magnitude of the customer coefficient. Are the signs and magnitudes sensible?
+::: -->
 
 
 ## The Effect of Blueprinty's Software
 
-::: {.callout-note}
+Because the coefficients from the Poisson regression are not the most interpretable as "additional patents," (we interpreted them as log-rates) we will use our fitted model to construct a more interpretable estimate of the average effect of being a Blueprinty customer on patent counts, holding age and region fixed at their observed values for each firm.
+
+First, we will create two counterfactual datasets: one where every firm's `iscustomer` value is set to 0 (non-customer scenario) and one where every firm's `iscustomer` value is set to 1 (customer scenario). Then, we will use our fitted model to predict the expected number of patents for every firm under each counterfactual scenario, producing two vectors of predicted counts: $\hat{y}_0$ for the non-customer scenario and $\hat{y}_1$ for the customer scenario. Finally, we will compute the average difference between these two vectors, $\hat{y}_1 - \hat{y}_0$, to estimate the average effect of being a Blueprinty customer on patent counts.
+
+```{python}
+# Create counterfactual datasets
+X_0 = X.copy()  # non-customer scenario
+X_0[:, -1] = 0  # customer variable to 0
+X_1 = X.copy()  # customer scenario
+X_1[:, -1] = 1  # customer variable to 1
+
+# Predict expected number of patents under each scenario
+hat_y_0 = np.exp(np.dot(X_0, mle_beta))  # predicted counts for non-customer
+hat_y_1 = np.exp(np.dot(X_1, mle_beta))  # predicted counts for customer
+
+# average effect of being a customer
+average_effect = np.mean(hat_y_1 - hat_y_0)
+print(f"Estimated average effect of being a Blueprinty customer on patent counts: {average_effect:.2f}")
+```
+### Our Results
+We can see that the estimated average effect of being a Blueprinty customer on patent counts is approximately 0.79 additional patents, holding age and region fixed at their observed values for each firm. This suggests that, on average, firms that are customers of Blueprinty's software have about 0.79 more patents than they would if they were not customers, after controlling for age and regional differences.
+This privdes evidence consistent with Blueprinty's marketing claim that their software is associated with higher patent counts. However, it is important to note that this analysis is based on observational data, and we cannot rule out the possibility of unobserved confounding factors that differ between customers and non-customers and could also drive patent counts. Therefore, while our findings are suggestive of a positive association between using Blueprinty's software and having more patents, we cannot make a definitive causal claim based on this analysis alone.
+
+
+<!-- ::: {.callout-note}
 - The coefficients from a Poisson regression are not directly interpretable as "additional patents" because the model is multiplicative in $\lambda$, not additive. To get a more interpretable answer, construct two counterfactual datasets:
 
     1. $X_0$: a copy of your $X$ matrix where every firm's `iscustomer` value is set to 0.
     2. $X_1$: a copy of your $X$ matrix where every firm's `iscustomer` value is set to 1.
 
-- Use your fitted model to predict the expected number of patents for every firm under each counterfactual, producing two vectors $\hat{y}_0$ and $\hat{y}_1$.
+- Use your fitted model to predict the expected number of patents for every firm under each counterfactual, producing two vectors $\hat{y}_0$ and $\hat{y}_1$. -->
 
-- Compute the average of $\hat{y}_1 - \hat{y}_0$. This is your estimate of the average effect of being a Blueprinty customer, holding age and region fixed at their observed values for each firm.
+<!-- - Compute the average of $\hat{y}_1 - \hat{y}_0$. This is your estimate of the average effect of being a Blueprinty customer, holding age and region fixed at their observed values for each firm. -->
 
-- Report the result and interpret it for the reader. Conclude with a careful statement about what the analysis does and does not establish: it provides evidence consistent with Blueprinty's marketing claim, but because this is an observational study (not a randomized experiment), we cannot rule out unobserved characteristics that differ between customers and non-customers and could also drive patent counts.
-:::
+<!-- - Report the result and interpret it for the reader. Conclude with a careful statement about what the analysis does and does not establish: it provides evidence consistent with Blueprinty's marketing claim, but because this is an observational study (not a randomized experiment), we cannot rule out unobserved characteristics that differ between customers and non-customers and could also drive patent counts.
+::: -->

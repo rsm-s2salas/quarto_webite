@@ -1,0 +1,274 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Color palette from custom.scss */
+:root {
+  --body-bg: #f4f3f5;
+  --body-color: #4B3B47;
+  --primary: #C3D350;
+  --secondary: #84A07C;
+  --purple: #9F84BD;
+  --dark: #4B3B47;
+  --light: #FDFBFF;
+  --soft-card: rgba(180, 166, 177, 0.35);
+}
+
+/* ---------- RevealJS base ---------- */
+
+.reveal-viewport {
+  background: var(--body-bg) !important;
+}
+
+.reveal {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 25px !important;
+  color: var(--body-color) !important;
+}
+
+
+.reveal .slides {
+  text-align: left !important;
+}
+
+.reveal .slides section {
+  color: var(--body-color) !important;
+}
+
+/* ---------- Headings ---------- */
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: 'Jost', sans-serif !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+}
+
+.reveal h1 {
+  font-size: 1.9em !important;
+  font-weight: 700 !important;
+  color: var(--purple) !important;
+  text-align: center !important;
+}
+
+.reveal h2 {
+  font-size: 1.25em !important;
+  font-weight: 650 !important;
+  color: var(--purple) !important;
+  border-bottom: 4px solid var(--primary) !important;
+  display: inline-block !important;
+  padding-bottom: 0.15em !important;
+  margin-bottom: 0.75em !important;
+}
+
+.reveal h3 {
+  font-size: 0.95em !important;
+  font-weight: 600 !important;
+  color: var(--primary) !important;
+}
+
+/* Title slide */
+.reveal .title {
+  color: var(--purple) !important;
+}
+
+.reveal .subtitle {
+  color: var(--dark) !important;
+  font-weight: 600 !important;
+}
+
+.reveal .quarto-title-author-name {
+  color: var(--dark) !important;
+}
+
+/* ---------- Body text ---------- */
+
+.reveal p,
+.reveal li {
+  color: var(--body-color) !important;
+  line-height: 1.45 !important;
+}
+
+.reveal strong {
+  color: var(--dark) !important;
+  font-weight: 750 !important;
+}
+
+.reveal a {
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+.reveal a:hover {
+  color: var(--secondary) !important;
+  text-decoration: underline !important;
+}
+
+/* ---------- Text helper classes ---------- */
+
+.reveal .good {
+  color: var(--secondary) !important;
+  font-weight: 800 !important;
+}
+
+.reveal .bad {
+  color: #330b53 !important;
+  font-weight: 800 !important;
+}
+
+.reveal .highlight {
+  color: var(--primary) !important;
+  font-weight: 800 !important;
+}
+
+.reveal .small {
+  font-size: 0.7em !important;
+}
+
+.reveal .tiny {
+  font-size: 0.48em !important;
+  color: var(--purple) !important;
+}
+
+.reveal .muted {
+  color: var(--purple) !important;
+  font-weight: 500 !important;
+}
+
+.reveal .caption {
+  font-size: 0.58em !important;
+  color: var(--purple) !important;
+  margin-top: 18px !important;
+}
+
+.reveal .arrow {
+  font-size: 1 em !important;
+  color: var(--purple) !important;
+  background: rgba(195, 211, 80, 0.18) !important;
+  border-left: 6px solid var(--primary) !important;
+  padding: 0.45em 0.7em !important;
+  border-radius: 1rem !important;
+  text-align: center !important;
+  margin-top: 14px !important;
+  font-weight: 600 !important;
+}
+
+.reveal .big {
+  font-size: 1.1em !important;
+  font-weight: 800 !important;
+}
+
+/* ---------- Layout ---------- */
+
+.reveal .grid2 {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 20px !important;
+  align-items: stretch !important;
+}
+
+.reveal .grid3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 14px !important;
+  align-items: stretch !important;
+}
+
+/* ---------- Cards ---------- */
+
+.reveal .card {
+  background: var(--soft-card) !important;
+  border: 1px solid rgba(253, 251, 255, 0.565) !important;
+  border-radius: 1rem !important;
+  padding: 14px !important;
+  box-shadow: 0 4px 12px rgba(75, 59, 71, 0.18) !important;
+}
+
+.reveal .card h3 {
+  margin-top: 0 !important;
+}
+
+.reveal .callout {
+  background: rgba(132, 160, 124, 0.12) !important;
+  border-left: 8px solid var(--primary) !important;
+  padding: 14px 30px !important;
+  border-radius: 1rem !important;
+  margin-top: 14px !important;
+  box-shadow: 0 4px 12px rgba(75, 59, 71, 0.12) !important;
+}
+
+/* ---------- Feature cards ---------- */
+
+.reveal .feature-card {
+  background: rgba(253, 251, 255, 0.65) !important;
+  border: 2px solid rgba(195, 211, 80, 0.35) !important;
+  border-radius: 1rem !important;
+  padding: 10px 14px !important;
+  margin: 6px 0 !important;
+  box-shadow: 0 3px 10px rgba(75, 59, 71, 0.10) !important;
+}
+
+.reveal .feature-card.most,
+.reveal .most {
+  border-color: var(--secondary) !important;
+}
+
+.reveal .feature-card.least,
+.reveal .least {
+  border-color: #500e13 !important;
+}
+
+/* ---------- Tables ---------- */
+
+.reveal table {
+  font-size: 0.6em !important;
+  border-collapse: collapse !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.reveal table th {
+  color: var(--light) !important;
+  background: var(--purple) !important;
+  font-weight: 700 !important;
+}
+
+.reveal table td {
+  color: var(--dark) !important;
+}
+
+.reveal table tr:nth-child(even) {
+  background: rgba(180, 166, 177, 0.25) !important;
+}
+
+.reveal table tr:nth-child(odd) {
+  background: rgba(253, 251, 255, 0.55) !important;
+}
+
+/* ---------- Blockquotes ---------- */
+
+.reveal blockquote {
+  border-left: 6px solid var(--primary) !important;
+  background: rgba(75, 59, 71, 0.12) !important;
+  color: var(--dark) !important;
+  border-radius: 0.75rem !important;
+  padding: 1rem 1.25rem !important;
+  font-style: italic !important;
+}
+
+/* ---------- Reveal controls / slide number ---------- */
+
+.reveal .controls {
+  color: var(--purple) !important;
+}
+
+.reveal .slide-number {
+  color: var(--dark) !important;
+  background: rgba(253, 251, 255, 0.65) !important;
+  border-radius: 0.4rem !important;
+  padding: 0.2rem 0.45rem !important;
+}

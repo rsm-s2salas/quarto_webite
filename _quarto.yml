@@ -15,6 +15,9 @@ website:
         text: Projects
       - href: quotes.qmd
         text: Quotes
+    page-footer:
+      background: "#f8f9fa"
+      left: Copyright 2026, Sophia Salas
 format:
   html:
     theme: custom.scss
