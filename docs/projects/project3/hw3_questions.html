@@ -191,24 +191,29 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link" data-scroll-target="#exploring-the-data">Exploring the Data</a></li>
   <li><a href="#what-does-the-data-show" id="toc-what-does-the-data-show" class="nav-link" data-scroll-target="#what-does-the-data-show">What Does the Data Show?</a></li>
-  <li><a href="#a-simple-poisson-model-via-maximum-likelihood" id="toc-a-simple-poisson-model-via-maximum-likelihood" class="nav-link" data-scroll-target="#a-simple-poisson-model-via-maximum-likelihood">A Simple Poisson Model via Maximum Likelihood</a></li>
+  </ul></li>
+  <li><a href="#a-simple-poisson-model-via-maximum-likelihood" id="toc-a-simple-poisson-model-via-maximum-likelihood" class="nav-link" data-scroll-target="#a-simple-poisson-model-via-maximum-likelihood">A Simple Poisson Model via Maximum Likelihood</a>
+  <ul class="collapse">
   <li><a href="#coding-the-log-likelihood-function" id="toc-coding-the-log-likelihood-function" class="nav-link" data-scroll-target="#coding-the-log-likelihood-function">Coding the Log-Likelihood Function</a>
   <ul class="collapse">
   <li><a href="#plotting-the-log-likelihood-function" id="toc-plotting-the-log-likelihood-function" class="nav-link" data-scroll-target="#plotting-the-log-likelihood-function">Plotting the Log-Likelihood Function</a></li>
   </ul></li>
   <li><a href="#a-little-mathematical-fun---finding-the-mle-analytically" id="toc-a-little-mathematical-fun---finding-the-mle-analytically" class="nav-link" data-scroll-target="#a-little-mathematical-fun---finding-the-mle-analytically">A Little Mathematical Fun - Finding the MLE Analytically</a></li>
   <li><a href="#finding-the-mle-numerically" id="toc-finding-the-mle-numerically" class="nav-link" data-scroll-target="#finding-the-mle-numerically">Finding the MLE Numerically</a></li>
-  <li><a href="#poisson-regression" id="toc-poisson-regression" class="nav-link" data-scroll-target="#poisson-regression">Poisson Regression</a></li>
+  </ul></li>
+  <li><a href="#poisson-regression" id="toc-poisson-regression" class="nav-link" data-scroll-target="#poisson-regression">Poisson Regression</a>
+  <ul class="collapse">
   <li><a href="#updating-the-log-likelihood-function-for-poisson-regression" id="toc-updating-the-log-likelihood-function-for-poisson-regression" class="nav-link" data-scroll-target="#updating-the-log-likelihood-function-for-poisson-regression">Updating the Log-Likelihood Function for Poisson Regression</a></li>
   <li><a href="#finding-mle-for-poisson-regression" id="toc-finding-mle-for-poisson-regression" class="nav-link" data-scroll-target="#finding-mle-for-poisson-regression">Finding MLE for Poisson Regression</a>
   <ul class="collapse">
   <li><a href="#interpreting-the-results" id="toc-interpreting-the-results" class="nav-link" data-scroll-target="#interpreting-the-results">Interpreting the Results</a></li>
   </ul></li>
+  </ul></li>
   <li><a href="#the-effect-of-blueprintys-software" id="toc-the-effect-of-blueprintys-software" class="nav-link" data-scroll-target="#the-effect-of-blueprintys-software">The Effect of Blueprinty’s Software</a>
   <ul class="collapse">
   <li><a href="#our-results" id="toc-our-results" class="nav-link" data-scroll-target="#our-results">Our Results</a></li>
   </ul></li>
-  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   </ul>
 </nav>
     </div>
@@ -264,42 +269,12 @@ window.Quarto = {
 - The marketing team wants to use this data to argue that firms using Blueprinty's software are more successful in getting their patent applications approved. Explain to the reader why this is a non-trivial claim to evaluate: Blueprinty's customers are not selected at random, so any raw difference in patent counts could reflect characteristics of the firms (e.g., age, region) rather than the software itself. -->
 <section id="exploring-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>Read in the data from <code>blueprinty.csv</code>.</p></li>
-<li><p>Compare histograms of the number of patents by customer status (customers vs non-customers) and report the means of each group. Place the two histograms side by side with consistent x-axis scales so they are easy to compare. After the plots, write a few sentences describing what you observe.</p></li>
-<li><p>Blueprinty’s customers are not selected at random. It may be important to account for systematic differences in firm age and regional location between customers and non-customers. Compare the distribution of regions by customer status, and compare histograms of firm age by customer status. After each comparison, write a few sentences describing what you observe and explain to the reader why these differences matter for the analysis that follows.</p></li>
-</ul>
-</div>
-</div>
-<div id="447d5641" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#histograms of number of patents by customer status</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> blueprinty.group_by(<span class="st">"iscustomer"</span>).agg(pl.col(<span class="st">"patents"</span>).mean())</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> data.to_pandas()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"iscustomer"</span>, y<span class="op">=</span><span class="st">"patents"</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>, color <span class="op">=</span> <span class="st">'#C3D350'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Is A Customer"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Average Number of Patents"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average Patents by Customer Status"</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can construct two distribution histograms showing the number of patents awarded to customers and non-customers, and we can report the means of each group. This will give us a preliminary sense of whether there is an association between being a customer and having more patents, but we will need to be careful in interpreting these results because they do not account for potential confounding factors.</p>
+<div id="5b72992b" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hw3_questions_files/figure-html/cell-3-output-1.png" width="663" height="523" class="figure-img"></p>
+<p><img src="hw3_questions_files/figure-html/cell-3-output-1.png" width="965" height="523" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -308,9 +283,51 @@ Note
 <section id="what-does-the-data-show" class="level2">
 <h2 class="anchored" data-anchor-id="what-does-the-data-show">What Does the Data Show?</h2>
 <p>If we compare the two histograms, we are able to compare the means of the two groups. We see that the mean number of patents for customers is 4.133, while the mean number of patents for non-customers is 3.47. This suggests that customers of Blueprinty’s software have a higher average number of patents than non-customers. However, this raw difference does not account for potential confounding factors such as firm age and regional location, which may also influence patent counts.</p>
+<p>Blueprinty’s customers are not selected at randoms, it may be important to account for systematic differences in firm age and regional location between customers and non-customers. To explore this, we can compare the distribution of regions by customer status and compare histograms of firm age by customer status. This will help us understand whether there are systematic differences in these characteristics between customers and non-customers, which could confound our analysis of the effect of using Blueprinty’s software on patent counts.</p>
+<section id="histograms-of-region-by-customer-status" class="level4">
+<h4 class="anchored" data-anchor-id="histograms-of-region-by-customer-status">Histograms of Region by Customer Status</h4>
+<div id="c8e315b0" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>region      Midwest  Northeast  Northwest  South  Southwest
+iscustomer                                                 
+0               187        273        158    156        245
+1                37        328         29     35         52</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hw3_questions_files/figure-html/cell-5-output-2.png" width="816" height="503" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Our preliminary analysis of the distribution of regions by customer status shows that there are some differences in regional location between customers and non-customers. For example, a higher proportion of customers are located in the Northeast and South regions compared to non-customers, while a higher proportion of non-customers are located in the Northwest region compared to customers. These regional differences could potentially confound our analysis of the effect of using Blueprinty’s software on patent counts, as certain regions may have more patent activity than others. Therefore, it is important to account for these regional differences in our subsequent analysis.</p>
 </section>
-<section id="a-simple-poisson-model-via-maximum-likelihood" class="level2">
-<h2 class="anchored" data-anchor-id="a-simple-poisson-model-via-maximum-likelihood">A Simple Poisson Model via Maximum Likelihood</h2>
+<section id="histograms-of-firm-age-by-customer-status" class="level4">
+<h4 class="anchored" data-anchor-id="histograms-of-firm-age-by-customer-status">Histograms of Firm Age by Customer Status</h4>
+<div id="095e023c" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hw3_questions_files/figure-html/cell-6-output-1.png" width="1142" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Our preliminary analysis of the distribution of firm age by customer status shows that there are some differences in age between customers and non-customers. Customers tend to be older than the average non-customer with an average age of 26.9 compared to the non-customer with an average age of 26.1. There are a smaller number of firms for Blueprinty than non-customers.</p>
+<!-- ::: {.callout-note}
+- Read in the data from `blueprinty.csv`.
+
+- Compare histograms of the number of patents by customer status (customers vs non-customers) and report the means of each group. Place the two histograms side by side with consistent x-axis scales so they are easy to compare. After the plots, write a few sentences describing what you observe.
+
+- Blueprinty's customers are not selected at random. It may be important to account for systematic differences in firm age and regional location between customers and non-customers. Compare the distribution of regions by customer status, and compare histograms of firm age by customer status. After each comparison, write a few sentences describing what you observe and explain to the reader why these differences matter for the analysis that follows.
+:::
+ -->
+</section>
+</section>
+</section>
+<section id="a-simple-poisson-model-via-maximum-likelihood" class="level1">
+<h1>A Simple Poisson Model via Maximum Likelihood</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -366,11 +383,10 @@ L(\lambda) = \frac{e^{-n\lambda} \lambda\prod_{i=1}^{n} Y_i}{\prod_{i=1}^{n} Y_i
 \ell(\lambda) = -n\lambda + \ln(\lambda) \sum_{i=1}^{n} Y_i - \sum_{i=1}^{n} \ln(Y_i!)
 \]</span></p>
 </section>
-</section>
 <section id="coding-the-log-likelihood-function" class="level2">
 <h2 class="anchored" data-anchor-id="coding-the-log-likelihood-function">Coding the Log-Likelihood Function</h2>
 <p>Now that we know how to get derive the log-likelihood function, we can code it in Python. Below is an example of how to implement the Poisson log-likelihood function in Python:</p>
-<div id="c5f18c1b" class="cell" data-execution_count="4">
+<div id="89249c30" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.special <span class="im">as</span> special</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -386,26 +402,11 @@ L(\lambda) = \frac{e^{-n\lambda} \lambda\prod_{i=1}^{n} Y_i}{\prod_{i=1}^{n} Y_i
 <section id="plotting-the-log-likelihood-function" class="level3">
 <h3 class="anchored" data-anchor-id="plotting-the-log-likelihood-function">Plotting the Log-Likelihood Function</h3>
 <p>Now that we have our log-likelihood function coded, we can plot it to visualize how the log-likelihood changes with different values of <span class="math inline">\(\lambda\)</span>. We will use the observed number of patents as the input for <span class="math inline">\(Y\)</span> and plot <span class="math inline">\(\lambda\)</span> on the horizontal axis and the log-likelihood on the vertical axis.</p>
-<div id="aaacb5af" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming Y is the observed number of patents for each firm</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> blueprinty[<span class="st">"patents"</span>].to_numpy()</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a range of lambda values to evaluate the log-likelihood function</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>lambda_values <span class="op">=</span> np.linspace(<span class="fl">0.1</span>, <span class="dv">10</span>, <span class="dv">100</span>)  <span class="co"># Avoid lambda = 0 to prevent log(0)</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>log_likelihood_values <span class="op">=</span> [poisson_loglikelihood(lambda_, Y) <span class="cf">for</span> lambda_ <span class="kw">in</span> lambda_values]</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.plot(lambda_values, log_likelihood_values, label<span class="op">=</span><span class="st">'Log-Likelihood'</span>, color<span class="op">=</span><span class="st">'#C3D350'</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Lambda (λ)'</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Log-Likelihood'</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Log-Likelihood Function for Poisson Model'</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span>np.mean(Y), color<span class="op">=</span><span class="st">'#5e2f78'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Sample Mean (MLE)'</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0fd48f06" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hw3_questions_files/figure-html/cell-6-output-1.png" width="844" height="523" class="figure-img"></p>
+<p><img src="hw3_questions_files/figure-html/cell-8-output-1.png" width="844" height="523" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -427,18 +428,18 @@ L(\lambda) = \frac{e^{-n\lambda} \lambda\prod_{i=1}^{n} Y_i}{\prod_{i=1}^{n} Y_i
 <section id="finding-the-mle-numerically" class="level2">
 <h2 class="anchored" data-anchor-id="finding-the-mle-numerically">Finding the MLE Numerically</h2>
 <p>Now we can find the MLE numerically by maximizing our log-likelihood function using Python’s <code>scipy.optimize</code> module. We will use the <code>minimize</code> function to find the value of <span class="math inline">\(\lambda\)</span> that maximizes the log-likelihood. Since <code>minimize</code> minimizes a function, we will minimize the negative log-likelihood instead.</p>
-<div id="47df6cb8" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to minimize the negative log-likelihood</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> negative_loglikelihood(lambda_):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>poisson_loglikelihood(lambda_, Y)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimize to find lambda that minimizes the negative log-likelihood</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> minimize(negative_loglikelihood, x0 <span class="op">=</span> np.mean(Y), bounds<span class="op">=</span>[(<span class="fl">0.1</span>, <span class="va">None</span>)])</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Start at the sample mean and ensure lambda is positive</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>mle_lambda <span class="op">=</span> result.x[<span class="dv">0</span>]</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"MLE for lambda: </span><span class="sc">{</span>mle_lambda<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sample mean (MLE): </span><span class="sc">{</span>np<span class="sc">.</span>mean(Y)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c36a754f" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to minimize the negative log-likelihood</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> negative_loglikelihood(lambda_):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>poisson_loglikelihood(lambda_, Y)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimize to find lambda that minimizes the negative log-likelihood</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> minimize(negative_loglikelihood, x0 <span class="op">=</span> np.mean(Y), bounds<span class="op">=</span>[(<span class="fl">0.1</span>, <span class="va">None</span>)])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Start at the sample mean and ensure lambda is positive</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>mle_lambda <span class="op">=</span> result.x[<span class="dv">0</span>]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"MLE for lambda: </span><span class="sc">{</span>mle_lambda<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sample mean (MLE): </span><span class="sc">{</span>np<span class="sc">.</span>mean(Y)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>MLE for lambda: 3.6846666666666668
 Sample mean (MLE): 3.6846666666666668</code></pre>
@@ -468,8 +469,9 @@ $$
 <!-- - If you're feeling mathematical, take the first derivative of the log-likelihood, set it equal to zero, and solve for $\lambda$. You will find $\hat\lambda_{\text{MLE}} = \bar{Y}$, which "feels right" because the mean of a Poisson distribution is $\lambda$. -->
 <!-- - Find the MLE numerically by maximizing your log-likelihood function with R's `optim()` or Python's `sp.optimize()`. Compare your numerical answer to the sample mean — they should be (nearly) identical, and you should explain to the reader why. -->
 </section>
-<section id="poisson-regression" class="level2">
-<h2 class="anchored" data-anchor-id="poisson-regression">Poisson Regression</h2>
+</section>
+<section id="poisson-regression" class="level1">
+<h1>Poisson Regression</h1>
 <p>Now we have a simple Poisson model where every firm has the same patent rate <span class="math inline">\(\lambda\)</span>. However, we know that firms differ in their characteristics (e.g., age, region, customer status), and these characteristics likely influence their patent counts. To account for this heterogeneity, we can extend our model to a Poisson regression model where each firm’s rate parameter <span class="math inline">\(\lambda_i\)</span> depends on its own characteristics. <span class="math display">\[
 Y_i \sim \text{Poisson}(\lambda_i) \qquad \text{where} \qquad \lambda_i = \exp(X_i'\beta)
 \]</span></p>
@@ -477,29 +479,28 @@ Y_i \sim \text{Poisson}(\lambda_i) \qquad \text{where} \qquad \lambda_i = \exp(X
 <h4 class="anchored" data-anchor-id="why-do-we-do-this">Why Do We Do This?</h4>
 <p>Instead of assuming every firm has the same patent rate <span class="math inline">\(\lambda\)</span>, we now let <span class="math inline">\(\lambda\)</span> vary across firms as a function of age, region, and customer status. This allows us to capture the influence of these characteristics on patent counts and to isolate the effect of being a Blueprinty customer while controlling for other factors. We use <span class="math inline">\(\exp(\cdot)\)</span> as the inverse link function because <span class="math inline">\(\lambda_i\)</span> must be positive (since it represents a rate), but <span class="math inline">\(X_i'\beta\)</span> can be any real number. The exponential function ensures that <span class="math inline">\(\lambda_i\)</span> stays on the positive real line, which is necessary for the Poisson model to be valid. This is a key feature of Poisson regression: it models the log of the expected count as a linear function of the predictors, which allows for a multiplicative effect of the predictors on the expected count.</p>
 </section>
-</section>
 <section id="updating-the-log-likelihood-function-for-poisson-regression" class="level2">
 <h2 class="anchored" data-anchor-id="updating-the-log-likelihood-function-for-poisson-regression">Updating the Log-Likelihood Function for Poisson Regression</h2>
 <p>Now we can update our log-likelihood function to take in a covariate matrix <span class="math inline">\(X\)</span> and a parameter vector <span class="math inline">\(\beta\)</span> in place of the scalar <span class="math inline">\(\lambda\)</span>. The log-likelihood for the Poisson regression model can be written as: <span class="math display">\[
 \ell(\beta) = \sum_{i=1}^{n} \left( -\exp(X_i'\beta) + Y_i X_i'\beta - \ln(Y_i!) \right)
 \]</span></p>
 <p>This function takes into account the fact that each firm’s rate parameter <span class="math inline">\(\lambda_i\)</span> is now a function of its characteristics through the linear predictor <span class="math inline">\(X_i'\beta\)</span>. The first term <span class="math inline">\(-\exp(X_i'\beta)\)</span> represents the contribution of the expected count, the second term <span class="math inline">\(Y_i X_i'\beta\)</span> represents the contribution of the observed count, and the third term <span class="math inline">\(-\ln(Y_i!)\)</span> is the same as before, representing the contribution of the factorial term in the Poisson PMF. We can implement this log-likelihood function in Python as follows:</p>
-<div id="d744eede" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poisson_regression_loglikelihood(beta, Y, X):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Linear predictor X * beta</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    lin_pred <span class="op">=</span> np.dot(X, beta)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Expected mean: lambda = exp(X * beta)</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    expected_count <span class="op">=</span> np.exp(lin_pred)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Log-likelihood</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    log_likelihood <span class="op">=</span> np.<span class="bu">sum</span>(<span class="op">-</span>expected_count <span class="op">+</span> Y <span class="op">*</span> lin_pred <span class="op">-</span> special.gammaln(Y <span class="op">+</span> <span class="dv">1</span>))</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> log_likelihood</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9f8a5cc1" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poisson_regression_loglikelihood(beta, Y, X):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Linear predictor X * beta</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    lin_pred <span class="op">=</span> np.dot(X, beta)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Expected mean: lambda = exp(X * beta)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    expected_count <span class="op">=</span> np.exp(lin_pred)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Log-likelihood</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    log_likelihood <span class="op">=</span> np.<span class="bu">sum</span>(<span class="op">-</span>expected_count <span class="op">+</span> Y <span class="op">*</span> lin_pred <span class="op">-</span> special.gammaln(Y <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> log_likelihood</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We will construct <span class="math inline">\(X\)</span> so that the first column is all 1’s (for the intercept), followed by columns for age, age squared, binary indicators for all but one of the regions, and the binary customer variable. We include age squared because the relationship between age and patenting is unlikely to be perfectly linear — it may be that very young firms and very old firms have lower patent counts than middle-aged firms. We must drop one region to avoid perfect collinearity with the intercept; if we included all regions, we would have a situation where the sum of the region indicators equals 1 for every observation, which would make it impossible to estimate the coefficients uniquely.</p>
 </section>
 <section id="finding-mle-for-poisson-regression" class="level2">
 <h2 class="anchored" data-anchor-id="finding-mle-for-poisson-regression">Finding MLE for Poisson Regression</h2>
 <p>Now we can use <code>scipy.optimize.minimize</code> to find the MLE <span class="math inline">\(\hat\beta\)</span> for the Poisson regression model. We will minimize the negative log-likelihood function, and we will also ask the optimizer to return the Hessian so that we can compute standard errors for the coefficients. The standard errors are the square roots of the diagonal of the negative inverse Hessian.</p>
-<div id="3361e71d" class="cell" data-execution_count="9">
+<div id="c6b7ece0" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>Optimization terminated successfully.
          Current function value: 3258.072145
@@ -519,7 +520,7 @@ Southwest     0.050576        0.047198
 </div>
 </div>
 <p>Let’s check our results by fitting the same model Python’s <code>statsmodels.api.GLM()</code>. The coefficient estimates should match closely; the standard errors may differ slightly due to the numerical approximation of the Hessian, which is a common issue when using optimization routines to estimate standard errors. The exact values of the standard errors can be sensitive to the convergence criteria and the numerical precision of the optimization algorithm, so it’s not uncommon to see some discrepancies between different methods of estimation. However, as long as the coefficient estimates are consistent across methods, we can be confident in our findings.</p>
-<div id="04a8fcf6" class="cell" data-execution_count="10">
+<div id="205fdcd0" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>                 Generalized Linear Model Regression Results                  
 ==============================================================================
@@ -529,7 +530,7 @@ Model Family:                 Poisson   Df Model:                            7
 Link Function:                    Log   Scale:                          1.0000
 Method:                          IRLS   Log-Likelihood:                -3258.1
 Date:                Sun, 17 May 2026   Deviance:                       2143.3
-Time:                        23:01:50   Pearson chi2:                 2.07e+03
+Time:                        23:47:00   Pearson chi2:                 2.07e+03
 No. Iterations:                     5   Pseudo R-squ. (CS):             0.1360
 Covariance Type:            nonrobust                                         
 ==============================================================================
@@ -546,18 +547,7 @@ x7             0.2076      0.031      6.719      0.000       0.147       0.268
 ==============================================================================</code></pre>
 </div>
 </div>
-<div id="5d7dff31" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a Table that Compares Coefficients and Standard Errors from Both Methods</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>statsmodels_coefs <span class="op">=</span> results.params</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>statsmodels_se <span class="op">=</span> results.bse</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>comparison_table <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Feature'</span>: feature_names,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Manual Coefficient'</span>: mle_beta,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Manual SE'</span>: standard_errors,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Statsmodels Coefficient'</span>: statsmodels_coefs,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Statsmodels SE'</span>: statsmodels_se</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(comparison_table.to_string(index<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="341a261e" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>  Feature  Manual Coefficient  Manual SE  Statsmodels Coefficient  Statsmodels SE
 Intercept           -0.508920   0.183179                -0.508920        0.183179
@@ -599,24 +589,12 @@ $$
 ::: -->
 </section>
 </section>
-<section id="the-effect-of-blueprintys-software" class="level2">
-<h2 class="anchored" data-anchor-id="the-effect-of-blueprintys-software">The Effect of Blueprinty’s Software</h2>
+</section>
+<section id="the-effect-of-blueprintys-software" class="level1">
+<h1>The Effect of Blueprinty’s Software</h1>
 <p>Because the coefficients from the Poisson regression are not the most interpretable as “additional patents,” (we interpreted them as log-rates) we will use our fitted model to construct a more interpretable estimate of the average effect of being a Blueprinty customer on patent counts, holding age and region fixed at their observed values for each firm.</p>
 <p>First, we will create two counterfactual datasets: one where every firm’s <code>iscustomer</code> value is set to 0 (non-customer scenario) and one where every firm’s <code>iscustomer</code> value is set to 1 (customer scenario). Then, we will use our fitted model to predict the expected number of patents for every firm under each counterfactual scenario, producing two vectors of predicted counts: <span class="math inline">\(\hat{y}_0\)</span> for the non-customer scenario and <span class="math inline">\(\hat{y}_1\)</span> for the customer scenario. Finally, we will compute the average difference between these two vectors, <span class="math inline">\(\hat{y}_1 - \hat{y}_0\)</span>, to estimate the average effect of being a Blueprinty customer on patent counts.</p>
-<div id="32d80887" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create counterfactual datasets</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>X_0 <span class="op">=</span> X.copy()  <span class="co"># non-customer scenario</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>X_0[:, <span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span>  <span class="co"># customer variable to 0</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>X_1 <span class="op">=</span> X.copy()  <span class="co"># customer scenario</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>X_1[:, <span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span>  <span class="co"># customer variable to 1</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict expected number of patents under each scenario</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>hat_y_0 <span class="op">=</span> np.exp(np.dot(X_0, mle_beta))  <span class="co"># predicted counts for non-customer</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>hat_y_1 <span class="op">=</span> np.exp(np.dot(X_1, mle_beta))  <span class="co"># predicted counts for customer</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># average effect of being a customer</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>average_effect <span class="op">=</span> np.mean(hat_y_1 <span class="op">-</span> hat_y_0)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated average effect of being a Blueprinty customer on patent counts: </span><span class="sc">{</span>average_effect<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="03d8b9be" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <pre><code>Estimated average effect of being a Blueprinty customer on patent counts: 0.79</code></pre>
 </div>
@@ -634,10 +612,18 @@ $$
 <!-- - Compute the average of $\hat{y}_1 - \hat{y}_0$. This is your estimate of the average effect of being a Blueprinty customer, holding age and region fixed at their observed values for each firm. -->
 <!-- - Report the result and interpret it for the reader. Conclude with a careful statement about what the analysis does and does not establish: it provides evidence consistent with Blueprinty's marketing claim, but because this is an observational study (not a randomized experiment), we cannot rule out unobserved characteristics that differ between customers and non-customers and could also drive patent counts.
 ::: -->
-
-
 </section>
 </section>
+<section id="key-takeaways" class="level1">
+<h1>Key Takeaways</h1>
+<ul>
+<li>The Poisson distribution is a natural choice for modeling count data, such as the number of patents awarded to firms, because it is defined for non-negative integers and has the property that its mean is equal to its variance.</li>
+<li>The log-likelihood function for a Poisson model can be derived from the probability mass function, and the MLE for the rate parameter <span class="math inline">\(\lambda\)</span> is the sample mean of the observed counts.</li>
+<li>Poisson regression allows us to model the expected count as a function of covariates, and the coefficients can be interpreted in terms of log changes in the expected count.</li>
+<li>When interpreting the results of a Poisson regression, it is important to consider the signs and magnitudes of the coefficients, as well as the potential for confounding factors in observational data. While we may find an association between being a customer of Blueprinty’s software and having more patents, we cannot make a definitive causal claim without ruling out the possibility of unobserved confounders.</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

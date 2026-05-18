@@ -28,14 +28,7 @@ However, this is a non-trivial claim to evaluate: Blueprinty's customers are not
 
 
 ## Exploring the Data
-
-::: {.callout-note}
-- Read in the data from `blueprinty.csv`.
-
-- Compare histograms of the number of patents by customer status (customers vs non-customers) and report the means of each group. Place the two histograms side by side with consistent x-axis scales so they are easy to compare. After the plots, write a few sentences describing what you observe.
-
-- Blueprinty's customers are not selected at random. It may be important to account for systematic differences in firm age and regional location between customers and non-customers. Compare the distribution of regions by customer status, and compare histograms of firm age by customer status. After each comparison, write a few sentences describing what you observe and explain to the reader why these differences matter for the analysis that follows.
-:::
+We can construct two distribution histograms showing the number of patents awarded to customers and non-customers, and we can report the means of each group. This will give us a preliminary sense of whether there is an association between being a customer and having more patents, but we will need to be careful in interpreting these results because they do not account for potential confounding factors.
 
 ```{python}
 #| echo: false
@@ -44,20 +37,68 @@ blueprinty = pl.read_csv("/home/jovyan/MSBA/spring/mgta_495/quarto_website/proje
 ```
 
 ```{python}
-#histograms of number of patents by customer status
-#| echo: true
+#| echo: false
 #| output: true
 import matplotlib.pyplot as plt
 import seaborn as sns
-data = blueprinty.group_by("iscustomer").agg(pl.col("patents").mean())
-df = data.to_pandas()
 
-plt.figure(figsize=(8, 6))
-sns.barplot(data=df, x="iscustomer", y="patents", edgecolor="black", color = '#C3D350')
-plt.xlabel("Is A Customer")
-plt.ylabel("Average Number of Patents")
-plt.title("Average Patents by Customer Status")
-plt.show()
+# Clean data extraction
+data = blueprinty.to_pandas()
+customers = data[data["iscustomer"] == 1]["patents"]
+non_customers = data[data["iscustomer"] == 0]["patents"]
+
+# Calculate means
+mean_cust = customers.mean()
+mean_non_cust = non_customers.mean()
+
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 6), sharex=True, sharey=True)
+
+# Plot Customers
+sns.histplot(
+    customers,
+    discrete = True,
+    bins=20,
+    kde=True,
+    color="#C3D350",
+    edgecolor="black",
+    alpha=0.6,
+    ax=axes[0],
+)
+axes[0].axvline(
+    mean_cust,
+    color="black",
+    linestyle="--",
+    linewidth=2,
+    label=f"Mean: {mean_cust:.2f}",
+)
+axes[0].set_title("Number of Patents for Customers")
+axes[0].set_xlabel("Number of Patents")
+axes[0].set_ylabel("Frequency")
+axes[0].legend()
+
+# Plot Non-Customers
+sns.histplot(
+    non_customers,
+    discrete = True,
+    bins=20,
+    kde=True,
+    color="#5e2f78",
+    edgecolor="black",
+    alpha=0.6,
+    ax=axes[1],
+)
+axes[1].axvline(
+    mean_non_cust,
+    color="black",
+    linestyle="--",
+    linewidth=2,
+    label=f"Mean: {mean_non_cust:.2f}",
+)
+axes[1].set_title("Number of Patents for Non-Customers")
+axes[1].set_xlabel("Number of Patents")
+axes[1].set_ylabel("Frequency")
+axes[1].legend()
 
 ```
 
@@ -67,12 +108,106 @@ plt.show()
 means = blueprinty.group_by("iscustomer").agg(pl.col("patents").mean())
 print(means)
 ```
-
 ## What Does the Data Show?
 If we compare the two histograms, we are able to compare the means of the two groups. We see that the mean number of patents for customers is 4.133, while the mean number of patents for non-customers is 3.47. This suggests that customers of Blueprinty's software have a higher average number of patents than non-customers. However, this raw difference does not account for potential confounding factors such as firm age and regional location, which may also influence patent counts.
 
 
-## A Simple Poisson Model via Maximum Likelihood
+Blueprinty's customers are not selected at randoms, it may be important to account for systematic differences in firm age and regional location between customers and non-customers. To explore this, we can compare the distribution of regions by customer status and compare histograms of firm age by customer status. This will help us understand whether there are systematic differences in these characteristics between customers and non-customers, which could confound our analysis of the effect of using Blueprinty's software on patent counts.
+
+#### Histograms of Region by Customer Status
+```{python}
+#| echo: false
+#| output: true
+data = data
+# regions by customer status
+region_counts = data.groupby(["iscustomer", "region"]).size().unstack(fill_value=0)
+print(region_counts)
+#plot histograms of region by customer status
+plt.figure(figsize=(10, 6))
+sns.countplot(x="region", hue="iscustomer", data=data, palette=["#C3D350", "#5e2f78"])
+```
+Our preliminary analysis of the distribution of regions by customer status shows that there are some differences in regional location between customers and non-customers. For example, a higher proportion of customers are located in the Northeast and South regions compared to non-customers, while a higher proportion of non-customers are located in the Northwest region compared to customers. These regional differences could potentially confound our analysis of the effect of using Blueprinty's software on patent counts, as certain regions may have more patent activity than others. Therefore, it is important to account for these regional differences in our subsequent analysis.
+
+#### Histograms of Firm Age by Customer Status
+```{python}
+#| echo: false
+#| output: true
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Extract data segments
+customers_age = data[data["iscustomer"] == 1]["age"]
+non_customers_age = data[data["iscustomer"] == 0]["age"]
+
+# Calculate mean ages
+mean_cust_age = customers_age.mean()
+mean_non_cust_age = non_customers_age.mean()
+
+# Create side-by-side subplots with shared X and Y axes
+fig, axes = plt.subplots(1, 2, figsize=(12, 6), sharex=True, sharey=True)
+
+# Plot 1: Customers Age Distribution (Fixed: ax=axes[0])
+sns.histplot(
+    data=data[data["iscustomer"] == 1],
+    x="age",
+    bins=20,
+    kde=True,
+    color="#C3D350",
+    edgecolor="black",
+    alpha=0.6,
+    ax=axes[0],  # <-- Check this line in your code
+)
+axes[0].axvline(
+    mean_cust_age,
+    color="black",
+    linestyle="--",
+    linewidth=2,
+    label=f"Mean Age: {mean_cust_age:.1f}",
+)
+axes[0].set_title("Customer Age Distribution")
+axes[0].set_xlabel("Age")
+axes[0].set_ylabel("Frequency")
+axes[0].legend()
+
+# Plot 2: Non-Customers Age Distribution (Fixed: ax=axes[1])
+sns.histplot(
+    data=data[data["iscustomer"] == 0],
+    x="age",
+    bins=20,
+    kde=True,
+    color="#5e2f78",
+    edgecolor="black",
+    alpha=0.6,
+    ax=axes[1],  # <-- Check this line in your code
+)
+axes[1].axvline(
+    mean_non_cust_age,
+    color="black",
+    linestyle="--",
+    linewidth=2,
+    label=f"Mean Age: {mean_non_cust_age:.1f}",
+)
+axes[1].set_title("Non-Customer Age Distribution")
+axes[1].set_xlabel("Age")
+axes[1].set_ylabel("Frequency")
+axes[1].legend()
+
+plt.tight_layout()
+plt.show()
+```
+
+Our preliminary analysis of the distribution of firm age by customer status shows that there are some differences in age between customers and non-customers. Customers tend to be older than the average non-customer with an average age of 26.9 compared to the non-customer with an average age of 26.1. There are a smaller number of firms for Blueprinty than non-customers.
+
+<!-- ::: {.callout-note}
+- Read in the data from `blueprinty.csv`.
+
+- Compare histograms of the number of patents by customer status (customers vs non-customers) and report the means of each group. Place the two histograms side by side with consistent x-axis scales so they are easy to compare. After the plots, write a few sentences describing what you observe.
+
+- Blueprinty's customers are not selected at random. It may be important to account for systematic differences in firm age and regional location between customers and non-customers. Compare the distribution of regions by customer status, and compare histograms of firm age by customer status. After each comparison, write a few sentences describing what you observe and explain to the reader why these differences matter for the analysis that follows.
+:::
+ -->
+
+# A Simple Poisson Model via Maximum Likelihood
 
 ::: {.callout-note}
 The **Poisson distribution** is a discrete probability distribution that models the number of events occurring within a fixed interval of time or space, given a constant average rate of occurrence.
@@ -150,6 +285,8 @@ This function takes in a scalar $\lambda$ and a vector of observed counts $Y$, a
 ### Plotting the Log-Likelihood Function
 Now that we have our log-likelihood function coded, we can plot it to visualize how the log-likelihood changes with different values of $\lambda$. We will use the observed number of patents as the input for $Y$ and plot $\lambda$ on the horizontal axis and the log-likelihood on the vertical axis.
 ```{python}
+# | echo: false
+# | output: true
 import matplotlib.pyplot as plt
 # Assuming Y is the observed number of patents for each firm
 Y = blueprinty["patents"].to_numpy()
@@ -232,7 +369,7 @@ $$
 <!-- - Find the MLE numerically by maximizing your log-likelihood function with R's `optim()` or Python's `sp.optimize()`. Compare your numerical answer to the sample mean — they should be (nearly) identical, and you should explain to the reader why. -->
 
 
-## Poisson Regression
+# Poisson Regression
 
 Now we have a simple Poisson model where every firm has the same patent rate $\lambda$. However, we know that firms differ in their characteristics (e.g., age, region, customer status), and these characteristics likely influence their patent counts. To account for this heterogeneity, we can extend our model to a Poisson regression model where each firm's rate parameter $\lambda_i$ depends on its own characteristics.
 $$
@@ -358,7 +495,11 @@ print(results.summary())
 ```
 
 ```{python}
+# | echo: false
+# | output: true
+
 # Creating a Table that Compares Coefficients and Standard Errors from Both Methods
+
 statsmodels_coefs = results.params
 statsmodels_se = results.bse
 comparison_table = pd.DataFrame({
@@ -414,13 +555,15 @@ $$
 ::: -->
 
 
-## The Effect of Blueprinty's Software
+# The Effect of Blueprinty's Software
 
 Because the coefficients from the Poisson regression are not the most interpretable as "additional patents," (we interpreted them as log-rates) we will use our fitted model to construct a more interpretable estimate of the average effect of being a Blueprinty customer on patent counts, holding age and region fixed at their observed values for each firm.
 
 First, we will create two counterfactual datasets: one where every firm's `iscustomer` value is set to 0 (non-customer scenario) and one where every firm's `iscustomer` value is set to 1 (customer scenario). Then, we will use our fitted model to predict the expected number of patents for every firm under each counterfactual scenario, producing two vectors of predicted counts: $\hat{y}_0$ for the non-customer scenario and $\hat{y}_1$ for the customer scenario. Finally, we will compute the average difference between these two vectors, $\hat{y}_1 - \hat{y}_0$, to estimate the average effect of being a Blueprinty customer on patent counts.
 
 ```{python}
+#| echo: false
+#| output: true
 # Create counterfactual datasets
 X_0 = X.copy()  # non-customer scenario
 X_0[:, -1] = 0  # customer variable to 0
@@ -452,3 +595,9 @@ This privdes evidence consistent with Blueprinty's marketing claim that their so
 
 <!-- - Report the result and interpret it for the reader. Conclude with a careful statement about what the analysis does and does not establish: it provides evidence consistent with Blueprinty's marketing claim, but because this is an observational study (not a randomized experiment), we cannot rule out unobserved characteristics that differ between customers and non-customers and could also drive patent counts.
 ::: -->
+
+# Key Takeaways
+- The Poisson distribution is a natural choice for modeling count data, such as the number of patents awarded to firms, because it is defined for non-negative integers and has the property that its mean is equal to its variance.
+- The log-likelihood function for a Poisson model can be derived from the probability mass function, and the MLE for the rate parameter $\lambda$ is the sample mean of the observed counts.
+- Poisson regression allows us to model the expected count as a function of covariates, and the coefficients can be interpreted in terms of log changes in the expected count.
+- When interpreting the results of a Poisson regression, it is important to consider the signs and magnitudes of the coefficients, as well as the potential for confounding factors in observational data. While we may find an association between being a customer of Blueprinty's software and having more patents, we cannot make a definitive causal claim without ruling out the possibility of unobserved confounders.

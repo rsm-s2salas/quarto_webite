@@ -313,7 +313,7 @@ Note
 <h2 class="anchored" data-anchor-id="simulating-data">Simulating Data</h2>
 <p>Realistically, we don’t know the true values of <span class="math inline">\(\pi_A\)</span> and <span class="math inline">\(\pi_B\)</span>, but for the purpose of this exercise we will set them ourselves so that we can study the behavior of our estimator when we know the truth.</p>
 <p>Suppose <span class="math inline">\(\pi_A = 0.22\)</span> and <span class="math inline">\(\pi_B = 0.18\)</span>, so the true difference is <span class="math inline">\(\theta = 0.04\)</span>.</p>
-<div id="cf51a019" class="cell" data-execution_count="1">
+<div id="2b2af09e" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#set seed to ensure reproducibility</span></span>
@@ -327,7 +327,7 @@ Note
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>draws_a <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, prob_a, <span class="dv">1000</span>)</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>draws_b <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, prob_b, <span class="dv">1000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="f3b3f970" class="cell" data-execution_count="2">
+<div id="acba08d8" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>First 10 draws from A: [0 1 0 0 0 0 0 1 0 0]
 First 10 draws from B: [0 0 1 0 0 0 0 1 0 0]</code></pre>
@@ -355,7 +355,7 @@ Note
 </div>
 </div>
 <p>For our estimator, we can utilize the LLN to determine our sample sizes. As we saw, we simulated 1,000 trials of each CTA to give us confidence that <span class="math inline">\(\hat\theta = \bar{X}_A - \bar{X}_B\)</span> will be close to the true <span class="math inline">\(\theta\)</span>.</p>
-<div id="048f6476" class="cell" data-execution_count="3">
+<div id="cd63ef68" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -370,11 +370,11 @@ Note
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate cumulative avg</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>cum_avg <span class="op">=</span> cum_sum<span class="op">/</span>obs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_73689/927848047.py:13: RuntimeWarning: invalid value encountered in divide
+<pre><code>/tmp/ipykernel_6990/927848047.py:13: RuntimeWarning: invalid value encountered in divide
   cum_avg = cum_sum/obs</code></pre>
 </div>
 </div>
-<div id="43a3d7b4" class="cell" data-execution_count="4">
+<div id="c77ec29c" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -407,7 +407,7 @@ Note
 <p>We will compare this bootstrapped standard error to our analytical standard error whose formula is as follows: <span class="math display">\[
 SE(\hat\theta) = \sqrt{\frac{\hat\pi_A(1 - \hat\pi_A)}{n_A} + \frac{\hat\pi_B(1 - \hat\pi_B)}{n_B}}
 \]</span> where <span class="math inline">\(\hat\pi_A\)</span> and <span class="math inline">\(\hat\pi_B\)</span> are the sample proportions and <span class="math inline">\(n_A\)</span> and <span class="math inline">\(n_B\)</span> are the sample sizes.</p>
-<div id="b88b84a7" class="cell" data-execution_count="5">
+<div id="50730eb7" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -509,7 +509,7 @@ Note
 <p>The <strong>Central Limit Theorem</strong> states that the sampling distribution of the sample mean approaches a Normal distribution as the same size <span class="math inline">\(n\)</span> increases, regardless of the population’s original distribution. Large samples create a more precise normal curve around the true population mean. The CLT allows us to infer characteristics about entire populations with sufficiently large samples, even if their distributions are skewed.</p>
 </div>
 </div>
-<div id="f27227e4" class="cell" data-execution_count="6">
+<div id="305e1749" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#define sample sizes</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sample_sizes <span class="op">=</span> [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">500</span>]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -532,7 +532,7 @@ Note
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    results[n] <span class="op">=</span> theta_hats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="95b7de19" class="cell" data-execution_count="7">
+<div id="cb115bd3" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -603,7 +603,7 @@ Note
 </ul>
 <p>This procedure is often called a <strong>t-test</strong>, but this is tied to a different setting in which we have Normally distributed data with an <em>unknown</em> variance. In this case, the ratio of the sample mean to its estimate standard error follows a <strong>t-distribution</strong>. Here, our data is Bernoulli, not Normal, so it does not exactly follow a t-distribution. Instead, the CLT allows us to approximate Normality, and because we estimate a standard error, the resulting test is a <strong>z-test</strong>. For large samples, the t-distribution and the standard Normal are nearly identical, which is why the terminology blurs into each other, but their distinction is important to note.</p>
 <p>Now that we have the fun theoretical terminology out of the way, we can use our simulated data to compute a test statistic and it’s p-value.</p>
-<div id="53e6fb1b" class="cell" data-execution_count="8">
+<div id="04784b19" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#set seed to ensure reproducibility</span></span>
@@ -683,7 +683,7 @@ $$
 <h2 class="anchored" data-anchor-id="the-t-test-as-a-regression">The T-Test as a Regression</h2>
 <p><strong>Fun fact</strong>: our two-sample test that we just ran is mathematically equivalent to a simple linear regression. When we run a standard linear regression, the p-value and z-statistic generated for <span class="math inline">\(\beta_1\)</span> will be the exact same values found in our two-sample test. Both methods evaluate whether the mean difference between two groups is zero, sharing the same null hypothesis.</p>
 <p>The t-test checks if <span class="math inline">\(\mu_1 - \mu_2 = 0\)</span>. The linear regression tests if the slope coefficient <span class="math inline">\(\beta_1 = 0\)</span>, which evaluates if CTA B’s mean sign up rate is statistically different from CTA A’s mean sign up rate.</p>
-<div id="7aeea2f4" class="cell" data-execution_count="9">
+<div id="8311d63e" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
@@ -710,8 +710,8 @@ $$
 Dep. Variable:                      Y   R-squared:                       0.002
 Model:                            OLS   Adj. R-squared:                  0.002
 Method:                 Least Squares   F-statistic:                     4.570
-Date:                Thu, 14 May 2026   Prob (F-statistic):             0.0327
-Time:                        20:04:45   Log-Likelihood:                -991.64
+Date:                Sun, 17 May 2026   Prob (F-statistic):             0.0327
+Time:                        23:47:34   Log-Likelihood:                -991.64
 No. Observations:                2000   AIC:                             1987.
 Df Residuals:                    1998   BIC:                             1998.
 Df Model:                           1                                         
@@ -779,7 +779,7 @@ Note
 </div>
 <p>In a single test where <span class="math inline">\(\alpha = 0.05\)</span>, if <span class="math inline">\(H_0\)</span> is true, we have a 5% chance of a false positive. When we test at at <span class="math inline">\(n\)</span> = 100, … up to 1,000 visitors, each peek is risking crossing that 0.05 threshold. Repeating this at multiple levels, we increase or probability of false positives.</p>
 <p>To demonstrate the danger of peeking, we can simulate this.</p>
-<div id="33ef8cf8" class="cell" data-execution_count="10">
+<div id="fbc32355" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
