@@ -2,6 +2,7 @@
 title: "The Psychology of Marketing Surveys"
 subtitle: "How Conjoint and MaxDiff use language, trade-offs, and choice design"
 author: "Sophia Salas"
+date: 5/2026
 image: "thumbnail.png"
 format:
   revealjs:
