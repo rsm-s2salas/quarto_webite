@@ -1,7 +1,7 @@
 /* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Color palette from custom.scss */
+/* Color palette */
 :root {
   --body-bg: #f4f3f5;
   --body-color: #4B3B47;
@@ -10,7 +10,9 @@
   --purple: #9F84BD;
   --dark: #4B3B47;
   --light: #FDFBFF;
-  --soft-card: rgba(180, 166, 177, 0.35);
+  --soft-card: rgba(180, 166, 177, 0.24);
+  --soft-light: rgba(253, 251, 255, 0.62);
+  --shadow: 0 4px 12px rgba(75, 59, 71, 0.12);
 }
 
 /* ---------- RevealJS base ---------- */
@@ -21,10 +23,9 @@
 
 .reveal {
   font-family: 'Jost', sans-serif !important;
-  font-size: 25px !important;
+  font-size: 22px !important;
   color: var(--body-color) !important;
 }
-
 
 .reveal .slides {
   text-align: left !important;
@@ -32,6 +33,13 @@
 
 .reveal .slides section {
   color: var(--body-color) !important;
+  box-sizing: border-box !important;
+}
+
+/* Keep content slides compact and top-aligned without forcing full-page flex */
+.reveal .slides section:not(.title-slide) {
+  padding: 18px 24px !important;
+  overflow: hidden !important;
 }
 
 /* ---------- Headings ---------- */
@@ -44,44 +52,77 @@
 .reveal h6 {
   font-family: 'Jost', sans-serif !important;
   text-transform: none !important;
-  letter-spacing: 0.02em !important;
+  letter-spacing: 0.01em !important;
 }
 
 .reveal h1 {
-  font-size: 1.9em !important;
-  font-weight: 700 !important;
+  font-size: 2.05em !important;
+  font-weight: 800 !important;
   color: var(--purple) !important;
   text-align: center !important;
 }
 
 .reveal h2 {
-  font-size: 1.25em !important;
-  font-weight: 650 !important;
+  font-size: 1.28em !important;
+  font-weight: 800 !important;
   color: var(--purple) !important;
   border-bottom: 4px solid var(--primary) !important;
-  display: inline-block !important;
-  padding-bottom: 0.15em !important;
-  margin-bottom: 0.75em !important;
+  display: block !important;
+  width: 100% !important;
+  padding-bottom: 0.12em !important;
+  margin: 0 0 0.50em 0 !important;
+  line-height: 1.05 !important;
 }
 
 .reveal h3 {
-  font-size: 0.95em !important;
-  font-weight: 600 !important;
+  font-size: 0.88em !important;
+  font-weight: 800 !important;
   color: var(--primary) !important;
+  margin: 0 0 0.32em 0 !important;
+  line-height: 1.08 !important;
 }
 
-/* Title slide */
+.reveal h4 {
+  font-size: 0.72em !important;
+  font-weight: 850 !important;
+  color: var(--dark) !important;
+  margin: 0 0 0.18em 0 !important;
+  line-height: 1.08 !important;
+}
+
+/* ---------- Title slide ---------- */
+
+.reveal .title-slide {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  min-height: 100% !important;
+  padding: 0 0.8em !important;
+}
+
+.reveal .title-slide h1,
 .reveal .title {
+  font-size: 2.35em !important;
+  font-weight: 850 !important;
   color: var(--purple) !important;
+  margin: 0 0 0.28em 0 !important;
+  line-height: 1.06 !important;
 }
 
+.reveal .title-slide .subtitle,
 .reveal .subtitle {
   color: var(--dark) !important;
-  font-weight: 600 !important;
+  font-size: 0.82em !important;
+  font-weight: 650 !important;
+  margin: 0.15em 0 !important;
 }
 
 .reveal .quarto-title-author-name {
   color: var(--dark) !important;
+  font-size: 0.78em !important;
+  opacity: 0.85 !important;
 }
 
 /* ---------- Body text ---------- */
@@ -89,17 +130,33 @@
 .reveal p,
 .reveal li {
   color: var(--body-color) !important;
-  line-height: 1.45 !important;
+  font-size: 0.72em !important;
+  line-height: 1.18 !important;
+}
+
+.reveal p {
+  margin: 0.15em 0 0.32em 0 !important;
+}
+
+.reveal ul,
+.reveal ol {
+  margin-top: 0.10em !important;
+  margin-bottom: 0.20em !important;
+  padding-left: 1.15em !important;
+}
+
+.reveal li {
+  margin-bottom: 0.12em !important;
 }
 
 .reveal strong {
   color: var(--dark) !important;
-  font-weight: 750 !important;
+  font-weight: 850 !important;
 }
 
 .reveal a {
-  color: var(--primary) !important;
-  font-weight: 600 !important;
+  color: var(--purple) !important;
+  font-weight: 700 !important;
   text-decoration: none !important;
 }
 
@@ -112,21 +169,21 @@
 
 .reveal .good {
   color: var(--secondary) !important;
-  font-weight: 800 !important;
+  font-weight: 850 !important;
 }
 
 .reveal .bad {
   color: #330b53 !important;
-  font-weight: 800 !important;
+  font-weight: 850 !important;
 }
 
 .reveal .highlight {
   color: var(--primary) !important;
-  font-weight: 800 !important;
+  font-weight: 850 !important;
 }
 
 .reveal .small {
-  font-size: 0.7em !important;
+  font-size: 0.68em !important;
 }
 
 .reveal .tiny {
@@ -140,52 +197,77 @@
 }
 
 .reveal .caption {
-  font-size: 0.58em !important;
+  font-size: 0.55em !important;
   color: var(--purple) !important;
-  margin-top: 18px !important;
+  margin-top: 0.45em !important;
 }
 
-.reveal .arrow {
-  font-size: 1 em !important;
+.reveal .lead {
+  font-size: 0.82em !important;
+  line-height: 1.20 !important;
+  margin: 0 0 0.70em 0 !important;
+  max-width: 100% !important;
+}
+
+.reveal .source {
+  font-size: 0.4em !important;
+  line-height: 1.15 !important;
+  margin-top: 0.48em !important;
   color: var(--purple) !important;
-  background: rgba(195, 211, 80, 0.18) !important;
-  border-left: 6px solid var(--primary) !important;
-  padding: 0.45em 0.7em !important;
-  border-radius: 1rem !important;
-  text-align: center !important;
-  margin-top: 14px !important;
-  font-weight: 600 !important;
+  padding: 0.28em 0.55em !important;
 }
 
 .reveal .big {
-  font-size: 1.1em !important;
-  font-weight: 800 !important;
+  font-size: 0.90em !important;
+  font-weight: 850 !important;
+  line-height: 1.12 !important;
 }
 
 /* ---------- Layout ---------- */
 
+.reveal .two-col,
 .reveal .grid2 {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 20px !important;
-  align-items: stretch !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: 28px !important;
+  align-items: start !important;
+  margin-top: 0.25em !important;
 }
 
+.reveal .three-col,
 .reveal .grid3 {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 14px !important;
-  align-items: stretch !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  align-items: start !important;
 }
 
-/* ---------- Cards ---------- */
+.reveal .compact-row {
+  margin-top: 0.70em !important;
+}
+
+.reveal .compact-row > div {
+  border-left: 4px solid var(--primary) !important;
+  padding-left: 10px !important;
+}
+
+/* helper class for slides that need uneven columns */
+.reveal .wide-left {
+  grid-template-columns: 1.15fr 0.85fr !important;
+}
+
+.reveal .wide-right {
+  grid-template-columns: 0.9fr 1.1fr !important;
+}
+
+/* ---------- Callouts and boxes ---------- */
 
 .reveal .card {
   background: var(--soft-card) !important;
-  border: 1px solid rgba(253, 251, 255, 0.565) !important;
-  border-radius: 1rem !important;
-  padding: 14px !important;
-  box-shadow: 0 4px 12px rgba(75, 59, 71, 0.18) !important;
+  border: 1px solid rgba(253, 251, 255, 0.50) !important;
+  border-radius: 0.75rem !important;
+  padding: 11px 13px !important;
+  box-shadow: var(--shadow) !important;
 }
 
 .reveal .card h3 {
@@ -194,22 +276,48 @@
 
 .reveal .callout {
   background: rgba(132, 160, 124, 0.12) !important;
-  border-left: 8px solid var(--primary) !important;
-  padding: 14px 30px !important;
-  border-radius: 1rem !important;
-  margin-top: 14px !important;
-  box-shadow: 0 4px 12px rgba(75, 59, 71, 0.12) !important;
+  border-left: 7px solid var(--primary) !important;
+  padding: 7px 12px !important;
+  border-radius: 0.75rem !important;
+  margin: 0.65em 0 0.55em 0 !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.reveal .callout p {
+  margin: 0 !important;
+}
+
+.reveal .compact {
+  padding: 6px 11px !important;
+}
+
+/* ---------- Option box ---------- */
+
+.reveal .option-box {
+  background: var(--soft-light) !important;
+  border: 2px solid rgba(159, 132, 189, 0.36) !important;
+  border-radius: 0.75rem !important;
+  padding: 11px 13px !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.reveal .option-box h3 {
+  margin-top: 0 !important;
 }
 
 /* ---------- Feature cards ---------- */
 
 .reveal .feature-card {
-  background: rgba(253, 251, 255, 0.65) !important;
-  border: 2px solid rgba(195, 211, 80, 0.35) !important;
-  border-radius: 1rem !important;
-  padding: 10px 14px !important;
-  margin: 6px 0 !important;
-  box-shadow: 0 3px 10px rgba(75, 59, 71, 0.10) !important;
+  background: var(--soft-light) !important;
+  border: 2px solid rgba(195, 211, 80, 0.40) !important;
+  border-radius: 0.75rem !important;
+  padding: 7px 11px !important;
+  margin: 5px 0 !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.reveal .feature-card p {
+  margin: 0 !important;
 }
 
 .reveal .feature-card.most,
@@ -222,23 +330,49 @@
   border-color: #500e13 !important;
 }
 
+/* ---------- Theory cards ---------- */
+
+.reveal .theory-card {
+  background: rgba(159, 132, 189, 0.13) !important;
+  border-left: 5px solid var(--purple) !important;
+  border-radius: 0.55rem !important;
+  padding: 7px 9px !important;
+  margin: 0 0 0.38em 0 !important;
+}
+
+.reveal .theory-card strong {
+  color: var(--purple) !important;
+  font-size: 0.68em !important;
+  line-height: 1.05 !important;
+  display: block !important;
+  margin-bottom: 0.12em !important;
+}
+
+.reveal .theory-card p {
+  margin: 0 !important;
+  font-size: 0.54em !important;
+  line-height: 1.13 !important;
+}
+
 /* ---------- Tables ---------- */
 
 .reveal table {
-  font-size: 0.6em !important;
+  font-size: 0.45em !important;
   border-collapse: collapse !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  width: 100% !important;
+  margin: 0.32em auto 0.40em auto !important;
 }
 
 .reveal table th {
   color: var(--light) !important;
   background: var(--purple) !important;
-  font-weight: 700 !important;
+  font-weight: 750 !important;
+  padding: 5px 8px !important;
 }
 
 .reveal table td {
   color: var(--dark) !important;
+  padding: 4px 8px !important;
 }
 
 .reveal table tr:nth-child(even) {
@@ -247,6 +381,21 @@
 
 .reveal table tr:nth-child(odd) {
   background: rgba(253, 251, 255, 0.55) !important;
+}
+
+/* ---------- Arrow / process line ---------- */
+
+.reveal .arrow {
+  font-size: 0.68em !important;
+  color: var(--purple) !important;
+  background: rgba(195, 211, 80, 0.16) !important;
+  border-left: 8px solid var(--primary) !important;
+  padding: 0.34em 0.55em !important;
+  border-radius: 0.75rem !important;
+  text-align: center !important;
+  margin-top: 0.55em !important;
+  margin-bottom: 0.35em !important;
+  font-weight: 750 !important;
 }
 
 /* ---------- Blockquotes ---------- */
@@ -268,7 +417,7 @@
 
 .reveal .slide-number {
   color: var(--dark) !important;
-  background: rgba(253, 251, 255, 0.65) !important;
+  background: rgba(253, 251, 255, 0.70) !important;
   border-radius: 0.4rem !important;
   padding: 0.2rem 0.45rem !important;
 }

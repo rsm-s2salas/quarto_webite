@@ -1,0 +1,395 @@
+---
+title: "The Psychology of Marketing Surveys"
+subtitle: "How Conjoint and MaxDiff use language, trade-offs, and choice design"
+author: "Sophia Salas"
+image: "thumbnail.png"
+format:
+  revealjs:
+    embed-resources: true
+    theme: black
+    slide-number: true
+    hash: true
+    css: slides.css
+---
+
+## Why Survey Language Matters
+
+<p class="lead">
+Marketing surveys are not neutral. The words we use shape how customers think, what identity they perform, and which trade-offs they notice.
+</p>
+
+<div class="two-col">
+<div>
+
+### Traditional survey wording
+
+- “Would you buy this?”
+- “How important is this feature?”
+- “What would you pay?”
+- “Rate this 1–10.”
+
+</div>
+<div>
+
+### Choice-based survey wording
+
+- “Which option would you choose?”
+- “Which is most and least important?”
+- “Would you buy at this price?”
+- “Which bundle feels worth it?”
+
+</div>
+</div>
+
+<div class="callout compact">
+<p><span class="highlight">Main idea:</span> Better marketing surveys do not just ask for preferences. They design situations where preferences are <em>revealed through choices</em>.</p>
+</div>
+
+<div class="three-col compact-row">
+<div>
+<h4>Framing</h4>
+<p>Language changes what people notice.</p>
+</div>
+<div>
+<h4>Identity</h4>
+<p>Answers reflect how people want to appear.</p>
+</div>
+<div>
+<h4>Trade-offs</h4>
+<p>Better questions make sacrifice unavoidable.</p>
+</div>
+</div>
+
+<p class="source">
+Sources:
+<a href="https://www.jstor.org/stable/10.1086/209535" target="_blank">Bettman, Luce & Payne</a>;
+<a href="https://sites.socsci.uci.edu/~bskyrms/bio/readings/tversky_k_heuristics_biases.pdf" target="_blank">Tversky & Kahneman</a>;
+</p>
+
+
+## Conjoint: Building a Realistic Shopping Task
+
+<p class="lead">
+Conjoint changes the question from <span class="bad">“What features do you like?”</span> to <span class="good">“Which product bundle would you choose?”</span>
+</p>
+
+<div class="two-col">
+<div>
+
+### How conjoint is constructed
+
+- Choose product **attributes**
+- Define **levels** for each attribute
+- Build choice tasks from different combinations
+- Randomize and balance screens
+- Include a **none option** when realistic
+- Estimate **part-worth utilities** for each level
+
+</div>
+
+<div class="option-box">
+
+<h3>Example: Subscription bundle</h3>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Option A</th>
+<th>Option B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>$49/mo</td>
+<td>$59/mo</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Fast</td>
+<td>Standard</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>Basic</td>
+<td>Premium</td>
+</tr>
+<tr>
+<td>Packaging</td>
+<td>Standard</td>
+<td>Eco-friendly</td>
+</tr>
+</tbody>
+</table>
+
+<p class="good">Which option would you choose? Or neither?</p>
+
+</div>
+</div>
+
+<div class="callout compact">
+<p><span class="highlight">Why “none” matters:</span> without it, respondents may be forced to choose a product they would never actually buy.</p>
+</div>
+
+<p class="source">
+Sources: <a href="https://www.gsb.stanford.edu/faculty-research/publications/conjoint-analysis-marketing-new-developments-implications-research" target="_blank">Green & Srinivasan</a>.
+</p>
+
+
+## Why Conjoint Works: Trade-Offs Over Wish Lists
+
+<div class="two-col">
+<div>
+
+### Compared with direct surveys
+
+Direct questions isolate features:
+
+- “Do you like fast delivery?”
+- “Is sustainability important?”
+- “Would you pay more?”
+- “What is your ideal product?”
+
+<p class="bad">Problem: customers can want everything in theory.</p>
+
+</div>
+
+<div>
+
+### Conjoint forces realistic compromise
+
+Choice tasks combine positives and negatives:
+
+- Fast shipping, but higher price
+- Eco packaging, but slower delivery
+- Premium support, but less convenience
+- Better brand, but fewer features
+
+<p class="good">Result: marketers estimate what people actually give up for each feature.</p>
+
+</div>
+</div>
+
+<div class="three-col compact-row">
+<div>
+<h4>Product</h4>
+<p>Which features create value?</p>
+</div>
+
+<div>
+<h4>Price</h4>
+<p>What are people willing to pay?</p>
+</div>
+
+<div>
+<h4>Segmentation</h4>
+<p>Which groups value different bundles?</p>
+</div>
+</div>
+
+<p class="arrow">Choice tasks   →   part-worth utilities   →   willingness to pay   → product and price decisions</p>
+
+<p class="source">
+Sources:
+<a href="https://www.gsb.stanford.edu/faculty-research/publications/conjoint-analysis-marketing-new-developments-implications-research" target="_blank">Green & Srinivasan</a>
+</p>
+
+
+## The Psychology Behind Conjoint
+
+<p class="lead">
+Conjoint works because it transforms vague stated preferences into structured, multi-attribute choice behavior.
+</p>
+
+<div class="two-col">
+<div>
+
+### Psychological theories
+
+<div class="theory-card">
+<strong>Multi-Attribute Utility Theory</strong>
+<p>Products are bundles of attributes. Total value comes from the perceived value of each attribute level.</p>
+</div>
+
+<div class="theory-card">
+<strong>Theory of Conjoint Measurement</strong>
+<p>Qualitative judgments like “I prefer A to B” can be translated into numerical preference scales.</p>
+</div>
+
+<div class="theory-card">
+<strong>Random Utility Theory</strong>
+<p>Choice has a systematic part we can model and a random part we cannot fully observe.</p>
+</div>
+
+</div>
+
+<div>
+
+### How conjoint uses them
+
+- Varies attributes and levels across tasks
+- Estimates part-worth utilities from choices
+- Treats price as one attribute among many
+- Models imperfect but predictable choice behavior
+- Reduces vague self-reporting by forcing bundle-level decisions
+
+<p class="good">The survey does not ask people to explain their utility function. It infers it from choices.</p>
+
+</div>
+</div>
+
+<div class="callout compact">
+<p><span class="highlight">Bias mitigation:</span> social desirability is weaker when sustainability, price, brand, and convenience are bundled together. Respondents must trade off the full package.</p>
+</div>
+
+<p class="source">
+Sources:
+<a href="https://www.jstor.org/stable/10.1086/209535" target="_blank">Bettman, Luce & Payne</a>;
+<a href="https://www.gsb.stanford.edu/faculty-research/publications/conjoint-analysis-marketing-new-developments-implications-research" target="_blank">Green & Srinivasan</a>
+</p>
+
+
+
+## MaxDiff: Building a Prioritization Task
+
+<p class="lead">
+MaxDiff changes the question from <span class="bad">“How important is each item?”</span> to <span class="good">“Which is most and least important?”</span>
+</p>
+
+<div class="two-col">
+<div>
+
+### How MaxDiff is constructed
+
+- Start with a long list of features, claims, or benefits
+- Show small sets of **3–6 items**
+- Ask for the **most** and **least** preferred
+- Repeat across multiple screens
+- Balance item exposure and pairings
+- Estimate a preference score for every item
+
+</div>
+<div>
+
+### Example: Feature priorities
+
+<div class="feature-card most"><p><span class="good">MOST</span>: Lower price</p></div>
+<div class="feature-card"><p>Better battery life</p></div>
+<div class="feature-card"><p>Better camera</p></div>
+<div class="feature-card least"><p><span class="bad">LEAST</span>: Brand reputation</p></div>
+
+</div>
+</div>
+
+<div class="callout compact">
+<p><span class="highlight">Key difference from rating scales:</span> respondents cannot mark every feature as “very important.” They must prioritize.</p>
+</div>
+
+<p class="source">
+Sources:
+<a href="https://www.qualtrics.com/support/conjoint-project/getting-started-conjoints/getting-started-maxdiff/maxdiff-analysis-white-paper/" target="_blank">Qualtrics MaxDiff overview</a>.
+</p>
+
+
+
+## The Psychology Behind MaxDiff
+
+<div class="two-col">
+<div>
+
+### Psychological theories
+
+<div class="theory-card">
+<strong>Thurstonian Scaling</strong>
+<p>When people compare items, each item creates an underlying psychological value that can be recovered from repeated judgments.</p>
+</div>
+
+<div class="theory-card">
+<strong>Elimination by Aspects</strong>
+<p>People simplify complex choices by focusing on attributes that matter and eliminating weaker options.</p>
+</div>
+
+<div class="theory-card">
+<strong>Random Utility Theory</strong>
+<p>People choose the option or pair with the highest perceived utility difference, plus some noise.</p>
+</div>
+
+</div>
+<div>
+
+### How MaxDiff uses them
+
+- Asks for extremes because best/worst is easier than exact ranking
+- Breaks long lists into small sets to reduce cognitive load
+- Forces trade-offs to prevent “everything is important”
+- Removes scale-use bias by avoiding 1–10 ratings
+- Produces a relative hierarchy of preferences
+
+<p class="good">MaxDiff works because people are better at comparative judgment than absolute scoring.</p>
+
+</div>
+</div>
+
+<div class="callout compact">
+<p><span class="highlight">Core principle:</span> MaxDiff turns psychological comparison into marketing data.</p>
+</div>
+
+<p class="source">
+Sources:
+<a href="https://www.sciencedirect.com/science/article/abs/pii/S0022249611000964" target="_blank">Marley & Louviere / best-worst choice models</a>;
+<a href="https://www.sciencedirect.com/science/article/pii/0022249672900119" target="_blank">Tversky, Elimination by Aspects</a>
+</p>
+
+
+
+## Conclusion: Better Surveys Create Better Segments
+
+<p class="lead">
+Conjoint and MaxDiff work because they turn vague self-reporting into structured choice behavior — and structured choices reveal how different customers actually value things.
+</p>
+
+<div class="two-col">
+<div>
+
+### Weak survey design gives...
+
+- Inflated purchase intent
+- Vague ratings where everything scores high
+- “Everything is important”
+- Averages that hide meaningful differences
+
+</div>
+<div>
+
+### Choice-based survey design gives...
+
+- Realistic trade-offs
+- Part-worth utilities
+- Willingness to pay estimates
+- Preference scores
+- Preference-based segments
+
+</div>
+</div>
+
+<div class="three-col compact-row">
+<div>
+<h4>Price-sensitive</h4>
+<p>Responds to value language and low-price framing.</p>
+</div>
+<div>
+<h4>Quality-seeking</h4>
+<p>Responds to performance language and feature detail.</p>
+</div>
+<div>
+<h4>Identity-driven</h4>
+<p>Responds to lifestyle language and brand signals.</p>
+</div>
+</div>
+
+<div class="callout">
+<p class="big">Good marketing surveys do not just ask better questions.</p>
+<p class="big">They use psychology to reveal what different customers value, choose, and respond to.</p>
+</div>
+</p>
