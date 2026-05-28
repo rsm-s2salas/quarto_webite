@@ -21,24 +21,22 @@ Marketing surveys are not neutral. The words we use shape how customers think, w
 
 <div class="two-col">
 <div>
-
-### Traditional survey wording
-
-- “Would you buy this?”
-- “How important is this feature?”
-- “What would you pay?”
-- “Rate this 1–10.”
-
+<h3>Traditional survey wording</h3>
+<ul>
+<li>"Would you buy this?"</li>
+<li>"How important is this feature?"</li>
+<li>"What would you pay?"</li>
+<li>"Rate this 1–10."</li>
+</ul>
 </div>
 <div>
-
-### Choice-based survey wording
-
-- “Which option would you choose?”
-- “Which is most and least important?”
-- “Would you buy at this price?”
-- “Which bundle feels worth it?”
-
+<h3>Choice-based survey wording</h3>
+<ul>
+<li>"Which option would you choose?"</li>
+<li>"Which is most and least important?"</li>
+<li>"Would you buy at this price?"</li>
+<li>"Which bundle feels worth it?"</li>
+</ul>
 </div>
 </div>
 
@@ -71,21 +69,20 @@ Sources:
 ## Conjoint: Building a Realistic Shopping Task
 
 <p class="lead">
-Conjoint changes the question from <span class="bad">“What features do you like?”</span> to <span class="good">“Which product bundle would you choose?”</span>
+Conjoint changes the question from <span class="bad">"What features do you like?"</span> to <span class="good">"Which product bundle would you choose?"</span>
 </p>
 
 <div class="two-col">
 <div>
-
-### How conjoint is constructed
-
-- Choose product **attributes**
-- Define **levels** for each attribute
-- Build choice tasks from different combinations
-- Randomize and balance screens
-- Include a **none option** when realistic
-- Estimate **part-worth utilities** for each level
-
+<h3>How conjoint is constructed</h3>
+<ul>
+<li>Choose product <strong>attributes</strong></li>
+<li>Define <strong>levels</strong> for each attribute</li>
+<li>Build choice tasks from different combinations</li>
+<li>Randomize and balance screens</li>
+<li>Include a <strong>none option</strong> when realistic</li>
+<li>Estimate <strong>part-worth utilities</strong> for each level</li>
+</ul>
 </div>
 
 <div class="option-box">
@@ -130,7 +127,7 @@ Conjoint changes the question from <span class="bad">“What features do you lik
 </div>
 
 <div class="callout compact">
-<p><span class="highlight">Why “none” matters:</span> without it, respondents may be forced to choose a product they would never actually buy.</p>
+<p><span class="highlight">Why "none" matters:</span> without it, respondents may be forced to choose a product they would never actually buy.</p>
 </div>
 
 <p class="source">
@@ -142,33 +139,27 @@ Sources: <a href="https://www.gsb.stanford.edu/faculty-research/publications/con
 
 <div class="two-col">
 <div>
-
-### Compared with direct surveys
-
-Direct questions isolate features:
-
-- “Do you like fast delivery?”
-- “Is sustainability important?”
-- “Would you pay more?”
-- “What is your ideal product?”
-
+<h3>Compared with direct surveys</h3>
+<p>Direct questions isolate features:</p>
+<ul>
+<li>"Do you like fast delivery?"</li>
+<li>"Is sustainability important?"</li>
+<li>"Would you pay more?"</li>
+<li>"What is your ideal product?"</li>
+</ul>
 <p class="bad">Problem: customers can want everything in theory.</p>
-
 </div>
 
 <div>
-
-### Conjoint forces realistic compromise
-
-Choice tasks combine positives and negatives:
-
-- Fast shipping, but higher price
-- Eco packaging, but slower delivery
-- Premium support, but less convenience
-- Better brand, but fewer features
-
+<h3>Conjoint forces realistic compromise</h3>
+<p>Choice tasks combine positives and negatives:</p>
+<ul>
+<li>Fast shipping, but higher price</li>
+<li>Eco packaging, but slower delivery</li>
+<li>Premium support, but less convenience</li>
+<li>Better brand, but fewer features</li>
+</ul>
 <p class="good">Result: marketers estimate what people actually give up for each feature.</p>
-
 </div>
 </div>
 
@@ -205,8 +196,7 @@ Conjoint works because it transforms vague stated preferences into structured, m
 
 <div class="two-col">
 <div>
-
-### Psychological theories
+<h3>Psychological theories</h3>
 
 <div class="theory-card">
 <strong>Multi-Attribute Utility Theory</strong>
@@ -215,7 +205,7 @@ Conjoint works because it transforms vague stated preferences into structured, m
 
 <div class="theory-card">
 <strong>Theory of Conjoint Measurement</strong>
-<p>Qualitative judgments like “I prefer A to B” can be translated into numerical preference scales.</p>
+<p>Qualitative judgments like "I prefer A to B" can be translated into numerical preference scales.</p>
 </div>
 
 <div class="theory-card">
@@ -226,17 +216,15 @@ Conjoint works because it transforms vague stated preferences into structured, m
 </div>
 
 <div>
-
-### How conjoint uses them
-
-- Varies attributes and levels across tasks
-- Estimates part-worth utilities from choices
-- Treats price as one attribute among many
-- Models imperfect but predictable choice behavior
-- Reduces vague self-reporting by forcing bundle-level decisions
-
+<h3>How conjoint uses them</h3>
+<ul>
+<li>Varies attributes and levels across tasks</li>
+<li>Estimates part-worth utilities from choices</li>
+<li>Treats price as one attribute among many</li>
+<li>Models imperfect but predictable choice behavior</li>
+<li>Reduces vague self-reporting by forcing bundle-level decisions</li>
+</ul>
 <p class="good">The survey does not ask people to explain their utility function. It infers it from choices.</p>
-
 </div>
 </div>
 
@@ -255,36 +243,32 @@ Sources:
 ## MaxDiff: Building a Prioritization Task
 
 <p class="lead">
-MaxDiff changes the question from <span class="bad">“How important is each item?”</span> to <span class="good">“Which is most and least important?”</span>
+MaxDiff changes the question from <span class="bad">"How important is each item?"</span> to <span class="good">"Which is most and least important?"</span>
 </p>
 
 <div class="two-col">
 <div>
-
-### How MaxDiff is constructed
-
-- Start with a long list of features, claims, or benefits
-- Show small sets of **3–6 items**
-- Ask for the **most** and **least** preferred
-- Repeat across multiple screens
-- Balance item exposure and pairings
-- Estimate a preference score for every item
-
+<h3>How MaxDiff is constructed</h3>
+<ul>
+<li>Start with a long list of features, claims, or benefits</li>
+<li>Show small sets of <strong>3–6 items</strong></li>
+<li>Ask for the <strong>most</strong> and <strong>least</strong> preferred</li>
+<li>Repeat across multiple screens</li>
+<li>Balance item exposure and pairings</li>
+<li>Estimate a preference score for every item</li>
+</ul>
 </div>
 <div>
-
-### Example: Feature priorities
-
+<h3>Example: Feature priorities</h3>
 <div class="feature-card most"><p><span class="good">MOST</span>: Lower price</p></div>
 <div class="feature-card"><p>Better battery life</p></div>
 <div class="feature-card"><p>Better camera</p></div>
 <div class="feature-card least"><p><span class="bad">LEAST</span>: Brand reputation</p></div>
-
 </div>
 </div>
 
 <div class="callout compact">
-<p><span class="highlight">Key difference from rating scales:</span> respondents cannot mark every feature as “very important.” They must prioritize.</p>
+<p><span class="highlight">Key difference from rating scales:</span> respondents cannot mark every feature as "very important." They must prioritize.</p>
 </div>
 
 <p class="source">
@@ -298,8 +282,7 @@ Sources:
 
 <div class="two-col">
 <div>
-
-### Psychological theories
+<h3>Psychological theories</h3>
 
 <div class="theory-card">
 <strong>Thurstonian Scaling</strong>
@@ -318,17 +301,15 @@ Sources:
 
 </div>
 <div>
-
-### How MaxDiff uses them
-
-- Asks for extremes because best/worst is easier than exact ranking
-- Breaks long lists into small sets to reduce cognitive load
-- Forces trade-offs to prevent “everything is important”
-- Removes scale-use bias by avoiding 1–10 ratings
-- Produces a relative hierarchy of preferences
-
+<h3>How MaxDiff uses them</h3>
+<ul>
+<li>Asks for extremes because best/worst is easier than exact ranking</li>
+<li>Breaks long lists into small sets to reduce cognitive load</li>
+<li>Forces trade-offs to prevent "everything is important"</li>
+<li>Removes scale-use bias by avoiding 1–10 ratings</li>
+<li>Produces a relative hierarchy of preferences</li>
+</ul>
 <p class="good">MaxDiff works because people are better at comparative judgment than absolute scoring.</p>
-
 </div>
 </div>
 
@@ -352,25 +333,23 @@ Conjoint and MaxDiff work because they turn vague self-reporting into structured
 
 <div class="two-col">
 <div>
-
-### Weak survey design gives...
-
-- Inflated purchase intent
-- Vague ratings where everything scores high
-- “Everything is important”
-- Averages that hide meaningful differences
-
+<h3>Weak survey design gives...</h3>
+<ul>
+<li>Inflated purchase intent</li>
+<li>Vague ratings where everything scores high</li>
+<li>"Everything is important"</li>
+<li>Averages that hide meaningful differences</li>
+</ul>
 </div>
 <div>
-
-### Choice-based survey design gives...
-
-- Realistic trade-offs
-- Part-worth utilities
-- Willingness to pay estimates
-- Preference scores
-- Preference-based segments
-
+<h3>Choice-based survey design gives...</h3>
+<ul>
+<li>Realistic trade-offs</li>
+<li>Part-worth utilities</li>
+<li>Willingness to pay estimates</li>
+<li>Preference scores</li>
+<li>Preference-based segments</li>
+</ul>
 </div>
 </div>
 
@@ -393,4 +372,3 @@ Conjoint and MaxDiff work because they turn vague self-reporting into structured
 <p class="big">Good marketing surveys do not just ask better questions.</p>
 <p class="big">They use psychology to reveal what different customers value, choose, and respond to.</p>
 </div>
-</p>

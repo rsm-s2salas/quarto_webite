@@ -729,16 +729,16 @@ font-size: 0.72em !important;
 line-height: 1.18 !important;
 }
 .reveal p {
-margin: 0.15em 0 0.32em 0 !important;
+margin: 0.10em 0 0.22em 0 !important;
 }
 .reveal ul,
 .reveal ol {
-margin-top: 0.10em !important;
-margin-bottom: 0.20em !important;
+margin-top: 0.08em !important;
+margin-bottom: 0.14em !important;
 padding-left: 1.15em !important;
 }
 .reveal li {
-margin-bottom: 0.12em !important;
+margin-bottom: 0.08em !important;
 }
 .reveal strong {
 color: var(--dark) !important;
@@ -785,7 +785,7 @@ margin-top: 0.45em !important;
 .reveal .lead {
 font-size: 0.82em !important;
 line-height: 1.20 !important;
-margin: 0 0 0.70em 0 !important;
+margin: 0 0 0.42em 0 !important;
 max-width: 100% !important;
 }
 .reveal .source {
@@ -805,19 +805,19 @@ line-height: 1.12 !important;
 .reveal .grid2 {
 display: grid !important;
 grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-gap: 28px !important;
+gap: 20px !important;
 align-items: start !important;
-margin-top: 0.25em !important;
+margin-top: 0.18em !important;
 }
 .reveal .three-col,
 .reveal .grid3 {
 display: grid !important;
 grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-gap: 20px !important;
+gap: 14px !important;
 align-items: start !important;
 }
 .reveal .compact-row {
-margin-top: 0.70em !important;
+margin-top: 0.45em !important;
 }
 .reveal .compact-row > div {
 border-left: 4px solid var(--primary) !important;
@@ -846,7 +846,7 @@ background: rgba(132, 160, 124, 0.12) !important;
 border-left: 7px solid var(--primary) !important;
 padding: 7px 12px !important;
 border-radius: 0.75rem !important;
-margin: 0.65em 0 0.55em 0 !important;
+margin: 0.40em 0 0.30em 0 !important;
 box-shadow: var(--shadow) !important;
 }
 .reveal .callout p {
@@ -891,8 +891,8 @@ border-color: #500e13 !important;
 background: rgba(159, 132, 189, 0.13) !important;
 border-left: 5px solid var(--purple) !important;
 border-radius: 0.55rem !important;
-padding: 7px 9px !important;
-margin: 0 0 0.38em 0 !important;
+padding: 6px 9px !important;
+margin: 0 0 0.28em 0 !important;
 }
 .reveal .theory-card strong {
 color: var(--purple) !important;
@@ -1480,20 +1480,44 @@ Sophia Salas
 Marketing surveys are not neutral. The words we use shape how customers think, what identity they perform, and which trade-offs they notice.
 </p>
 <div class="two-col">
-<h3 id="traditional-survey-wording">Traditional survey wording</h3>
+<div>
+<h3>
+Traditional survey wording
+</h3>
 <ul>
-<li>“Would you buy this?”</li>
-<li>“How important is this feature?”</li>
-<li>“What would you pay?”</li>
-<li>“Rate this 1–10.”</li>
+<li>
+“Would you buy this?”
+</li>
+<li>
+“How important is this feature?”
+</li>
+<li>
+“What would you pay?”
+</li>
+<li>
+“Rate this 1–10.”
+</li>
 </ul>
-<h3 id="choice-based-survey-wording">Choice-based survey wording</h3>
+</div>
+<div>
+<h3>
+Choice-based survey wording
+</h3>
 <ul>
-<li>“Which option would you choose?”</li>
-<li>“Which is most and least important?”</li>
-<li>“Would you buy at this price?”</li>
-<li>“Which bundle feels worth it?”</li>
+<li>
+“Which option would you choose?”
+</li>
+<li>
+“Which is most and least important?”
+</li>
+<li>
+“Would you buy at this price?”
+</li>
+<li>
+“Which bundle feels worth it?”
+</li>
 </ul>
+</div>
 </div>
 <div class="compact">
 <div class="callout callout-none no-icon callout-style-simple">
@@ -1542,15 +1566,31 @@ Sources: <a href="https://www.jstor.org/stable/10.1086/209535" target="_blank">B
 Conjoint changes the question from <span class="bad">“What features do you like?”</span> to <span class="good">“Which product bundle would you choose?”</span>
 </p>
 <div class="two-col">
-<h3 id="how-conjoint-is-constructed">How conjoint is constructed</h3>
+<div>
+<h3>
+How conjoint is constructed
+</h3>
 <ul>
-<li>Choose product <strong>attributes</strong></li>
-<li>Define <strong>levels</strong> for each attribute</li>
-<li>Build choice tasks from different combinations</li>
-<li>Randomize and balance screens</li>
-<li>Include a <strong>none option</strong> when realistic</li>
-<li>Estimate <strong>part-worth utilities</strong> for each level</li>
+<li>
+Choose product <strong>attributes</strong>
+</li>
+<li>
+Define <strong>levels</strong> for each attribute
+</li>
+<li>
+Build choice tasks from different combinations
+</li>
+<li>
+Randomize and balance screens
+</li>
+<li>
+Include a <strong>none option</strong> when realistic
+</li>
+<li>
+Estimate <strong>part-worth utilities</strong> for each level
+</li>
 </ul>
+</div>
 <div class="option-box">
 <h3>
 Example: Subscription bundle
@@ -1639,28 +1679,56 @@ Sources: <a href="https://www.gsb.stanford.edu/faculty-research/publications/con
 <section id="why-conjoint-works-trade-offs-over-wish-lists" class="slide level2">
 <h2>Why Conjoint Works: Trade-Offs Over Wish Lists</h2>
 <div class="two-col">
-<h3 id="compared-with-direct-surveys">Compared with direct surveys</h3>
-<p>Direct questions isolate features:</p>
+<div>
+<h3>
+Compared with direct surveys
+</h3>
+<p>
+Direct questions isolate features:
+</p>
 <ul>
-<li>“Do you like fast delivery?”</li>
-<li>“Is sustainability important?”</li>
-<li>“Would you pay more?”</li>
-<li>“What is your ideal product?”</li>
+<li>
+“Do you like fast delivery?”
+</li>
+<li>
+“Is sustainability important?”
+</li>
+<li>
+“Would you pay more?”
+</li>
+<li>
+“What is your ideal product?”
+</li>
 </ul>
 <p class="bad">
 Problem: customers can want everything in theory.
 </p>
-<h3 id="conjoint-forces-realistic-compromise">Conjoint forces realistic compromise</h3>
-<p>Choice tasks combine positives and negatives:</p>
+</div>
+<div>
+<h3>
+Conjoint forces realistic compromise
+</h3>
+<p>
+Choice tasks combine positives and negatives:
+</p>
 <ul>
-<li>Fast shipping, but higher price</li>
-<li>Eco packaging, but slower delivery</li>
-<li>Premium support, but less convenience</li>
-<li>Better brand, but fewer features</li>
+<li>
+Fast shipping, but higher price
+</li>
+<li>
+Eco packaging, but slower delivery
+</li>
+<li>
+Premium support, but less convenience
+</li>
+<li>
+Better brand, but fewer features
+</li>
 </ul>
 <p class="good">
 Result: marketers estimate what people actually give up for each feature.
 </p>
+</div>
 </div>
 <div class="three-col compact-row">
 <div>
@@ -1701,7 +1769,10 @@ Sources: <a href="https://www.gsb.stanford.edu/faculty-research/publications/con
 Conjoint works because it transforms vague stated preferences into structured, multi-attribute choice behavior.
 </p>
 <div class="two-col">
-<h3 id="psychological-theories">Psychological theories</h3>
+<div>
+<h3>
+Psychological theories
+</h3>
 <div class="theory-card">
 <strong>Multi-Attribute Utility Theory</strong>
 <p>
@@ -1720,17 +1791,32 @@ Qualitative judgments like “I prefer A to B” can be translated into numerica
 Choice has a systematic part we can model and a random part we cannot fully observe.
 </p>
 </div>
-<h3 id="how-conjoint-uses-them">How conjoint uses them</h3>
+</div>
+<div>
+<h3>
+How conjoint uses them
+</h3>
 <ul>
-<li>Varies attributes and levels across tasks</li>
-<li>Estimates part-worth utilities from choices</li>
-<li>Treats price as one attribute among many</li>
-<li>Models imperfect but predictable choice behavior</li>
-<li>Reduces vague self-reporting by forcing bundle-level decisions</li>
+<li>
+Varies attributes and levels across tasks
+</li>
+<li>
+Estimates part-worth utilities from choices
+</li>
+<li>
+Treats price as one attribute among many
+</li>
+<li>
+Models imperfect but predictable choice behavior
+</li>
+<li>
+Reduces vague self-reporting by forcing bundle-level decisions
+</li>
 </ul>
 <p class="good">
 The survey does not ask people to explain their utility function. It infers it from choices.
 </p>
+</div>
 </div>
 <div class="compact">
 <div class="callout callout-none no-icon callout-style-simple">
@@ -1753,16 +1839,35 @@ Sources: <a href="https://www.jstor.org/stable/10.1086/209535" target="_blank">B
 MaxDiff changes the question from <span class="bad">“How important is each item?”</span> to <span class="good">“Which is most and least important?”</span>
 </p>
 <div class="two-col">
-<h3 id="how-maxdiff-is-constructed">How MaxDiff is constructed</h3>
+<div>
+<h3>
+How MaxDiff is constructed
+</h3>
 <ul>
-<li>Start with a long list of features, claims, or benefits</li>
-<li>Show small sets of <strong>3–6 items</strong></li>
-<li>Ask for the <strong>most</strong> and <strong>least</strong> preferred</li>
-<li>Repeat across multiple screens</li>
-<li>Balance item exposure and pairings</li>
-<li>Estimate a preference score for every item</li>
+<li>
+Start with a long list of features, claims, or benefits
+</li>
+<li>
+Show small sets of <strong>3–6 items</strong>
+</li>
+<li>
+Ask for the <strong>most</strong> and <strong>least</strong> preferred
+</li>
+<li>
+Repeat across multiple screens
+</li>
+<li>
+Balance item exposure and pairings
+</li>
+<li>
+Estimate a preference score for every item
+</li>
 </ul>
-<h3 id="example-feature-priorities">Example: Feature priorities</h3>
+</div>
+<div>
+<h3>
+Example: Feature priorities
+</h3>
 <div class="feature-card most">
 <p>
 <span class="good">MOST</span>: Lower price
@@ -1784,6 +1889,7 @@ Better camera
 </p>
 </div>
 </div>
+</div>
 <div class="compact">
 <div class="callout callout-none no-icon callout-style-simple">
 <div class="callout-body">
@@ -1802,7 +1908,10 @@ Sources: <a href="https://www.qualtrics.com/support/conjoint-project/getting-sta
 <section id="the-psychology-behind-maxdiff" class="slide level2">
 <h2>The Psychology Behind MaxDiff</h2>
 <div class="two-col">
-<h3 id="psychological-theories-1">Psychological theories</h3>
+<div>
+<h3>
+Psychological theories
+</h3>
 <div class="theory-card">
 <strong>Thurstonian Scaling</strong>
 <p>
@@ -1821,17 +1930,32 @@ People simplify complex choices by focusing on attributes that matter and elimin
 People choose the option or pair with the highest perceived utility difference, plus some noise.
 </p>
 </div>
-<h3 id="how-maxdiff-uses-them">How MaxDiff uses them</h3>
+</div>
+<div>
+<h3>
+How MaxDiff uses them
+</h3>
 <ul>
-<li>Asks for extremes because best/worst is easier than exact ranking</li>
-<li>Breaks long lists into small sets to reduce cognitive load</li>
-<li>Forces trade-offs to prevent “everything is important”</li>
-<li>Removes scale-use bias by avoiding 1–10 ratings</li>
-<li>Produces a relative hierarchy of preferences</li>
+<li>
+Asks for extremes because best/worst is easier than exact ranking
+</li>
+<li>
+Breaks long lists into small sets to reduce cognitive load
+</li>
+<li>
+Forces trade-offs to prevent “everything is important”
+</li>
+<li>
+Removes scale-use bias by avoiding 1–10 ratings
+</li>
+<li>
+Produces a relative hierarchy of preferences
+</li>
 </ul>
 <p class="good">
 MaxDiff works because people are better at comparative judgment than absolute scoring.
 </p>
+</div>
 </div>
 <div class="compact">
 <div class="callout callout-none no-icon callout-style-simple">
@@ -1854,21 +1978,47 @@ Sources: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0022249
 Conjoint and MaxDiff work because they turn vague self-reporting into structured choice behavior — and structured choices reveal how different customers actually value things.
 </p>
 <div class="two-col">
-<h3 id="weak-survey-design-gives">Weak survey design gives…</h3>
+<div>
+<h3>
+Weak survey design gives…
+</h3>
 <ul>
-<li>Inflated purchase intent</li>
-<li>Vague ratings where everything scores high</li>
-<li>“Everything is important”</li>
-<li>Averages that hide meaningful differences</li>
+<li>
+Inflated purchase intent
+</li>
+<li>
+Vague ratings where everything scores high
+</li>
+<li>
+“Everything is important”
+</li>
+<li>
+Averages that hide meaningful differences
+</li>
 </ul>
-<h3 id="choice-based-survey-design-gives">Choice-based survey design gives…</h3>
+</div>
+<div>
+<h3>
+Choice-based survey design gives…
+</h3>
 <ul>
-<li>Realistic trade-offs</li>
-<li>Part-worth utilities</li>
-<li>Willingness to pay estimates</li>
-<li>Preference scores</li>
-<li>Preference-based segments</li>
+<li>
+Realistic trade-offs
+</li>
+<li>
+Part-worth utilities
+</li>
+<li>
+Willingness to pay estimates
+</li>
+<li>
+Preference scores
+</li>
+<li>
+Preference-based segments
+</li>
 </ul>
+</div>
 </div>
 <div class="three-col compact-row">
 <div>
@@ -1908,7 +2058,6 @@ They use psychology to reveal what different customers value, choose, and respon
 </div>
 </div>
 </div>
-<p></p>
 
 
 </section>
