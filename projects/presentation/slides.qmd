@@ -2,7 +2,7 @@
 title: "The Psychology of Marketing Surveys"
 subtitle: "How Conjoint and MaxDiff use language, trade-offs, and choice design"
 author: "Sophia Salas"
-date: 5/01/2026
+date: 5.01.2026
 image: "thumbnail.png"
 format:
   revealjs:
@@ -16,7 +16,7 @@ format:
 ## Why Survey Language Matters
 
 <p class="lead">
-Marketing surveys are not neutral. The words we use shape how customers think, what identity they perform, and which trade-offs they notice.
+Marketing surveys are not neutral. The words and phrasing used shapes the way customers think and force tradeoffs.
 </p>
 
 <div class="two-col">
@@ -29,6 +29,7 @@ Marketing surveys are not neutral. The words we use shape how customers think, w
 <li>"Rate this 1–10."</li>
 </ul>
 </div>
+
 <div>
 <h3>Choice-based survey wording</h3>
 <ul>
@@ -41,30 +42,29 @@ Marketing surveys are not neutral. The words we use shape how customers think, w
 </div>
 
 <div class="callout compact">
-<p><span class="highlight">Main idea:</span> Better marketing surveys do not just ask for preferences. They design situations where preferences are <em>revealed through choices</em>.</p>
+<p><span class="highlight">First principle:</span> In economics and psychology, humans can usually compare two options and say which they prefer. There is no equally clean first principle for what a “7/10 importance rating” means.</p>
 </div>
 
 <div class="three-col compact-row">
 <div>
 <h4>Framing</h4>
-<p>Language changes what people notice.</p>
+<p>Language changes how people think</p>
 </div>
 <div>
 <h4>Identity</h4>
-<p>Answers reflect how people want to appear.</p>
+<p>Answers reflect how people want to appear</p>
 </div>
 <div>
 <h4>Trade-offs</h4>
-<p>Better questions make sacrifice unavoidable.</p>
+<p>Better questions force sacrifice</p>
 </div>
 </div>
 
 <p class="source">
-Sources:
-<a href="https://www.jstor.org/stable/10.1086/209535" target="_blank">Bettman, Luce & Payne</a>;
-<a href="https://sites.socsci.uci.edu/~bskyrms/bio/readings/tversky_k_heuristics_biases.pdf" target="_blank">Tversky & Kahneman</a>;
+Sources: <a href="https://sites.socsci.uci.edu/~bskyrms/bio/readings/tversky_k_heuristics_biases.pdf" target="_blank">Tversky & Kahneman (1974)</a>; <a href="https://en.wikipedia.org/wiki/First_principle" target="_blank">First Principle</a>; MGTA 495 MaxDiff and Conjoint
 </p>
 
+---
 
 ## Conjoint: Building a Realistic Shopping Task
 
@@ -86,7 +86,6 @@ Conjoint changes the question from <span class="bad">"What features do you like?
 </div>
 
 <div class="option-box">
-
 <h3>Example: Subscription bundle</h3>
 
 <table>
@@ -104,9 +103,9 @@ Conjoint changes the question from <span class="bad">"What features do you like?
 <td>$59/mo</td>
 </tr>
 <tr>
-<td>Delivery</td>
-<td>Fast</td>
-<td>Standard</td>
+<td>Meal Plan</td>
+<td>3 meals/week</td>
+<td>5 meals/week</td>
 </tr>
 <tr>
 <td>Support</td>
@@ -114,26 +113,26 @@ Conjoint changes the question from <span class="bad">"What features do you like?
 <td>Premium</td>
 </tr>
 <tr>
-<td>Packaging</td>
-<td>Standard</td>
-<td>Eco-friendly</td>
+<td>Day Of Option</td>
+<td>No</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
 
 <p class="good">Which option would you choose? Or neither?</p>
-
 </div>
 </div>
 
 <div class="callout compact">
-<p><span class="highlight">Why "none" matters:</span> without it, respondents may be forced to choose a product they would never actually buy.</p>
+<p><span class="highlight">Why “none” matters:</span> without it, respondents may be forced to choose a product they would never actually buy</p>
 </div>
 
 <p class="source">
-Sources: <a href="https://www.gsb.stanford.edu/faculty-research/publications/conjoint-analysis-marketing-new-developments-implications-research" target="_blank">Green & Srinivasan</a>.
+Sources: <a href="https://www.gsb.stanford.edu/faculty-research/publications/conjoint-analysis-marketing-new-developments-implications-research" target="_blank">Green & Srinivasan (1990)</a>; MGTA 495 Conjoint / MNL lecture.
 </p>
 
+---
 
 ## Why Conjoint Works: Trade-Offs Over Wish Lists
 
@@ -159,8 +158,12 @@ Sources: <a href="https://www.gsb.stanford.edu/faculty-research/publications/con
 <li>Premium support, but less convenience</li>
 <li>Better brand, but fewer features</li>
 </ul>
-<p class="good">Result: marketers estimate what people actually give up for each feature.</p>
+<p class="good">Result: estimate what people actually give up for each feature.</p>
 </div>
+</div>
+
+<div class="callout compact">
+<p><span class="highlight">Stated vs. revealed example:</span> A study by Auger & Devinney (2007) highlighted the "attitude-behavior gap" — consumers claim to prioritize sustainability in surveys but rarely pay the green premium in real markets</p>
 </div>
 
 <div class="three-col compact-row">
@@ -168,83 +171,84 @@ Sources: <a href="https://www.gsb.stanford.edu/faculty-research/publications/con
 <h4>Product</h4>
 <p>Which features create value?</p>
 </div>
-
 <div>
 <h4>Price</h4>
 <p>What are people willing to pay?</p>
 </div>
-
 <div>
 <h4>Segmentation</h4>
 <p>Which groups value different bundles?</p>
 </div>
 </div>
 
-<p class="arrow">Choice tasks   →   part-worth utilities   →   willingness to pay   → product and price decisions</p>
+<p class="arrow">Choice tasks → part-worth utilities → willingness to pay → product and price decisions</p>
 
 <p class="source">
-Sources:
-<a href="https://www.gsb.stanford.edu/faculty-research/publications/conjoint-analysis-marketing-new-developments-implications-research" target="_blank">Green & Srinivasan</a>
+Sources: <a href="https://link.springer.com/article/10.1007/s10551-006-9287-y">Auger & Devinney (2007)</a>;
+<a href="https://www.gsb.stanford.edu/faculty-research/publications/conjoint-analysis-marketing-new-developments-implications-research">Green & Srinivasan (1990)</a>.
 </p>
 
+---
 
 ## The Psychology Behind Conjoint
 
 <p class="lead">
-Conjoint works because it transforms vague stated preferences into structured, multi-attribute choice behavior.
+Conjoint transforms vague stated preferences into structured, multi-attribute choice behavior
 </p>
 
 <div class="two-col">
+
 <div>
-<h3>Psychological theories</h3>
+<h3>Typical conjoint assumption</h3>
 
 <div class="theory-card">
-<strong>Multi-Attribute Utility Theory</strong>
-<p>Products are bundles of attributes. Total value comes from the perceived value of each attribute level.</p>
-</div>
-
-<div class="theory-card">
-<strong>Theory of Conjoint Measurement</strong>
-<p>Qualitative judgments like "I prefer A to B" can be translated into numerical preference scales.</p>
+<strong>Compensatory Utility Model</strong>
+<p>Conjoint often assumes utility is additive: \(U_j = x_{1j}\beta_1 + x_{2j}\beta_2 + \epsilon_j\). A low value on one attribute can be offset by a high value on another</p>
 </div>
 
 <div class="theory-card">
 <strong>Random Utility Theory</strong>
-<p>Choice has a systematic part we can model and a random part we cannot fully observe.</p>
+<p>Choice has a systematic part we can model and a random part we cannot fully observe</p>
 </div>
 
+<h3>Psychological theories</h3>
+
+<div class="theory-card">
+<strong>Multi-Attribute Utility Theory</strong>
+<p>Products are bundles of attributes. Total value comes from the perceived value of each attribute level</p>
+</div>
+
+<div class="theory-card">
+<strong>Theory of Conjoint Measurement</strong>
+<p>Qualitative judgments like "I prefer A to B" can be translated into numerical preference scales</p>
+</div>
 </div>
 
 <div>
-<h3>How conjoint uses them</h3>
+<h3>What that means psychologically</h3>
 <ul>
-<li>Varies attributes and levels across tasks</li>
-<li>Estimates part-worth utilities from choices</li>
-<li>Treats price as one attribute among many</li>
-<li>Models imperfect but predictable choice behavior</li>
-<li>Reduces vague self-reporting by forcing bundle-level decisions</li>
+<li>People compare whole bundles, not isolated features</li>
+<li>Price is treated as one attribute among many</li>
+<li>Models infer preferences from choices</li>
+<li>But the offsetting assumption can be too strong</li>
 </ul>
-<p class="good">The survey does not ask people to explain their utility function. It infers it from choices.</p>
+
+<p class="bad">Example: If a buyer refuses to purchase a smartphone because it lacks a headphone jack, no amount of added storage or a discounted price will compensate for that missing feature. That is a non-compensatory cutoff.</p>
 </div>
+
 </div>
 
 <div class="callout compact">
-<p><span class="highlight">Bias mitigation:</span> social desirability is weaker when sustainability, price, brand, and convenience are bundled together. Respondents must trade off the full package.</p>
+<p><span class="highlight">Important distinction:</span> conjoint usually models trade-offs as compensatory.</p>
 </div>
 
 <p class="source">
-Sources:
-<a href="https://www.jstor.org/stable/10.1086/209535" target="_blank">Bettman, Luce & Payne</a>;
-<a href="https://www.gsb.stanford.edu/faculty-research/publications/conjoint-analysis-marketing-new-developments-implications-research" target="_blank">Green & Srinivasan</a>
+Sources: Luce & Tukey (1964); McFadden (1974); Green & Srinivasan (1990); McFadden (1974).
 </p>
 
-
+---
 
 ## MaxDiff: Building a Prioritization Task
-
-<p class="lead">
-MaxDiff changes the question from <span class="bad">"How important is each item?"</span> to <span class="good">"Which is most and least important?"</span>
-</p>
 
 <div class="two-col">
 <div>
@@ -258,6 +262,7 @@ MaxDiff changes the question from <span class="bad">"How important is each item?
 <li>Estimate a preference score for every item</li>
 </ul>
 </div>
+
 <div>
 <h3>Example: Feature priorities</h3>
 <div class="feature-card most"><p><span class="good">MOST</span>: Lower price</p></div>
@@ -268,15 +273,14 @@ MaxDiff changes the question from <span class="bad">"How important is each item?
 </div>
 
 <div class="callout compact">
-<p><span class="highlight">Key difference from rating scales:</span> respondents cannot mark every feature as "very important." They must prioritize.</p>
+<p><span class="highlight">MaxDiff as simple conjoint:</span> MaxDiff can be viewed as a conjoint-style choice model where each item has utility \(U_j = \beta_j + \epsilon_j\). Both MaxDiff and conjoint collect data for MNL-style models.</p>
 </div>
 
 <p class="source">
-Sources:
-<a href="https://www.qualtrics.com/support/conjoint-project/getting-started-conjoints/getting-started-maxdiff/maxdiff-analysis-white-paper/" target="_blank">Qualtrics MaxDiff overview</a>.
+Sources: <a href="https://www.qualtrics.com/support/conjoint-project/getting-started-conjoints/getting-started-maxdiff/maxdiff-analysis-white-paper/" target="_blank">Qualtrics MaxDiff overview</a>; <a href="https://www.sciencedirect.com/science/article/abs/pii/S0022249605000441" target="_blank">Marley & Louviere (2005)</a>; MGTA 495 MaxDiff
 </p>
 
-
+---
 
 ## The Psychology Behind MaxDiff
 
@@ -285,45 +289,38 @@ Sources:
 <h3>Psychological theories</h3>
 
 <div class="theory-card">
-<strong>Thurstonian Scaling</strong>
-<p>When people compare items, each item creates an underlying psychological value that can be recovered from repeated judgments.</p>
-</div>
-
-<div class="theory-card">
 <strong>Elimination by Aspects</strong>
-<p>People simplify complex choices by focusing on attributes that matter and eliminating weaker options.</p>
+<p>People simplify complex choices by focusing on attributes that matter and eliminating weaker options</p>
 </div>
 
 <div class="theory-card">
 <strong>Random Utility Theory</strong>
-<p>People choose the option or pair with the highest perceived utility difference, plus some noise.</p>
+<p>People choose the option or pair with the highest perceived utility difference, plus some noise</p>
+</div>
 </div>
 
-</div>
 <div>
 <h3>How MaxDiff uses them</h3>
 <ul>
+<li>Uses the first principle that people can compare options</li>
 <li>Asks for extremes because best/worst is easier than exact ranking</li>
 <li>Breaks long lists into small sets to reduce cognitive load</li>
-<li>Forces trade-offs to prevent "everything is important"</li>
+<li>Forces trade-offs to prevent “everything is important”</li>
 <li>Removes scale-use bias by avoiding 1–10 ratings</li>
-<li>Produces a relative hierarchy of preferences</li>
 </ul>
 <p class="good">MaxDiff works because people are better at comparative judgment than absolute scoring.</p>
 </div>
 </div>
 
 <div class="callout compact">
-<p><span class="highlight">Core principle:</span> MaxDiff turns psychological comparison into marketing data.</p>
+<p><span class="highlight">Clarification:</span> Elimination by Aspects is a psychological theory of non-compensatory screening. MaxDiff/MNL typically model choices as utility comparisons, where we saw a compensatory utility model.</p>
 </div>
 
 <p class="source">
-Sources:
-<a href="https://www.sciencedirect.com/science/article/abs/pii/S0022249611000964" target="_blank">Marley & Louviere / best-worst choice models</a>;
-<a href="https://www.sciencedirect.com/science/article/pii/0022249672900119" target="_blank">Tversky, Elimination by Aspects</a>
+Sources: <a href="https://www.sciencedirect.com/science/article/pii/0022249672900119" target="_blank">Tversky (1972)</a>;  <a href="https://eml.berkeley.edu/reprints/mcfadden/zarembka.pdf" target="_blank">McFadden (1974)</a>.
 </p>
 
-
+---
 
 ## Conclusion: Better Surveys Create Better Segments
 
@@ -337,10 +334,11 @@ Conjoint and MaxDiff work because they turn vague self-reporting into structured
 <ul>
 <li>Inflated purchase intent</li>
 <li>Vague ratings where everything scores high</li>
-<li>"Everything is important"</li>
+<li>“Everything is important”</li>
 <li>Averages that hide meaningful differences</li>
 </ul>
 </div>
+
 <div>
 <h3>Choice-based survey design gives...</h3>
 <ul>
@@ -368,7 +366,4 @@ Conjoint and MaxDiff work because they turn vague self-reporting into structured
 </div>
 </div>
 
-<div class="callout">
-<p class="big">Good marketing surveys do not just ask better questions.</p>
-<p class="big">They use psychology to reveal what different customers value, choose, and respond to.</p>
-</div>
+<p class="source">Sources: MGTA 495 Segmentation; MGTA 495 Conjoint / MNL.</p>
